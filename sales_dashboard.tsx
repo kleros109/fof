@@ -331,7 +331,10 @@ export default function SalesDashboard() {
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658'];
 
-  const formatCurrency = (value: number) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+  const formatCurrency = (value: number | string) => {
+    const numValue = typeof value === 'string' ? parseFloat(value) : value;
+    return `$${numValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+  };
 
   const generateCSV = () => {
     const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order\n';
@@ -450,7 +453,7 @@ export default function SalesDashboard() {
                 axisLine={true}
                 tickLine={true}
               />
-              <Tooltip formatter={(value) => formatCurrency(value)} />
+              <Tooltip formatter={(value) => formatCurrency(value as number)} />
               <Bar dataKey="netSales" fill="#0088FE">
                 <LabelList 
                   dataKey="netSales" 
@@ -484,7 +487,7 @@ export default function SalesDashboard() {
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value) => formatCurrency(value)} />
+                <Tooltip formatter={(value) => formatCurrency(value as number)} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -503,7 +506,7 @@ export default function SalesDashboard() {
                   axisLine={true}
                   tickLine={true}
                 />
-                <Tooltip formatter={(value) => formatCurrency(value)} />
+                <Tooltip formatter={(value) => formatCurrency(value as number)} />
                 <Bar dataKey="sales" fill="#0088FE" />
               </BarChart>
             </ResponsiveContainer>
