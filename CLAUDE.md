@@ -97,3 +97,22 @@ The application uses Next.js App Router with a single main page component that i
 - **Image Optimization**: Disabled for static export compatibility
 - **Environment**: No environment variables required (static data)
 - **Performance**: Optimized bundle with tree-shaking and code splitting
+
+## Automation Scripts
+
+This project includes automation scripts for updating dashboard data:
+
+### Quick Commands
+
+- **Update from PDF:** `./update-dashboard.sh "/path/to/sales-summary.pdf"`
+- **Deploy changes:** `./deploy.sh "commit message"`  
+- **Process data:** `node scripts/data-extractor.js`
+
+### Workflow
+
+1. Save new sales summary PDF to Documents folder
+2. Run update script with PDF path
+3. Claude Code will extract data and update dashboard
+4. Run deploy script to push changes live
+
+See AUTOMATION.md for detailed instructions.
