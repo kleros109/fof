@@ -104,6 +104,7 @@ This project includes automation scripts for updating dashboard data:
 
 ### Quick Commands
 
+- **Update with Agent:** `claude --agent fof-dashboard-updater "Update dashboard with /path/to/sales-summary.pdf"`
 - **Update from PDF:** `./update-dashboard.sh "/path/to/sales-summary.pdf"`
 - **Deploy changes:** `./deploy.sh "commit message"`  
 - **Process data:** `node scripts/data-extractor.js`
@@ -111,8 +112,8 @@ This project includes automation scripts for updating dashboard data:
 ### Workflow
 
 1. Save new sales summary PDF to Documents folder
-2. Run update script with PDF path
-3. Claude Code will extract data and update dashboard
-4. Run deploy script to push changes live
+2. Use FOF Dashboard Agent: `claude --agent fof-dashboard-updater "Update dashboard with [PDF-path]"`
+3. Agent will automatically extract data, update dashboard, and deploy
+4. Dashboard is live in ~2 minutes with new data
 
 See AUTOMATION.md for detailed instructions.

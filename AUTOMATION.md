@@ -6,31 +6,48 @@ This guide explains how to easily update your Friends of Friends sales dashboard
 
 When you get a new sales summary PDF, follow these simple steps:
 
-### Method 1: Fully Automated (Recommended)
+### Method 1: FOF Dashboard Agent (Recommended)
 ```bash
 # Navigate to your project
 cd /home/chris/Documents/fof
 
+# Use the specialized FOF dashboard agent
+claude --agent fof-dashboard-updater "Update dashboard with /path/to/your/sales-summary.pdf"
+```
+
+### Method 2: Using Task Tool
+```bash
+# In your project directory - use Task tool to launch agent
+claude "Use the fof-dashboard-updater agent to process new sales data from /path/to/new-pdf.pdf"
+```
+
+### Method 3: Automated Script (Backup)
+```bash
 # Run the update script with your new PDF
 ./update-dashboard.sh "/path/to/your/new-sales-summary.pdf"
 ```
 
-### Method 2: Using Claude Code Directly
-```bash
-# In your project directory
-claude "Update dashboard with sales data from: /path/to/new-pdf.pdf"
-```
-
-### Method 3: Manual Process
+### Method 4: Manual Process
 1. Copy your PDF to the Documents folder
 2. Open terminal in your FOF project folder
 3. Run: `claude`
 4. Type: "Read and update dashboard with data from: [PDF path]"
 
-## Available Scripts
+## Available Tools
+
+### 🤖 **FOF Dashboard Agent (Recommended)**
+**Purpose:** Fully automated PDF processing and dashboard updating
+**Usage:** `claude --agent fof-dashboard-updater "Update dashboard with /path/to/sales-summary.pdf"`
+**What it does:**
+- Reads and parses Toast POS sales summary PDFs
+- Extracts all relevant metrics automatically
+- Updates all dashboard data arrays
+- Validates data accuracy and consistency
+- Commits and deploys changes to live site
+- Provides deployment confirmation and URL
 
 ### 📊 `./update-dashboard.sh`
-**Purpose:** Processes new sales PDF and updates dashboard
+**Purpose:** Backup script for PDF processing
 **Usage:** `./update-dashboard.sh "/path/to/sales-summary.pdf"`
 **What it does:**
 - Validates PDF exists
