@@ -87,7 +87,7 @@ export default function SalesDashboard() {
       totalGuests: 6377
     },
     {
-      month: 'Aug 2025 (30 days)',
+      month: 'August 2025',
       netSales: 82636.05,
       tips: 9045.93,
       taxAmount: 7259.10,
@@ -211,11 +211,11 @@ export default function SalesDashboard() {
       momGrowth: -11.9
     },
     {
-      month: 'Aug 2025 (30 days)',
-      totalFoodNoCategory: 32599.15,
+      month: 'August 2025',
+      totalBeverages: 49277.40,
       totalSales: 82636.05,
-      percentage: 39.4,
-      momGrowth: -19.7
+      percentage: 59.6,
+      momGrowth: 21.4
     }
   ];
 
