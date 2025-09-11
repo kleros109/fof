@@ -88,14 +88,14 @@ export default function SalesDashboard() {
     },
     {
       month: 'August 2025',
-      netSales: 82636.05,
-      tips: 9045.93,
-      taxAmount: 7259.10,
-      deferredGiftCards: 210.00,
-      totalAmount: 99151.08,
+      netSales: 81195.86,
+      tips: 8741.47,
+      taxAmount: 7130.47,
+      deferredGiftCards: 190.00,
+      totalAmount: 97257.80,
       avgOrder: 13.39,
-      totalOrders: 6172,
-      totalGuests: 6172
+      totalOrders: 6062,
+      totalGuests: 6062
     }
   ];
 
@@ -151,11 +151,11 @@ export default function SalesDashboard() {
       momGrowth: 2.4
     },
     {
-      month: 'Aug 2025 (30 days)',
-      totalBeverages: 49277.40,
-      totalSales: 82636.05,
+      month: 'August 2025',
+      totalBeverages: 48419.25,
+      totalSales: 81195.86,
       percentage: 59.6,
-      momGrowth: -2.0
+      momGrowth: -3.7
     }
   ];
 
@@ -212,30 +212,30 @@ export default function SalesDashboard() {
     },
     {
       month: 'August 2025',
-      totalBeverages: 49277.40,
-      totalSales: 82636.05,
-      percentage: 59.6,
+      totalFoodNoCategory: 32088.11,
+      totalSales: 81195.86,
+      percentage: 39.5,
       momGrowth: 21.4
     }
   ];
 
   // Sales by category data
   const categoryData = [
-    { name: 'NA Beverage', value: 45144.85, percentage: 54.6 },
-    { name: 'No Category', value: 25060.65, percentage: 30.3 },
-    { name: 'Food', value: 7538.50, percentage: 9.1 },
-    { name: 'Bottled Beer', value: 1932.75, percentage: 2.3 },
-    { name: 'Draft Beer', value: 1161.00, percentage: 1.4 },
-    { name: 'Wine', value: 1038.80, percentage: 1.3 },
-    { name: 'Merchandise', value: 759.50, percentage: 0.9 }
+    { name: 'NA Beverage', value: 44399.23, percentage: 54.7 },
+    { name: 'No Category', value: 25076.36, percentage: 30.9 },
+    { name: 'Food', value: 7011.75, percentage: 8.6 },
+    { name: 'Bottled Beer', value: 1923.42, percentage: 2.4 },
+    { name: 'Draft Beer', value: 1137.80, percentage: 1.4 },
+    { name: 'Wine', value: 958.80, percentage: 1.2 },
+    { name: 'Merchandise', value: 688.50, percentage: 0.8 }
   ];
 
   // Daypart analysis
   const daypartData = [
-    { name: 'Breakfast', sales: 28781.65, orders: 2062, percentage: 34.8 },
-    { name: 'Lunch', sales: 41463.89, orders: 3144, percentage: 50.2 },
-    { name: 'Dinner', sales: 8272.75, orders: 608, percentage: 10.0 },
-    { name: 'No Service', sales: 4117.76, orders: 358, percentage: 5.0 }
+    { name: 'Breakfast', sales: 29513.01, orders: 2105, percentage: 34.7 },
+    { name: 'Lunch', sales: 40688.81, orders: 3076, percentage: 50.8 },
+    { name: 'Dinner', sales: 6804.96, orders: 511, percentage: 8.4 },
+    { name: 'No Service', sales: 4189.08, orders: 370, percentage: 6.1 }
   ];
 
   // Hourly sales pattern
@@ -322,10 +322,10 @@ export default function SalesDashboard() {
       daysInMonth: 31
     },
     {
-      month: 'Aug 2025 (30 days)',
-      avgOrdersPerDay: Math.round(6172 / 30),
-      totalOrders: 6172,
-      daysInMonth: 30
+      month: 'August 2025',
+      avgOrdersPerDay: Math.round(6062 / 31),
+      totalOrders: 6062,
+      daysInMonth: 31
     }
   ];
 
@@ -467,7 +467,7 @@ export default function SalesDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Sales by Category */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Category (Aug 2025 - 30 days)</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Category (August 2025)</h2>
             <ResponsiveContainer width="100%" height={350}>
               <PieChart>
                 <Pie
@@ -491,7 +491,7 @@ export default function SalesDashboard() {
 
           {/* Daypart Analysis */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Daypart (Aug 2025 - 30 days)</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Daypart (August 2025)</h2>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={daypartData} margin={{ top: 20, right: 30, left: 100, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -582,7 +582,7 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">206/day</p>
+              <p className="text-lg font-bold text-blue-900">196/day</p>
               <p className="text-xs text-blue-600">August 2025</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
@@ -602,15 +602,15 @@ export default function SalesDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
-              <p className="text-sm text-blue-700">March peaked at $110,321, followed by decline. Recent 30-day period shows $82,636, indicating continued downward trend.</p>
+              <p className="text-sm text-blue-700">March peaked at $110,321, followed by decline. August closed at $81,196 (full month), continuing the downward trend.</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h3 className="font-semibold text-green-900 mb-2">Category Leaders</h3>
-              <p className="text-sm text-green-700">NA Beverages now dominate at 54.6% (up from 49.3% in July), while food sales dropped to 9.1% (from 14.9%).</p>
+              <p className="text-sm text-green-700">NA Beverages lead at 54.7%; food accounts for 8.6%.</p>
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
               <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic</h3>
-              <p className="text-sm text-purple-700">Order volume remains stable at 206/day in August vs 209 average, showing revenue decline is from lower order values not fewer customers.</p>
+              <p className="text-sm text-purple-700">Orders average 196/day in August (31 days). Average order value remains $13.39.</p>
             </div>
           </div>
         </div>

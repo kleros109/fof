@@ -67,6 +67,23 @@ This project is optimized for Vercel deployment:
 └── tsconfig.json
 ```
 
+## Architecture Overview
+
+```mermaid
+flowchart TD
+  PDF[Sales Summary PDF] --> EX[scripts/data-extractor.js]
+  EX --> JSON[Structured Data (JSON)]
+  JSON --> UPDATE[Update arrays in app/page.tsx]
+  UPDATE --> UI[Next.js + Recharts UI]
+  UI --> DEPLOY[Vercel Deployment]
+```
+
+PNG fallback:
+
+![Architecture Diagram](docs/architecture.png)
+
+See also: docs/data-pipeline.md for an extended walkthrough and tips.
+
 ## Sales Data
 
 The dashboard displays sales analytics including:
@@ -76,3 +93,7 @@ The dashboard displays sales analytics including:
 - Daypart analysis (breakfast, lunch, dinner)
 - Average order values and daily order counts
 - Key performance insights
+
+## Changelog
+
+- 2025-09-10: August 2025 full‑month update added; replaced prior partial August entry. See `docs/august-2025-update.md`.

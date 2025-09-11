@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "diagram:build": "mmdc -i docs/architecture.mmd -o docs/architecture.png",
+    "diagram:build:npx": "npx -y @mermaid-js/mermaid-cli -i docs/architecture.mmd -o docs/architecture.png"
   },
   "dependencies": {
     "next": "14.2.5",

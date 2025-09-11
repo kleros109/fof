@@ -1,0 +1,6 @@
+flowchart TD
+  PDF[Sales Summary PDF] --> EX[scripts/data-extractor.js]
+  EX --> STRUCT[Structured Data]
+  STRUCT --> UPDATE[Update arrays in app/page.tsx]
+  UPDATE --> UI[Next.js + Recharts UI]
+  UI --> DEPLOY[Vercel Deployment]
