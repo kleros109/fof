@@ -81,7 +81,7 @@ export default function Commentary() {
             <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
               <h3 className="font-semibold text-green-900 mb-2">Beverage Sales Strength</h3>
               <p className="text-gray-700 mb-2">
-                Beverages represent the business's core competency, accounting for 59.1% of September sales.
+                Beverages represent the business&apos;s core competency, accounting for 59.1% of September sales.
                 While absolute beverage sales have declined ($50,273 in March to $44,274 in September), they
                 are holding up better than other categories on a percentage basis.
               </p>
@@ -94,7 +94,7 @@ export default function Commentary() {
             <div className="border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-r">
               <h3 className="font-semibold text-red-900 mb-2">Critical Weakness in Other Categories</h3>
               <p className="text-gray-700 mb-2">
-                Food, merchandise, and uncategorized items show severe erosion. "Other Sales" declined from
+                Food, merchandise, and uncategorized items show severe erosion. &quot;Other Sales&quot; declined from
                 $60,049 (March) to $30,656 (September) - a 49% collapse. This represents the most significant
                 operational concern.
               </p>
@@ -129,7 +129,7 @@ export default function Commentary() {
                 17.5% decline. This traffic loss is a primary driver of the revenue decline.
               </p>
               <p className="text-sm text-orange-800 font-medium">
-                September's 188 orders/day represents the lowest traffic month of 2025. The 9-month average
+                September&apos;s 188 orders/day represents the lowest traffic month of 2025. The 9-month average
                 is 207 orders/day.
               </p>
             </div>
@@ -176,8 +176,8 @@ export default function Commentary() {
                 <li className="flex gap-3">
                   <span className="text-blue-600 font-bold">2.</span>
                   <span className="text-gray-700">
-                    <strong>Food & Merchandise Focus:</strong> Investigate the 49% collapse in "Other Sales"
-                    categories. Are menu items still relevant? Is there a supply/quality issue? This category's
+                    <strong>Food & Merchandise Focus:</strong> Investigate the 49% collapse in &quot;Other Sales&quot;
+                    categories. Are menu items still relevant? Is there a supply/quality issue? This category&apos;s
                     failure is driving half the revenue decline.
                   </span>
                 </li>
@@ -198,8 +198,8 @@ export default function Commentary() {
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">•</span>
                   <span className="text-gray-700">
-                    <strong>Seasonal Planning:</strong> Develop Q4 strategies leveraging Q1's proven strength.
-                    What drove March's success? Replicate those conditions.
+                    <strong>Seasonal Planning:</strong> Develop Q4 strategies leveraging Q1&apos;s proven strength.
+                    What drove March&apos;s success? Replicate those conditions.
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -213,7 +213,7 @@ export default function Commentary() {
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">•</span>
                   <span className="text-gray-700">
-                    <strong>Menu Optimization:</strong> Review and potentially reduce "No Category" items
+                    <strong>Menu Optimization:</strong> Review and potentially reduce &quot;No Category&quot; items
                     (30.8% of sales but unclear value proposition). Focus on defined, marketed categories.
                   </span>
                 </li>
@@ -263,7 +263,7 @@ export default function Commentary() {
             Friends of Friends is at a critical juncture. The consistent decline from March through September
             represents a clear operational challenge that requires immediate attention. However, the business
             demonstrates strong beverage category performance and has proven capable of higher revenue levels
-            (March's $110K+ provides a roadmap).
+            (March&apos;s $110K+ provides a roadmap).
           </p>
           <p className="text-gray-700 leading-relaxed">
             The priority is traffic recovery and food/merchandise category revival. Success in these areas,
