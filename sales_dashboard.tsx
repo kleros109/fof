@@ -372,15 +372,16 @@ export default function SalesDashboard() {
   };
 
   const generateCSV = () => {
-    const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order\n';
-    const csvData = monthlyData.map(row => 
-      `"${row.month}",${row.netSales},${row.tips},${row.taxAmount},${row.deferredGiftCards},${row.totalAmount},${row.avgOrder}`
-    ).join('\n');
-    
+    const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order,Tips/Net Sales %\n';
+    const csvData = monthlyData.map(row => {
+      const tipsPercentage = ((row.tips / row.netSales) * 100).toFixed(1);
+      return `"${row.month}",${row.netSales},${row.tips},${row.taxAmount},${row.deferredGiftCards},${row.totalAmount},${row.avgOrder},${tipsPercentage}%`;
+    }).join('\n');
+
     const csvContent = csvHeader + csvData;
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
-    
+
     if (link.download !== undefined) {
       const url = URL.createObjectURL(blob);
       link.setAttribute('href', url);
@@ -759,6 +760,7 @@ export default function SalesDashboard() {
             <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Deferred Gift Cards</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total Amount</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Average Order</th>
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Tips/Net Sales</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -771,6 +773,7 @@ export default function SalesDashboard() {
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.deferredGiftCards)}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.totalAmount)}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.avgOrder)}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{((row.tips / row.netSales) * 100).toFixed(1)}%</td>
                 </tr>
                 ))}
                 </tbody>

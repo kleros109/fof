@@ -479,18 +479,19 @@ export default function SalesDashboard() {
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658'];
 
-  const formatCurrency = (value: number) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+  const formatCurrency = (value: number) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
   const generateCSV = () => {
-    const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order\n';
-    const csvData = monthlyData.map(row => 
-      `"${row.month}",${row.netSales},${row.tips},${row.taxAmount},${row.deferredGiftCards},${row.totalAmount},${row.avgOrder}`
-    ).join('\n');
-    
+    const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order,Tips/Net Sales %\n';
+    const csvData = monthlyData.map(row => {
+      const tipsPercentage = ((row.tips / row.netSales) * 100).toFixed(1);
+      return `"${row.month}",${row.netSales},${row.tips},${row.taxAmount},${row.deferredGiftCards},${row.totalAmount},${row.avgOrder},${tipsPercentage}%`;
+    }).join('\n');
+
     const csvContent = csvHeader + csvData;
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
-    
+
     if (link.download !== undefined) {
       const url = URL.createObjectURL(blob);
       link.setAttribute('href', url);
@@ -551,9 +552,9 @@ export default function SalesDashboard() {
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Average Tips/Month</p>
+                <p className="text-sm font-medium text-gray-600">Average Tips/Net Sales</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {formatCurrency(monthlyData.reduce((sum, m) => sum + m.tips, 0) / monthlyData.length)}
+                  {(monthlyData.reduce((sum, m) => sum + (m.tips / m.netSales), 0) / monthlyData.length * 100).toFixed(1)}%
                 </p>
               </div>
               <div className="bg-blue-100 p-3 rounded-full">
@@ -914,6 +915,7 @@ export default function SalesDashboard() {
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Deferred Gift Cards</th>
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total Amount</th>
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Average Order</th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Tips/Net Sales</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -926,8 +928,33 @@ export default function SalesDashboard() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.deferredGiftCards)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.totalAmount)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.avgOrder)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{((row.tips / row.netSales) * 100).toFixed(1)}%</td>
                   </tr>
                 ))}
+                <tr className="bg-gray-100 border-t-2 border-gray-300 font-semibold">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Average</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.netSales, 0) / monthlyData.length)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.tips, 0) / monthlyData.length)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.taxAmount, 0) / monthlyData.length)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.deferredGiftCards, 0) / monthlyData.length)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.totalAmount, 0) / monthlyData.length)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.avgOrder, 0) / monthlyData.length)}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                    {(monthlyData.reduce((sum, m) => sum + (m.tips / m.netSales), 0) / monthlyData.length * 100).toFixed(1)}%
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
