@@ -108,6 +108,17 @@ export default function SalesDashboard() {
       avgOrder: 13.26,
       totalOrders: 5650,
       totalGuests: 5650
+    },
+    {
+      month: 'October 2025',
+      netSales: 78210.75,
+      tips: 8219.04,
+      taxAmount: 6868.18,
+      deferredGiftCards: 120.00,
+      totalAmount: 94736.30,
+      avgOrder: 12.97,
+      totalOrders: 6032,
+      totalGuests: 6032
     }
   ];
 
@@ -175,6 +186,13 @@ export default function SalesDashboard() {
       totalSales: 74930.18,
       percentage: 59.1,
       momGrowth: -8.6
+    },
+    {
+      month: 'October 2025',
+      totalBeverages: 45603.96,
+      totalSales: 78210.75,
+      percentage: 58.3,
+      momGrowth: 3.0
     }
   ];
 
@@ -242,6 +260,13 @@ export default function SalesDashboard() {
       totalSales: 74930.18,
       percentage: 39.7,
       momGrowth: -7.4
+    },
+    {
+      month: 'October 2025',
+      totalFoodNoCategory: 31971.19,
+      totalSales: 78210.75,
+      percentage: 40.9,
+      momGrowth: 7.5
     }
   ];
 
@@ -300,26 +325,33 @@ export default function SalesDashboard() {
       otherSales: 74930.18 - 44273.96,
       netSales: 74930.18,
       beverageSales: 44273.96
+    },
+    {
+      month: 'October 2025',
+      otherSales: 78210.75 - 45603.96,
+      netSales: 78210.75,
+      beverageSales: 45603.96
     }
   ];
 
-  // Sales by category data
+  // Sales by category data (October 2025)
   const categoryData = [
-    { name: 'NA Beverage', value: 41553.69, percentage: 55.5 },
-    { name: 'No Category', value: 23048.57, percentage: 30.8 },
-    { name: 'Food', value: 6679.50, percentage: 8.9 },
-    { name: 'Bottled Beer', value: 1577.93, percentage: 2.1 },
-    { name: 'Wine', value: 975.15, percentage: 1.3 },
-    { name: 'Draft Beer', value: 608.60, percentage: 0.8 },
-    { name: 'Merchandise', value: 486.74, percentage: 0.6 }
+    { name: 'NA Beverage', value: 41374.45, percentage: 52.9 },
+    { name: 'No Category', value: 24414.39, percentage: 31.2 },
+    { name: 'Food', value: 7556.80, percentage: 9.7 },
+    { name: 'Bottled Beer', value: 2053.71, percentage: 2.6 },
+    { name: 'Wine', value: 1462.00, percentage: 1.9 },
+    { name: 'Draft Beer', value: 713.80, percentage: 0.9 },
+    { name: 'Merchandise', value: 635.60, percentage: 0.8 }
   ];
 
-  // Daypart analysis
+  // Daypart analysis (October 2025)
   const daypartData = [
-    { name: 'Breakfast', sales: 27473.76, orders: 1955, percentage: 36.7 },
-    { name: 'Lunch', sales: 37241.49, orders: 2891, percentage: 49.7 },
-    { name: 'Dinner', sales: 6146.38, orders: 466, percentage: 8.2 },
-    { name: 'No Service', sales: 4068.55, orders: 338, percentage: 5.4 }
+    { name: 'Breakfast', sales: 28775.27, orders: 2148, percentage: 36.8 },
+    { name: 'Lunch', sales: 37916.90, orders: 2975, percentage: 48.5 },
+    { name: 'Dinner', sales: 7111.61, orders: 565, percentage: 9.1 },
+    { name: 'Late Night', sales: 57.00, orders: 5, percentage: 0.1 },
+    { name: 'No Service', sales: 4349.97, orders: 339, percentage: 5.5 }
   ];
 
   // Hourly sales pattern
@@ -416,6 +448,12 @@ export default function SalesDashboard() {
       avgOrdersPerDay: Math.round(5650 / 30),
       totalOrders: 5650,
       daysInMonth: 30
+    },
+    {
+      month: 'October 2025',
+      avgOrdersPerDay: Math.round(6032 / 31),
+      totalOrders: 6032,
+      daysInMonth: 31
     }
   ];
 
@@ -474,6 +512,12 @@ export default function SalesDashboard() {
       avgNetSalesPerDay: Math.round(74930.18 / 30),
       netSales: 74930.18,
       daysInMonth: 30
+    },
+    {
+      month: 'October 2025',
+      avgNetSalesPerDay: Math.round(78210.75 / 31),
+      netSales: 78210.75,
+      daysInMonth: 31
     }
   ];
 
@@ -512,7 +556,7 @@ export default function SalesDashboard() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Friends of Friends Sales Dashboard</h1>
-              <p className="text-gray-600 mt-1">January 2025 - September 2025 Performance Analysis</p>
+              <p className="text-gray-600 mt-1">January 2025 - October 2025 Performance Analysis</p>
             </div>
             <div className="flex gap-3">
               <Link
@@ -626,7 +670,7 @@ export default function SalesDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Sales by Category */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Category (September 2025)</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Category (October 2025)</h2>
             <ResponsiveContainer width="100%" height={350}>
               <PieChart>
                 <Pie
@@ -650,7 +694,7 @@ export default function SalesDashboard() {
 
           {/* Daypart Analysis */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Daypart (September 2025)</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Daypart (October 2025)</h2>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={daypartData} margin={{ top: 20, right: 30, left: 100, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -805,13 +849,13 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">188/day</p>
-              <p className="text-xs text-blue-600">September 2025</p>
+              <p className="text-lg font-bold text-blue-900">195/day</p>
+              <p className="text-xs text-blue-600">October 2025</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">9-Month Average</p>
-              <p className="text-lg font-bold text-purple-900">207/day</p>
-              <p className="text-xs text-purple-600">Jan - Sep 2025</p>
+              <p className="text-sm font-medium text-purple-700">10-Month Average</p>
+              <p className="text-lg font-bold text-purple-900">206/day</p>
+              <p className="text-xs text-purple-600">Jan - Oct 2025</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-gray-600">
@@ -868,13 +912,13 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Month</p>
-              <p className="text-lg font-bold text-blue-900">$2,498/day</p>
-              <p className="text-xs text-blue-600">September 2025</p>
+              <p className="text-lg font-bold text-blue-900">$2,523/day</p>
+              <p className="text-xs text-blue-600">October 2025</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">9-Month Average</p>
-              <p className="text-lg font-bold text-purple-900">$3,122/day</p>
-              <p className="text-xs text-purple-600">Jan - Sep 2025</p>
+              <p className="text-sm font-medium text-purple-700">10-Month Average</p>
+              <p className="text-lg font-bold text-purple-900">$3,112/day</p>
+              <p className="text-xs text-purple-600">Jan - Oct 2025</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-gray-600">
@@ -888,15 +932,15 @@ export default function SalesDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
-              <p className="text-sm text-blue-700">March still leads at $110,321. September closed at $74,930, down 7.7% from August&rsquo;s $81,196, marking the lowest full month yet as the late-summer slowdown continues.</p>
+              <p className="text-sm text-blue-700">March still leads at $110,321. October rebounded to $78,211, up 4.4% from September&rsquo;s $74,930, showing recovery from the late-summer lull.</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h3 className="font-semibold text-green-900 mb-2">Category Leaders</h3>
-              <p className="text-sm text-green-700">NA Beverages lead at 55.5%; food holds 8.9% while uncategorized items contribute 30.8%.</p>
+              <p className="text-sm text-green-700">NA Beverages lead at 52.9%; food increased to 9.7% while uncategorized items contribute 31.2%.</p>
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
               <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic</h3>
-              <p className="text-sm text-purple-700">Orders average 188/day in September (30 days). Average order value holds steady at $13.26.</p>
+              <p className="text-sm text-purple-700">Orders average 195/day in October (31 days). Average order value at $12.97.</p>
             </div>
           </div>
         </div>
