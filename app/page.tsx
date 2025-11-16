@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, LabelList } from 'recharts';
 import { TrendingUp, DollarSign, Users, Clock, Download, FileText } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function SalesDashboard() {
   const [selectedMonth, setSelectedMonth] = useState('all');
@@ -549,96 +550,101 @@ export default function SalesDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Friends of Friends Sales Dashboard</h1>
-              <p className="text-gray-600 mt-1">January 2025 - October 2025 Performance Analysis</p>
+        <Card className="mb-6">
+          <CardContent className="p-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-3xl font-bold">Friends of Friends Sales Dashboard</h1>
+                <p className="text-muted-foreground mt-1">January 2025 - October 2025 Performance Analysis</p>
+              </div>
+              <div className="flex gap-3">
+                <Link
+                  href="/commentary"
+                  className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  <FileText size={20} />
+                  View Commentary
+                </Link>
+                <button
+                  onClick={generateCSV}
+                  className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <Download size={20} />
+                  Download CSV Data
+                </button>
+              </div>
             </div>
-            <div className="flex gap-3">
-              <Link
-                href="/commentary"
-                className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                <FileText size={20} />
-                View Commentary
-              </Link>
-              <button
-                onClick={generateCSV}
-                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <Download size={20} />
-                Download CSV Data
-              </button>
-            </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Average Monthly Sales</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {formatCurrency(monthlyData.reduce((sum, m) => sum + m.netSales, 0) / monthlyData.length)}
-                </p>
-              </div>
-              <div className="bg-green-100 p-3 rounded-full">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Average Monthly Sales</p>
+                  <p className="text-2xl font-bold">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.netSales, 0) / monthlyData.length)}
+                  </p>
+                </div>
                 <DollarSign className="h-6 w-6 text-green-600" />
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Average Tips/Net Sales</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {(monthlyData.reduce((sum, m) => sum + (m.tips / m.netSales), 0) / monthlyData.length * 100).toFixed(1)}%
-                </p>
-              </div>
-              <div className="bg-blue-100 p-3 rounded-full">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Average Tips/Net Sales</p>
+                  <p className="text-2xl font-bold">
+                    {(monthlyData.reduce((sum, m) => sum + (m.tips / m.netSales), 0) / monthlyData.length * 100).toFixed(1)}%
+                  </p>
+                </div>
                 <TrendingUp className="h-6 w-6 text-blue-600" />
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Average Orders/Day</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {Math.round((monthlyData.reduce((sum, m) => sum + m.totalOrders, 0) / monthlyData.length) / 30).toLocaleString()}
-                </p>
-              </div>
-              <div className="bg-purple-100 p-3 rounded-full">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Average Orders/Day</p>
+                  <p className="text-2xl font-bold">
+                    {Math.round((monthlyData.reduce((sum, m) => sum + m.totalOrders, 0) / monthlyData.length) / 30).toLocaleString()}
+                  </p>
+                </div>
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Avg Order Value</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {formatCurrency(monthlyData.reduce((sum, m) => sum + m.avgOrder, 0) / monthlyData.length)}
-                </p>
-              </div>
-              <div className="bg-orange-100 p-3 rounded-full">
+          <Card className="hover:shadow-md transition-shadow">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Avg Order Value</p>
+                  <p className="text-2xl font-bold">
+                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.avgOrder, 0) / monthlyData.length)}
+                  </p>
+                </div>
                 <Clock className="h-6 w-6 text-orange-600" />
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Net Sales by Month Column Chart */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Net Sales by Month</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Net Sales by Month</CardTitle>
+          </CardHeader>
+          <CardContent>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={monthlyData} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -664,13 +670,17 @@ export default function SalesDashboard() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Sales by Category */}
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Category (October 2025)</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle>Sales by Category (October 2025)</CardTitle>
+            </CardHeader>
+            <CardContent>
             <ResponsiveContainer width="100%" height={350}>
               <PieChart>
                 <Pie
@@ -690,17 +700,21 @@ export default function SalesDashboard() {
                 <Tooltip formatter={(value) => formatCurrency(value as number)} />
               </PieChart>
             </ResponsiveContainer>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Daypart Analysis */}
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Sales by Daypart (October 2025)</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle>Sales by Daypart (October 2025)</CardTitle>
+            </CardHeader>
+            <CardContent>
             <ResponsiveContainer width="100%" height={350}>
               <BarChart data={daypartData} margin={{ top: 20, right: 30, left: 100, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
-                <YAxis 
-                  tickFormatter={formatCurrency} 
+                <YAxis
+                  tickFormatter={formatCurrency}
                   tick={{ fontSize: 14 }}
                   interval={0}
                   axisLine={true}
@@ -710,12 +724,16 @@ export default function SalesDashboard() {
                 <Bar dataKey="sales" fill="#0088FE" />
               </BarChart>
             </ResponsiveContainer>
-          </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Beverage Sales Percentage */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Beverage % Sales</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Beverage % Sales</CardTitle>
+          </CardHeader>
+          <CardContent>
           <ResponsiveContainer width="100%" height={350}>
             <BarChart data={beverageData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -740,14 +758,18 @@ export default function SalesDashboard() {
               <Bar dataKey="percentage" fill="#00C49F" />
             </BarChart>
           </ResponsiveContainer>
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-muted-foreground">
             <p>Shows the percentage of total sales from beverages (NA Beverages + Wine + Draft Beer + Bottled Beer)</p>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Beverage Sales by Month */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Beverage Sales by Month</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Beverage Sales by Month</CardTitle>
+          </CardHeader>
+          <CardContent>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={beverageData} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -772,14 +794,18 @@ export default function SalesDashboard() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-muted-foreground">
             <p>Total beverage sales by month including NA Beverages, Wine, Draft Beer, and Bottled Beer</p>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Other Sales by Month */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Other Sales by Month</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Other Sales by Month</CardTitle>
+          </CardHeader>
+          <CardContent>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={otherSalesData} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -804,40 +830,44 @@ export default function SalesDashboard() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-muted-foreground">
             <p>Other sales by month including Food, No Category items, and Merchandise (calculated as Net Sales minus Beverage Sales)</p>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Average Orders Per Day Chart */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Average Number of Orders Per Day by Period</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Average Number of Orders Per Day by Period</CardTitle>
+          </CardHeader>
+          <CardContent>
           <ResponsiveContainer width="100%" height={350}>
             <BarChart data={avgOrdersPerDayData} margin={{ top: 20, right: 30, left: 80, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis 
-                dataKey="month" 
+              <XAxis
+                dataKey="month"
                 tick={{ fontSize: 10 }}
                 angle={-45}
                 textAnchor="end"
                 height={60}
                 interval={0}
               />
-              <YAxis 
+              <YAxis
                 tick={{ fontSize: 14 }}
                 interval={0}
                 axisLine={true}
                 tickLine={true}
                 domain={[180, 240]}
               />
-              <Tooltip 
+              <Tooltip
                 formatter={(value) => [`${value} orders/day`, 'Avg Orders Per Day']}
                 labelFormatter={(label) => `Period: ${label}`}
               />
               <Bar dataKey="avgOrdersPerDay" fill="#8884D8">
-                <LabelList 
-                  dataKey="avgOrdersPerDay" 
-                  position="top" 
+                <LabelList
+                  dataKey="avgOrdersPerDay"
+                  position="top"
                   style={{ fontSize: '12px', fontWeight: 'bold', fill: '#374151' }}
                 />
               </Bar>
@@ -865,14 +895,18 @@ export default function SalesDashboard() {
               <p className="text-xs text-purple-600">Jan - Oct 2025</p>
             </div>
           </div>
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-muted-foreground">
             <p>Shows daily order volume calculated by dividing total monthly orders by number of days in each month</p>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Average Net Sales Per Day Chart */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Average Net Sales Per Day by Month</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Average Net Sales Per Day by Month</CardTitle>
+          </CardHeader>
+          <CardContent>
           <ResponsiveContainer width="100%" height={350}>
             <BarChart data={avgNetSalesPerDayData} margin={{ top: 20, right: 30, left: 80, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -928,14 +962,18 @@ export default function SalesDashboard() {
               <p className="text-xs text-purple-600">Jan - Oct 2025</p>
             </div>
           </div>
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-muted-foreground">
             <p>Shows average daily net sales calculated by dividing total net sales by number of days in each month</p>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Key Insights */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Insights</h2>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Key Insights</CardTitle>
+          </CardHeader>
+          <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
@@ -950,11 +988,15 @@ export default function SalesDashboard() {
               <p className="text-sm text-purple-700">Orders average 195/day in October (31 days). Average order value at $12.97.</p>
             </div>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Monthly Data Table */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Monthly Sales Data</h2>
+        <Card>
+          <CardHeader>
+            <CardTitle>Monthly Sales Data</CardTitle>
+          </CardHeader>
+          <CardContent>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -1009,7 +1051,8 @@ export default function SalesDashboard() {
               </tbody>
             </table>
           </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
