@@ -717,16 +717,23 @@ export default function SalesDashboard() {
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Beverage % Sales</h2>
           <ResponsiveContainer width="100%" height={350}>
-            <BarChart data={beverageData} margin={{ top: 20, right: 30, left: 60, bottom: 20 }}>
+            <BarChart data={beverageData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis 
+              <XAxis
+                dataKey="month"
+                tick={{ fontSize: 10 }}
+                angle={-45}
+                textAnchor="end"
+                height={60}
+                interval={0}
+              />
+              <YAxis
                 tick={{ fontSize: 14 }}
                 interval={0}
                 axisLine={true}
                 tickLine={true}
               />
-              <Tooltip 
+              <Tooltip
                 formatter={(value) => `${value}%`}
                 labelFormatter={(label) => `Month: ${label}`}
               />
