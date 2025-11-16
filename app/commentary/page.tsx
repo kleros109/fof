@@ -18,7 +18,7 @@ export default function Commentary() {
             Back to Dashboard
           </Link>
           <h1 className="text-3xl font-bold text-gray-900">Operating Commentary</h1>
-          <p className="text-gray-600 mt-1">Analysis of Sales Trends - January to September 2025</p>
+          <p className="text-gray-600 mt-1">Analysis of Sales Trends - January to October 2025</p>
         </div>
 
         {/* Executive Summary */}
@@ -26,10 +26,12 @@ export default function Commentary() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Executive Summary</h2>
           <div className="prose prose-gray max-w-none">
             <p className="text-gray-700 leading-relaxed mb-4">
-              Friends of Friends has experienced significant sales volatility through the first nine months of 2025,
-              with a peak in March ($110,321) followed by a sustained decline through September ($74,930). The business
-              faces notable challenges in maintaining revenue momentum, particularly in the late summer months, while
-              beverage sales continue to represent the core strength of the operation.
+              Friends of Friends has experienced significant sales volatility through the first ten months of 2025,
+              with a peak in March ($110,321) followed by a sustained decline through September ($74,930). However,
+              <strong className="text-green-700"> October showed a 4.4% rebound to $78,211</strong>, suggesting the
+              late-summer downturn may have bottomed out. The business continues to face challenges in maintaining
+              revenue momentum, particularly in food and merchandise categories, while beverage sales remain the
+              core strength of the operation.
             </p>
           </div>
         </div>
@@ -37,34 +39,37 @@ export default function Commentary() {
         {/* Revenue Performance */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingDown className="text-red-600" size={24} />
+            <TrendingUp className="text-green-600" size={24} />
             <h2 className="text-2xl font-bold text-gray-900">Revenue Performance</h2>
           </div>
 
           <div className="space-y-4">
-            <div className="border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-r">
-              <h3 className="font-semibold text-red-900 mb-2">Declining Sales Trend</h3>
+            <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
+              <h3 className="font-semibold text-green-900 mb-2">October Recovery Signal</h3>
               <p className="text-gray-700">
-                Net sales have declined 32% from the March peak ($110,321) to September ($74,930). The second
-                and third quarters show consistent weakness, with September marking the lowest full month of 2025.
+                October delivered $78,211 in net sales, up 4.4% from September&apos;s low of $74,930. This marks
+                the first month-over-month increase since June, suggesting the business may have found a floor.
+                Daily sales improved to $2,523/day (vs. September&apos;s $2,498/day) and order volume increased
+                to 195/day (vs. 188/day in September).
               </p>
             </div>
 
             <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-              <h3 className="font-semibold text-yellow-900 mb-2">Seasonal Patterns</h3>
+              <h3 className="font-semibold text-yellow-900 mb-2">Still Below Peak Performance</h3>
               <p className="text-gray-700">
-                Strong performance in Q1 (particularly March) suggests seasonal opportunity. Summer months (July-September)
-                show marked weakness, with August and September representing the two lowest-performing months. Average
-                monthly sales across all nine months: $93,935.
+                Despite October&apos;s recovery, sales remain 29% below the March peak ($110,321). The 10-month
+                average of $92,218 represents a sustainable target, requiring a 18% improvement from current levels.
+                Q4 will be critical in determining whether October&apos;s uptick is sustainable or merely seasonal variance.
               </p>
             </div>
 
             <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-              <h3 className="font-semibold text-blue-900 mb-2">Daily Sales Velocity</h3>
+              <h3 className="font-semibold text-blue-900 mb-2">Seasonal Patterns Emerging</h3>
               <p className="text-gray-700">
-                Average daily net sales have fallen from $3,559 in March to $2,498 in September (a 30% decline).
-                The 9-month average stands at $3,122/day. This metric clearly illustrates the velocity loss in
-                recent months.
+                Strong Q1 performance (particularly March) followed by summer weakness and early fall recovery
+                suggests clear seasonal patterns. The 10-month data shows: Q1 avg: $97,532, Q2 avg: $97,883,
+                Q3 avg: $79,301, and October at $78,211. Understanding and planning for these cycles will be
+                critical for 2026 operations.
               </p>
             </div>
           </div>
@@ -79,36 +84,37 @@ export default function Commentary() {
 
           <div className="space-y-4">
             <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-              <h3 className="font-semibold text-green-900 mb-2">Beverage Sales Strength</h3>
+              <h3 className="font-semibold text-green-900 mb-2">Beverage Sales Showing Resilience</h3>
               <p className="text-gray-700 mb-2">
-                Beverages represent the business&apos;s core competency, accounting for 59.1% of September sales.
-                While absolute beverage sales have declined ($50,273 in March to $44,274 in September), they
-                are holding up better than other categories on a percentage basis.
+                Beverages remain the business&apos;s core strength, accounting for 58.3% of October sales ($45,604).
+                October saw a 3.0% increase in beverage sales from September ($44,274), contributing meaningfully
+                to the overall recovery. The beverage percentage has stabilized after peaking at 59.6% in August.
               </p>
               <p className="text-sm text-green-800 font-medium">
-                Key metric: Beverage % of sales has actually increased from 45.3% (January) to 59.1% (September),
-                indicating beverages are declining slower than other categories.
-              </p>
-            </div>
-
-            <div className="border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-r">
-              <h3 className="font-semibold text-red-900 mb-2">Critical Weakness in Other Categories</h3>
-              <p className="text-gray-700 mb-2">
-                Food, merchandise, and uncategorized items show severe erosion. &quot;Other Sales&quot; declined from
-                $60,049 (March) to $30,656 (September) - a 49% collapse. This represents the most significant
-                operational concern.
-              </p>
-              <p className="text-sm text-red-800 font-medium">
-                September other sales ($30,656) are at critically low levels compared to the 9-month average
-                of $47,847.
+                Key metric: Beverage sales increased from $42,073 (Jan) to $45,604 (Oct), showing strength even
+                during the overall revenue decline. NA Beverages alone account for 52.9% of total October sales.
               </p>
             </div>
 
             <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-              <h3 className="font-semibold text-yellow-900 mb-2">Category Composition Shift</h3>
+              <h3 className="font-semibold text-yellow-900 mb-2">Other Categories Showing Signs of Recovery</h3>
+              <p className="text-gray-700 mb-2">
+                &quot;Other Sales&quot; (food, merchandise, uncategorized) improved 7.5% in October to $32,607
+                from September&apos;s $30,656. While still well below the 10-month average of $46,614, this
+                represents the first month-over-month increase since May and suggests stabilization.
+              </p>
+              <p className="text-sm text-yellow-800 font-medium">
+                October breakdown: Food increased to $7,557 (9.7% of sales, up from 8.9% in September), showing
+                renewed customer interest in food offerings.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
+              <h3 className="font-semibold text-blue-900 mb-2">Category Balance Improving</h3>
               <p className="text-gray-700">
-                The business is becoming increasingly beverage-centric, not by design but by default as other
-                categories underperform. This concentration risk could impact business resilience.
+                The extreme beverage concentration (59.1% in September) has moderated slightly to 58.3% in October
+                as other categories recover. This more balanced mix (if sustained) reduces concentration risk and
+                suggests broader customer engagement across the menu.
               </p>
             </div>
           </div>
@@ -122,33 +128,34 @@ export default function Commentary() {
           </div>
 
           <div className="space-y-4">
-            <div className="border-l-4 border-orange-500 pl-4 py-2 bg-orange-50 rounded-r">
-              <h3 className="font-semibold text-orange-900 mb-2">Declining Customer Traffic</h3>
+            <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
+              <h3 className="font-semibold text-green-900 mb-2">Traffic Recovery Beginning</h3>
               <p className="text-gray-700 mb-2">
-                Daily order volume has fallen from 228 orders/day (March) to 188 orders/day (September) - a
-                17.5% decline. This traffic loss is a primary driver of the revenue decline.
+                October daily order volume improved to 195 orders/day (6,032 total orders), up from September&apos;s
+                188 orders/day. While still 14.5% below the March peak (228 orders/day), this represents the first
+                month-over-month traffic increase since June.
               </p>
-              <p className="text-sm text-orange-800 font-medium">
-                September&apos;s 188 orders/day represents the lowest traffic month of 2025. The 9-month average
-                is 207 orders/day.
+              <p className="text-sm text-green-800 font-medium">
+                The 10-month average is 206 orders/day. October&apos;s 195 orders/day is approaching this baseline,
+                suggesting traffic stabilization may be underway.
+              </p>
+            </div>
+
+            <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
+              <h3 className="font-semibold text-yellow-900 mb-2">Average Order Value Remains Challenged</h3>
+              <p className="text-gray-700">
+                October average order value was $12.97, down slightly from September&apos;s $13.26. This continues
+                the trend from the March high of $15.64 (17% decline). The traffic recovery is positive, but AOV
+                recovery remains the missing piece for full revenue restoration.
               </p>
             </div>
 
             <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-              <h3 className="font-semibold text-blue-900 mb-2">Average Order Value Erosion</h3>
+              <h3 className="font-semibold text-blue-900 mb-2">Daypart Mix Evolving Positively</h3>
               <p className="text-gray-700">
-                Average order value has declined from $15.64 (March) to $13.26 (September) - a 15% decrease.
-                Customers are spending less per visit, compounding the traffic decline. The combined effect of
-                fewer customers spending less per visit is driving the sharp revenue decline.
-              </p>
-            </div>
-
-            <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-              <h3 className="font-semibold text-green-900 mb-2">Stable Daypart Distribution</h3>
-              <p className="text-gray-700">
-                Lunch remains the dominant daypart at 49.7% of sales, with breakfast at 36.7%. Dinner (8.2%)
-                represents a growth opportunity that appears underutilized. The daypart mix has remained relatively
-                consistent throughout the decline, suggesting the issue is total volume rather than shifting patterns.
+                October daypart distribution: Lunch 48.5% ($37,917), Breakfast 36.8% ($28,775), Dinner 9.1% ($7,112),
+                and Late Night emerging at 0.1% ($57). Dinner&apos;s growth from 8.2% to 9.1% of sales is encouraging
+                and represents an untapped opportunity for continued expansion.
               </p>
             </div>
           </div>
@@ -168,25 +175,26 @@ export default function Commentary() {
                 <li className="flex gap-3">
                   <span className="text-blue-600 font-bold">1.</span>
                   <span className="text-gray-700">
-                    <strong>Traffic Recovery Initiative:</strong> Deploy targeted customer acquisition campaigns.
-                    With only 188 orders/day vs. 228 in March, recapturing 20 orders/day would add ~$260/day
-                    in revenue ($7,800/month).
+                    <strong>Sustain Traffic Momentum:</strong> October&apos;s 7-order/day increase from September
+                    is encouraging. Build on this with continued customer engagement and retention initiatives to
+                    reach the 10-month average of 206 orders/day (adding 11 orders/day would generate ~$143/day
+                    or $4,290/month in additional revenue).
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-blue-600 font-bold">2.</span>
                   <span className="text-gray-700">
-                    <strong>Food & Merchandise Focus:</strong> Investigate the 49% collapse in &quot;Other Sales&quot;
-                    categories. Are menu items still relevant? Is there a supply/quality issue? This category&apos;s
-                    failure is driving half the revenue decline.
+                    <strong>Average Order Value Focus:</strong> With traffic recovering but AOV declining ($12.97
+                    in October vs. $13.26 in September), implement strategic upselling: combo deals, suggested pairings,
+                    or loyalty incentives. Even a $2 increase to $14.97 would add $12,064/month at current traffic.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-blue-600 font-bold">3.</span>
                   <span className="text-gray-700">
-                    <strong>Average Order Value Recovery:</strong> Implement upselling strategies, combo deals,
-                    or loyalty programs to boost the $13.26 average order back toward $15+. Even a $1 increase
-                    yields $5,650/month in additional revenue at current traffic levels.
+                    <strong>Capitalize on Category Recovery:</strong> Food sales grew from 8.9% to 9.7% of revenue
+                    in October. Identify what drove this improvement and double down - new menu items, promotions,
+                    or quality improvements that are resonating with customers.
                   </span>
                 </li>
               </ul>
@@ -198,30 +206,33 @@ export default function Commentary() {
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">•</span>
                   <span className="text-gray-700">
-                    <strong>Seasonal Planning:</strong> Develop Q4 strategies leveraging Q1&apos;s proven strength.
-                    What drove March&apos;s success? Replicate those conditions.
+                    <strong>Build on October Momentum:</strong> Analyze what changed in October to reverse the
+                    decline - was it weather, promotions, menu changes, or market conditions? Replicate successful
+                    elements through Q4 and into 2026 planning.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">•</span>
                   <span className="text-gray-700">
-                    <strong>Dinner Revenue Development:</strong> At only 8.2% of sales, dinner represents
-                    significant untapped potential. Consider extended hours, dinner-specific menus, or targeted
-                    evening promotions.
+                    <strong>Dinner Service Expansion:</strong> October&apos;s dinner sales grew to 9.1% ($7,112)
+                    from September&apos;s 8.2%. Build on this trend with dinner-specific menu development, extended
+                    hours, or targeted evening promotions to capture more of this underutilized daypart.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">•</span>
                   <span className="text-gray-700">
-                    <strong>Menu Optimization:</strong> Review and potentially reduce &quot;No Category&quot; items
-                    (30.8% of sales but unclear value proposition). Focus on defined, marketed categories.
+                    <strong>Seasonal Pattern Planning:</strong> With 10 months of data showing clear Q1 strength,
+                    Q2-Q3 weakness, and Q4 recovery beginning, develop proactive seasonal strategies for 2026.
+                    Plan Q1 2026 to exceed March 2025&apos;s $110K performance.
                   </span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-green-600 font-bold">•</span>
                   <span className="text-gray-700">
-                    <strong>Beverage Category Investment:</strong> As the clear strength, double down on
-                    beverage marketing, new beverage offerings, and beverage-focused promotions.
+                    <strong>Beverage Innovation:</strong> Beverages are the clear strength ($45,604 in October,
+                    58.3% of sales). Introduce seasonal beverages, limited-time offerings, or beverage pairing
+                    programs to drive continued growth in this high-performing category.
                   </span>
                 </li>
               </ul>
@@ -236,39 +247,45 @@ export default function Commentary() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-600">
               <h3 className="font-semibold text-gray-900 mb-1">Daily Order Count</h3>
-              <p className="text-sm text-gray-600">Target: 210+ orders/day (recovery toward Q1 levels)</p>
+              <p className="text-sm text-gray-600">Current: 195/day | Target: 210+ orders/day (10-month avg: 206)</p>
             </div>
 
             <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
               <h3 className="font-semibold text-gray-900 mb-1">Average Order Value</h3>
-              <p className="text-sm text-gray-600">Target: $15.00+ (from current $13.26)</p>
+              <p className="text-sm text-gray-600">Current: $12.97 | Target: $15.00+ (March level: $15.64)</p>
             </div>
 
             <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-purple-600">
               <h3 className="font-semibold text-gray-900 mb-1">Other Sales Category</h3>
-              <p className="text-sm text-gray-600">Target: $40,000+/month (vs. current $30,656)</p>
+              <p className="text-sm text-gray-600">Current: $32,607/month | Target: $46,614+ (10-month avg)</p>
             </div>
 
             <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-orange-600">
               <h3 className="font-semibold text-gray-900 mb-1">Daily Revenue Velocity</h3>
-              <p className="text-sm text-gray-600">Target: $3,000+/day (from current $2,498)</p>
+              <p className="text-sm text-gray-600">Current: $2,523/day | Target: $3,200+/day (sustainable growth)</p>
             </div>
           </div>
         </div>
 
         {/* Conclusion */}
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-sm p-6 mb-6">
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-sm p-6 mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Friends of Friends is at a critical juncture. The consistent decline from March through September
-            represents a clear operational challenge that requires immediate attention. However, the business
-            demonstrates strong beverage category performance and has proven capable of higher revenue levels
-            (March&apos;s $110K+ provides a roadmap).
+            <strong className="text-green-700">October&apos;s 4.4% rebound marks a potential turning point</strong> for
+            Friends of Friends after five consecutive months of decline. The business demonstrated resilience with
+            traffic recovery (+7 orders/day), beverage sales growth (+3.0%), and improving food category performance
+            (+0.8 percentage points). This suggests the late-summer downturn has bottomed out.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            While October&apos;s $78,211 remains 29% below the March peak, the stabilization is encouraging. The
+            10-month average of $92,218 provides a realistic near-term target that requires 18% growth from current
+            levels - achievable through sustained traffic recovery and average order value improvement.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            The priority is traffic recovery and food/merchandise category revival. Success in these areas,
-            combined with the existing beverage strength, can restore the business to Q1 performance levels.
-            Time is of the essence - Q4 presents an opportunity to reverse the trend before entering 2026.
+            <strong>The path forward is clear:</strong> Build on October&apos;s momentum through Q4 by sustaining
+            traffic growth, recovering average order value through strategic upselling, and capitalizing on beverage
+            category strength. With clear seasonal patterns now visible in the data, the business can proactively
+            plan for 2026 to exceed 2025 performance. The recovery has begun - consistency and execution are key.
           </p>
         </div>
       </div>
