@@ -7,27 +7,27 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Commentary() {
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-3 sm:p-6">
       <div className="max-w-5xl mx-auto">
         {/* Header with Back Button */}
-        <Card className="mb-6">
-          <CardContent className="p-6">
+        <Card className="mb-4 sm:mb-6">
+          <CardContent className="p-4 sm:p-6">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4 transition-colors"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4 transition-colors text-sm sm:text-base"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
               Back to Dashboard
             </Link>
-            <h1 className="text-3xl font-bold">Operating Commentary</h1>
-            <p className="text-muted-foreground mt-1">Analysis of Sales Trends - January to October 2025</p>
+            <h1 className="text-2xl sm:text-3xl font-bold">Operating Commentary</h1>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - January to October 2025</p>
           </CardContent>
         </Card>
 
         {/* Executive Summary */}
-        <Card className="mb-6">
+        <Card className="mb-4 sm:mb-6">
           <CardHeader>
-            <CardTitle className="text-2xl">Executive Summary</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">Executive Summary</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="prose prose-gray max-w-none">
@@ -44,11 +44,11 @@ export default function Commentary() {
         </Card>
 
         {/* Revenue Performance */}
-        <Card className="mb-6">
+        <Card className="mb-4 sm:mb-6">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <TrendingUp className="text-green-600" size={24} />
-              <CardTitle className="text-2xl">Revenue Performance</CardTitle>
+              <TrendingUp className="text-green-600 sm:w-6 sm:h-6" size={20} />
+              <CardTitle className="text-xl sm:text-2xl">Revenue Performance</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -86,11 +86,11 @@ export default function Commentary() {
         </Card>
 
         {/* Category Mix Analysis */}
-        <Card className="mb-6">
+        <Card className="mb-4 sm:mb-6">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <AlertCircle className="text-orange-600" size={24} />
-              <CardTitle className="text-2xl">Category Mix Analysis</CardTitle>
+              <AlertCircle className="text-orange-600 sm:w-6 sm:h-6" size={20} />
+              <CardTitle className="text-xl sm:text-2xl">Category Mix Analysis</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -134,11 +134,11 @@ export default function Commentary() {
         </Card>
 
         {/* Customer Traffic & Order Patterns */}
-        <Card className="mb-6">
+        <Card className="mb-4 sm:mb-6">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <TrendingDown className="text-orange-600" size={24} />
-              <CardTitle className="text-2xl">Customer Traffic & Order Patterns</CardTitle>
+              <TrendingDown className="text-orange-600 sm:w-6 sm:h-6" size={20} />
+              <CardTitle className="text-xl sm:text-2xl">Customer Traffic & Order Patterns</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -178,11 +178,11 @@ export default function Commentary() {
         </Card>
 
         {/* Strategic Recommendations */}
-        <Card className="mb-6">
+        <Card className="mb-4 sm:mb-6">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <CheckCircle className="text-blue-600" size={24} />
-              <CardTitle className="text-2xl">Strategic Recommendations</CardTitle>
+              <CheckCircle className="text-blue-600 sm:w-6 sm:h-6" size={20} />
+              <CardTitle className="text-xl sm:text-2xl">Strategic Recommendations</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -260,12 +260,12 @@ export default function Commentary() {
         </Card>
 
         {/* Critical Metrics to Monitor */}
-        <Card className="mb-6">
+        <Card className="mb-4 sm:mb-6">
           <CardHeader>
-            <CardTitle className="text-2xl">Critical Metrics to Monitor Weekly</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">Critical Metrics to Monitor Weekly</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-600">
                 <h3 className="font-semibold mb-1">Daily Order Count</h3>
                 <p className="text-sm text-muted-foreground">Current: 195/day | Target: 210+ orders/day (10-month avg: 206)</p>
@@ -290,9 +290,9 @@ export default function Commentary() {
         </Card>
 
         {/* Conclusion */}
-        <Card className="mb-6 bg-gradient-to-r from-green-50 to-blue-50">
+        <Card className="mb-4 sm:mb-6 bg-gradient-to-r from-green-50 to-blue-50">
           <CardHeader>
-            <CardTitle className="text-2xl">Conclusion</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">Conclusion</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed mb-4">

@@ -550,30 +550,32 @@ export default function SalesDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-3 sm:p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <Card className="mb-6">
-          <CardContent className="p-6">
-            <div className="flex justify-between items-center">
+        <Card className="mb-4 sm:mb-6">
+          <CardContent className="p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
               <div>
-                <h1 className="text-3xl font-bold">Friends of Friends Sales Dashboard</h1>
-                <p className="text-muted-foreground mt-1">January 2025 - October 2025 Performance Analysis</p>
+                <h1 className="text-2xl sm:text-3xl font-bold">Friends of Friends Sales Dashboard</h1>
+                <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - October 2025 Performance Analysis</p>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3 flex-wrap">
                 <Link
                   href="/commentary"
-                  className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                  className="flex items-center gap-2 bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base whitespace-nowrap"
                 >
-                  <FileText size={20} />
-                  View Commentary
+                  <FileText size={18} className="sm:w-5 sm:h-5" />
+                  <span className="hidden sm:inline">View Commentary</span>
+                  <span className="sm:hidden">Commentary</span>
                 </Link>
                 <button
                   onClick={generateCSV}
-                  className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center gap-2 bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base whitespace-nowrap"
                 >
-                  <Download size={20} />
-                  Download CSV Data
+                  <Download size={18} className="sm:w-5 sm:h-5" />
+                  <span className="hidden sm:inline">Download CSV Data</span>
+                  <span className="sm:hidden">CSV</span>
                 </button>
               </div>
             </div>
@@ -581,9 +583,9 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
           <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Average Monthly Sales</p>
@@ -597,7 +599,7 @@ export default function SalesDashboard() {
           </Card>
 
           <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Average Tips/Net Sales</p>
@@ -611,7 +613,7 @@ export default function SalesDashboard() {
           </Card>
 
           <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Average Orders/Day</p>
@@ -625,7 +627,7 @@ export default function SalesDashboard() {
           </Card>
 
           <Card className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Avg Order Value</p>
@@ -674,7 +676,7 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Charts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
           {/* Sales by Category */}
           <Card>
             <CardHeader>
@@ -729,7 +731,7 @@ export default function SalesDashboard() {
         </div>
 
         {/* Beverage Sales Percentage */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
             <CardTitle>Beverage % Sales</CardTitle>
           </CardHeader>
@@ -765,7 +767,7 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Beverage Sales by Month */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
             <CardTitle>Beverage Sales by Month</CardTitle>
           </CardHeader>
@@ -801,7 +803,7 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Other Sales by Month */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
             <CardTitle>Other Sales by Month</CardTitle>
           </CardHeader>
@@ -837,7 +839,7 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Average Orders Per Day Chart */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
             <CardTitle>Average Number of Orders Per Day by Period</CardTitle>
           </CardHeader>
@@ -873,7 +875,7 @@ export default function SalesDashboard() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
             <div className="bg-green-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-green-700">Highest Daily Orders</p>
               <p className="text-lg font-bold text-green-900">228/day</p>
@@ -902,7 +904,7 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Average Net Sales Per Day Chart */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
             <CardTitle>Average Net Sales Per Day by Month</CardTitle>
           </CardHeader>
@@ -940,7 +942,7 @@ export default function SalesDashboard() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
             <div className="bg-green-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-green-700">Highest Daily Sales</p>
               <p className="text-lg font-bold text-green-900">$3,559/day</p>
@@ -969,12 +971,12 @@ export default function SalesDashboard() {
         </Card>
 
         {/* Key Insights */}
-        <Card className="mb-8">
+        <Card className="mb-6 sm:mb-8">
           <CardHeader>
             <CardTitle>Key Insights</CardTitle>
           </CardHeader>
           <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
               <p className="text-sm text-blue-700">March still leads at $110,321. October rebounded to $78,211, up 4.4% from September&rsquo;s $74,930, showing recovery from the late-summer lull.</p>
