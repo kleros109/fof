@@ -20,7 +20,7 @@ export default function Commentary() {
               Back to Dashboard
             </Link>
             <h1 className="text-2xl sm:text-3xl font-bold">Operating Commentary</h1>
-            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - January to November 2025</p>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - January to December 2025</p>
           </CardContent>
         </Card>
 
@@ -33,11 +33,11 @@ export default function Commentary() {
             <div className="prose prose-gray max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Friends of Friends experienced significant volatility in 2025, peaking in March at $110,321 before
-                declining through September to $74,930. While October showed a 4.4% rebound to $78,211,
-                <strong className="text-orange-700"> November returned to decline with a 2.6% decrease to $76,194</strong>,
-                indicating the recovery is fragile. However, the business has established a stable floor around
-                $75K-$78K monthly revenue with improving average order values ($13.36 in November vs. $12.97 in October).
-                The focus must shift from growth to operational excellence and profitability at current volumes.
+                declining through September to $74,930. After October&apos;s 4.4% rebound to $78,211 and November&apos;s
+                2.6% decline to $76,194, <strong className="text-green-700">December delivered a strong 4.5% recovery to $79,625</strong>,
+                marking the highest revenue since July. The business has established a stable floor around
+                $76K-$80K monthly revenue with continued improvement in average order values ($13.74 in December vs. $13.36 in November).
+                December&apos;s $1,170 in gift card sales (highest since January) suggests strong holiday engagement and potential Q1 2026 momentum.
               </p>
             </div>
           </CardContent>
@@ -53,33 +53,36 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-500 pl-4 py-2 bg-orange-50 rounded-r">
-                <h3 className="font-semibold text-orange-900 mb-2">November Decline Follows October Uptick</h3>
+              <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
+                <h3 className="font-semibold text-green-900 mb-2">December Recovery Caps Volatile Q4</h3>
                 <p className="text-muted-foreground">
-                  November sales of $76,194 represent a 2.6% decline from October&apos;s $78,211, demonstrating
-                  that October&apos;s recovery was not sustained. However, November remained above September&apos;s
-                  low of $74,930, suggesting a floor around $75K-$78K. Daily sales averaged $2,540/day (vs.
-                  October&apos;s $2,523/day), while traffic declined slightly to 190 orders/day from 195/day.
+                  December sales of $79,625 represent a strong 4.5% rebound from November&apos;s $76,194,
+                  marking the highest revenue since July ($91,778). Daily sales averaged $2,569/day (best since
+                  June), while traffic remained stable at 187 orders/day. The month delivered $8,635 in tips
+                  (10.8% of net sales) and an impressive $1,170 in gift card sales—the strongest gift card
+                  performance since January, signaling customer confidence and potential Q1 2026 momentum.
                 </p>
               </div>
 
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Revenue Stabilization at Lower Level</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Full Year 2025: Revenue Stabilization at New Baseline</h3>
                 <p className="text-muted-foreground">
-                  November remains 31% below the March peak ($110,321). The 11-month average of $88,979
-                  represents a challenging target, requiring 17% improvement from current levels. The business
-                  appears to have found a new baseline around $76K-$78K monthly revenue, suggesting focus should
-                  shift to profitability and operational efficiency at this volume rather than aggressive growth.
+                  December closes 2025 at $79,625, still 28% below the March peak ($110,321). The 12-month
+                  average of $88,048 represents a target requiring 11% improvement from current levels. However,
+                  the final four months (Sep-Dec) averaged $77,239, suggesting the business has found a sustainable
+                  baseline around $76K-$80K. Focus in 2026 should balance profitability optimization at this level
+                  with strategic initiatives to recapture lost volume.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Clear Seasonal Patterns Confirmed</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Full Year Seasonal Patterns Established</h3>
                 <p className="text-muted-foreground">
-                  Eleven months of data confirm strong seasonality: Q1 avg: $97,532, Q2 avg: $97,883,
-                  Q3 avg: $79,301, Q4 (Oct-Nov avg): $77,203. The business shows clear Q1-Q2 strength
-                  followed by sustained Q3-Q4 weakness. Planning for 2026 must account for these patterns,
-                  with Q1 staffing and inventory positioned for higher volumes and Q3-Q4 optimized for efficiency.
+                  2025 data confirms strong seasonality: Q1 avg: $97,532, Q2 avg: $97,883, Q3 avg: $79,301,
+                  Q4 avg: $78,008. The business shows clear Q1-Q2 strength (averaging $97,708) followed by
+                  sustained Q3-Q4 weakness (averaging $78,654)—a 19.6% seasonal variance. December&apos;s strong
+                  performance and gift card sales suggest positive customer sentiment entering Q1 2026, historically
+                  the strongest quarter.
                 </p>
               </div>
             </div>
@@ -97,40 +100,42 @@ export default function Commentary() {
           <CardContent>
             <div className="space-y-4">
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Beverage Percentage Declining From Peak</h3>
+                <h3 className="font-semibold text-green-900 mb-2">Beverage Sales Rebound in December</h3>
                 <p className="text-muted-foreground mb-2">
-                  Beverages accounted for 56.1% of November sales ($42,716), down from October&apos;s 58.3%
-                  and September&apos;s 59.1%. While still the core business, the declining beverage percentage
-                  indicates other categories are growing their share. November beverage sales declined 6.3%
-                  from October, contributing to the overall revenue decrease.
+                  Beverages accounted for 55.6% of December sales ($44,287), rebounding 3.7% from November&apos;s
+                  $42,716. This reverses two consecutive months of beverage sales declines and brings the category
+                  closer to its 12-month average of $44,603. NA Beverages led at 51.8% of total sales ($41,213),
+                  with wine ($981), bottled beer ($1,355), and draft beer ($738) contributing the remainder.
                 </p>
                 <p className="text-sm text-green-800 font-medium">
-                  Key insight: Beverage sales averaged $44,822/month over 11 months but dropped to $42,716
-                  in November, below the trend. NA Beverages (51.7% of total sales) remain the dominant category.
+                  Key insight: December&apos;s beverage recovery drove the overall revenue increase, suggesting
+                  successful holiday beverage promotions or seasonal customer preferences. This category remains
+                  the core revenue driver and deserves continued investment.
                 </p>
               </div>
 
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Showing Sustained Growth</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Sustains Strong Performance</h3>
                 <p className="text-muted-foreground mb-2">
-                  Food sales improved to $7,886 (10.3% of revenue), continuing the positive trend from
-                  October (9.7%) and September (8.9%). This represents the third consecutive month of
-                  food category growth in both dollars and percentage terms, suggesting menu improvements
-                  or operational changes are resonating with customers.
+                  Food sales reached $8,480 (10.6% of revenue) in December, marking the fourth consecutive
+                  month of growth in percentage terms (8.9% → 9.7% → 10.3% → 10.6%). December&apos;s food
+                  sales of $8,480 represent a 7.5% increase from November&apos;s $7,886, demonstrating sustained
+                  customer demand for the food category.
                 </p>
                 <p className="text-sm text-yellow-800 font-medium">
-                  November food sales of $7,886 remain below the 11-month average of $9,138, but the
-                  upward trajectory (8.9% → 9.7% → 10.3%) is encouraging and worth nurturing.
+                  While still below the 12-month average of $9,224, the four-month trajectory confirms operational
+                  improvements in food quality, menu appeal, or service are working. This trend should be reinforced
+                  through continued menu development and staff training.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Other Sales Stabilizing</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Other Sales Grow Alongside Total Revenue</h3>
                 <p className="text-muted-foreground">
-                  &quot;Other Sales&quot; (food, merchandise, uncategorized) totaled $33,478 in November (43.9% of
-                  revenue), up slightly from October&apos;s $32,607. While still below the 11-month average
-                  of $44,157, the category has stabilized after the sharp Q3 decline, suggesting the worst
-                  of the contraction may be over.
+                  &quot;Other Sales&quot; (food, merchandise, uncategorized) totaled $35,338 in December (44.4% of
+                  revenue), up 5.6% from November&apos;s $33,478. Merchandise sales reached $1,655 (2.1% of revenue),
+                  the second-highest monthly performance of 2025. Combined with strong gift card sales ($1,170),
+                  December showed robust customer engagement across all non-beverage categories.
                 </p>
               </div>
             </div>
@@ -147,36 +152,38 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-500 pl-4 py-2 bg-orange-50 rounded-r">
-                <h3 className="font-semibold text-orange-900 mb-2">Traffic Decline Resumes</h3>
+              <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
+                <h3 className="font-semibold text-yellow-900 mb-2">Traffic Stabilizes Near Recent Baseline</h3>
                 <p className="text-muted-foreground mb-2">
-                  November daily order volume declined to 190 orders/day (5,702 total orders), down from
-                  October&apos;s 195 orders/day. This reverses the encouraging traffic recovery seen in
-                  October and brings volumes back toward the September low of 188 orders/day.
+                  December daily order volume held at 187 orders/day (5,796 total orders in 31 days), essentially
+                  flat with November&apos;s 190 orders/day. While traffic remains well below the 12-month average
+                  of 201 orders/day, the stabilization after months of decline suggests a floor has been established.
+                  Total orders increased 1.6% from November due to 31 days vs. 30.
                 </p>
-                <p className="text-sm text-orange-800 font-medium">
-                  The 11-month average is 204 orders/day. November&apos;s 190 orders/day is 6.9% below
-                  this baseline, indicating sustained traffic challenges that must be addressed.
+                <p className="text-sm text-yellow-800 font-medium">
+                  December&apos;s 187 orders/day is 7.0% below the 12-month average, but the Q4 average of 191
+                  orders/day suggests this may be the new seasonal baseline for this period. Traffic recovery
+                  will be critical in Q1 2026.
                 </p>
               </div>
 
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Average Order Value Improving</h3>
+                <h3 className="font-semibold text-green-900 mb-2">Average Order Value Continues Upward Trend</h3>
                 <p className="text-muted-foreground">
-                  November average order value rose to $13.36, up 3.0% from October&apos;s $12.97. This is
-                  the first AOV increase since July and suggests customers are spending more per transaction.
-                  While still 14.6% below March&apos;s peak of $15.64, the improving trend is positive and
-                  should be nurtured through strategic upselling initiatives.
+                  December average order value rose to $13.74, up 2.8% from November&apos;s $13.36, marking
+                  the second consecutive monthly increase. This positive trajectory ($12.97 → $13.36 → $13.74)
+                  demonstrates successful upselling or product mix improvements. While still 12.2% below March&apos;s
+                  peak of $15.64, the sustained improvement is the strongest positive signal in the data.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Daypart Mix Holding Steady</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Daypart Distribution Shifts Toward Breakfast</h3>
                 <p className="text-muted-foreground">
-                  November daypart distribution: Lunch 49.4% ($36,678, 2,814 orders), Breakfast 35.0%
-                  ($27,391, 1,997 orders), Dinner 9.1% ($7,284, 517 orders), and No Service 6.6% ($4,840,
-                  374 orders). The mix is remarkably consistent with October, indicating stable customer
-                  behavior patterns across dayparts.
+                  December daypart distribution: Lunch 48.1% ($38,295, 2,953 orders), Breakfast 38.2%
+                  ($30,395, 2,020 orders), Dinner 7.7% ($6,139, 481 orders), No Service 5.9% ($4,679, 330
+                  orders), and Late Night 0.1% ($116, 12 orders). Breakfast grew 3.2 percentage points from
+                  November (35.0%), suggesting holiday season morning traffic strength.
                 </p>
               </div>
             </div>
@@ -194,71 +201,75 @@ export default function Commentary() {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-3 text-lg">Immediate Priorities (Next 30 Days)</h3>
+                <h3 className="font-semibold mb-3 text-lg">Immediate Priorities for Q1 2026</h3>
                 <ul className="space-y-2">
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">1.</span>
                     <span className="text-muted-foreground">
-                      <strong>Capitalize on AOV Momentum:</strong> November&apos;s 3.0% AOV increase to $13.36
-                      is the first improvement in months. Double down on what&apos;s working - combo deals,
-                      pairing suggestions, or service improvements. Each additional $1 in AOV generates $5,702/month
-                      in revenue at current traffic levels.
+                      <strong>Capitalize on Gift Card Momentum:</strong> December&apos;s $1,170 in gift card sales
+                      (highest since January) represents deferred revenue that will flow through Q1 2026. Proactively
+                      market to gift card holders with new product launches, limited-time offerings, or exclusive
+                      experiences to maximize redemption value and drive incremental purchases.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">2.</span>
                     <span className="text-muted-foreground">
-                      <strong>Reverse Traffic Decline:</strong> November&apos;s 190 orders/day is concerning after
-                      October&apos;s recovery. Implement targeted customer retention programs, loyalty incentives,
-                      or community engagement to rebuild traffic. Recovering to the 204 orders/day average would
-                      add 14 orders/day × $13.36 AOV = $187/day or $5,610/month.
+                      <strong>Sustain AOV Growth Trajectory:</strong> Two consecutive monthly increases ($12.97 →
+                      $13.36 → $13.74) demonstrate successful execution. Identify and systematize what&apos;s working—
+                      bundling, upselling, premium products—to push toward the $15+ target. Each $1 increase in AOV
+                      generates $5,600-$5,800/month at current traffic levels.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">3.</span>
                     <span className="text-muted-foreground">
-                      <strong>Sustain Food Category Growth:</strong> Food reached 10.3% of sales in November,
-                      the third consecutive month of growth. Identify and amplify the drivers - menu items,
-                      service quality, or promotions - to continue this positive trajectory through the holidays.
+                      <strong>Prepare for Q1 Seasonal Surge:</strong> Q1 2025 averaged $97,532 (24% above Q4 average).
+                      Position inventory, staffing, and marketing now to capture this seasonal lift. Target exceeding
+                      2025 Q1 performance by leveraging gift card redemptions and strong December momentum entering
+                      the new year.
                     </span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="font-semibold mb-3 text-lg">Medium-Term Strategies (90 Days)</h3>
+                <h3 className="font-semibold mb-3 text-lg">Strategic Focus Areas for 2026</h3>
                 <ul className="space-y-2">
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Accept New Revenue Reality:</strong> Eleven months of data suggest $75K-$78K
-                      is the current sustainable baseline (Sep-Nov average: $76,445). Rather than chasing the
-                      March peak, optimize operations and profitability at this volume. Review cost structure,
-                      staffing levels, and inventory management for efficiency.
+                      <strong>Traffic Recovery Initiative:</strong> 2025 averaged 201 orders/day vs. Q4 average of
+                      191 orders/day. Launch targeted customer acquisition and retention programs in Q1 when seasonal
+                      demand is highest. Recovering to 210 orders/day would generate $14,000+ additional monthly revenue
+                      at current AOV.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Plan for Q1 2026 Seasonal Surge:</strong> Data shows clear Q1 strength (Jan-Mar
-                      averaged $97,532 in 2025). Prepare now for January-March 2026 by ensuring adequate inventory,
-                      staffing, and promotional plans to capture and exceed 2025 Q1 performance.
+                      <strong>Food Category Leadership:</strong> Four consecutive months of food percentage growth
+                      (8.9% → 9.7% → 10.3% → 10.6%) validates menu improvements. Expand successful food offerings,
+                      enhance breakfast items (which grew to 38.2% in December), and leverage food&apos;s typically
+                      higher margins to improve unit economics.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Holiday Season Activation:</strong> December represents the final opportunity to
-                      improve Q4 2025 performance. Implement holiday-specific promotions, gift card campaigns,
-                      and seasonal beverage offerings to capture end-of-year customer spending.
+                      <strong>Seasonal Optimization:</strong> 2025 confirmed 19.6% variance between strong (Q1-Q2: $97,708
+                      avg) and weak (Q3-Q4: $78,654 avg) seasons. Build 2026 plans around this reality: aggressive growth
+                      initiatives in Q1-Q2, operational efficiency focus in Q3-Q4. This approach maximizes profit across
+                      the full cycle.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Food Category Development:</strong> With food growing three consecutive months
-                      (8.9% → 9.7% → 10.3%), invest in menu engineering and staff training to continue this
-                      trend. Food&apos;s higher margins could improve profitability even without total revenue growth.
+                      <strong>Profitability at Current Scale:</strong> With revenue baseline established at $76K-$80K
+                      (Q4 average: $78,008), optimize cost structure for profitability at this level. Review labor
+                      efficiency, inventory management, and operational expenses to improve margins even if revenue
+                      growth remains challenging.
                     </span>
                   </li>
                 </ul>
@@ -276,22 +287,22 @@ export default function Commentary() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-600">
                 <h3 className="font-semibold mb-1">Daily Order Count</h3>
-                <p className="text-sm text-muted-foreground">Current: 190/day | Target: 210+ orders/day (11-month avg: 204)</p>
+                <p className="text-sm text-muted-foreground">Current: 187/day | Target: 210+ orders/day (2025 avg: 201)</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
                 <h3 className="font-semibold mb-1">Average Order Value</h3>
-                <p className="text-sm text-muted-foreground">Current: $13.36 | Target: $15.00+ (March level: $15.64)</p>
+                <p className="text-sm text-muted-foreground">Current: $13.74 | Target: $15.00+ (March peak: $15.64)</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-purple-600">
                 <h3 className="font-semibold mb-1">Food Category Percentage</h3>
-                <p className="text-sm text-muted-foreground">Current: 10.3% | Target: 12.0%+ (11-month avg: 10.3%)</p>
+                <p className="text-sm text-muted-foreground">Current: 10.6% | Target: 12.0%+ (2025 avg: 10.5%)</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-orange-600">
                 <h3 className="font-semibold mb-1">Monthly Revenue Target</h3>
-                <p className="text-sm text-muted-foreground">Current: $76,194 | Target: $88,979+ (11-month avg)</p>
+                <p className="text-sm text-muted-foreground">Current: $79,625 | Target: $90,000+ (2025 avg: $88,048)</p>
               </div>
             </div>
           </CardContent>
@@ -304,23 +315,25 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              <strong className="text-orange-700">November&apos;s 2.6% decline to $76,194 shows that October&apos;s
-              recovery was temporary</strong>, but the business has established a stable floor around $75K-$78K
-              monthly revenue. The past three months (Sep-Nov) averaged $76,445, suggesting this is the new baseline
-              reality that requires acceptance and operational optimization.
+              <strong className="text-green-700">December&apos;s 4.5% recovery to $79,625 closes 2025 on a positive note</strong>,
+              marking the highest revenue since July and validating the business has established a stable floor around
+              $76K-$80K monthly revenue. The full year averaged $88,048 with clear seasonal patterns: strong Q1-Q2
+              ($97,708 average) and weaker Q3-Q4 ($78,654 average), representing a 19.6% seasonal variance that must
+              inform 2026 planning.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              However, there are positive signals: average order value increased 3.0% to $13.36 (first improvement
-              since July), food category reached 10.3% of sales (third consecutive month of growth), and daypart
-              distribution remains stable. These metrics indicate operational improvements are taking hold even as
-              overall traffic remains challenged.
+              The most encouraging trends are sustainable: average order value increased for the second consecutive
+              month ($12.97 → $13.36 → $13.74), food category grew for four straight months (8.9% → 9.7% → 10.3% →
+              10.6%), and December delivered exceptional gift card sales ($1,170—highest since January). These metrics
+              indicate operational improvements are working and building momentum entering 2026.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              <strong>The path forward requires dual focus:</strong> (1) Optimize profitability at current $75K-$78K
-              revenue levels through cost management and operational efficiency, and (2) Prepare for seasonal Q1 2026
-              strength to capture the January-March revenue surge seen in 2025. December offers one more opportunity
-              to improve Q4 performance through holiday promotions and customer engagement. The foundation is stable -
-              execution and seasonal planning are the keys to 2026 success.
+              <strong>2026 success requires three-part execution:</strong> (1) Capitalize on Q1 seasonal strength and
+              December&apos;s $1,170 in gift cards to drive January-March performance above 2025 levels, (2) Systematize
+              the AOV and food category improvements to sustain growth trajectories, and (3) Launch traffic recovery
+              initiatives to close the 7% gap between current (187/day) and target (210/day) order volumes. With revenue
+              baseline stable, clear seasonal patterns established, and positive momentum in key metrics, the foundation
+              for profitable 2026 growth is in place.
             </p>
           </CardContent>
         </Card>
