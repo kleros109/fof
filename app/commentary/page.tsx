@@ -37,7 +37,7 @@ export default function Commentary() {
                 <strong className="text-green-700"> January 2026 delivered a strong $86,744 (+9.0% from December)</strong>,
                 the best month since March 2025. February 2026 closed at <strong className="text-blue-700">$78,477</strong> (5,704 orders, 204/day, avg order $13.76)—
                 below January but consistent with the February 2025 seasonal pattern. The last 30 days ending 03/18/26 show
-                accelerating momentum at <strong className="text-green-700">$88,169</strong> (208 orders/day), the strongest rolling period since spring 2025.
+                accelerating momentum at <strong className="text-green-700">$85,315</strong> (209 orders/day), the strongest rolling period since spring 2025.
                 Q1 2025 averaged $97,532—Q1 2026 is tracking below that benchmark, with AOV compression from $15.25 to $13.76
                 year-over-year as the primary headwind.
               </p>
@@ -77,14 +77,14 @@ export default function Commentary() {
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Last 30 Days (02/16–03/18): $88,169 — Strongest Rolling Period Since Spring 2025</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Last 30 Days (02/17–03/18): $85,315 — Strong Rolling Period with Traffic Recovery</h3>
                 <p className="text-muted-foreground">
-                  The rolling 30-day window ending 03/18/26 delivered $88,169 across 6,458 orders—208 orders/day
-                  and $2,844/day in net sales. This is the strongest rolling 30-day performance since spring 2025
-                  and confirms the seasonal recovery is underway. Tips reached $9,562 (10.8% of net), and the
-                  beverage mix held at 52.7%. 2025 seasonality: Q1 avg $97,532, Q2 avg $97,883, Q3 avg $79,301,
-                  Q4 avg $78,008. Q1 2026 is running below prior-year pace primarily due to lower AOV—
-                  traffic volume is recovering but per-ticket revenue is the gap to close.
+                  The rolling 30-day window ending 03/18/26 (Feb 17–Mar 18) delivered $85,315 across 6,258 orders—
+                  209 orders/day and $2,844/day in net sales. Tips reached $9,240 (10.8% of net), and the
+                  beverage mix held at 52.6%. This confirms the seasonal recovery is underway heading into Q2.
+                  2025 seasonality: Q1 avg $97,532, Q2 avg $97,883, Q3 avg $79,301, Q4 avg $78,008.
+                  Q1 2026 is running below prior-year pace primarily due to lower AOV—traffic volume is
+                  recovering (209/day) but per-ticket revenue is the gap to close.
                 </p>
               </div>
             </div>
@@ -106,8 +106,8 @@ export default function Commentary() {
                 <p className="text-muted-foreground mb-2">
                   Beverages accounted for 53.9% of January 2026 sales ($46,756). February full month: $41,780
                   (53.2%)—down 10.6% from January in absolute terms, tracking with overall revenue. Last 30 days:
-                  $46,427 (52.7%), up 11.1% from February. NA Beverages remain dominant at 49.5–49.8% of total
-                  sales across both periods. Wine ($950 Feb), draft beer ($803 Feb), and bottled beer ($947 Feb)
+                  $44,865 (52.6%), up 7.4% from February. NA Beverages remain dominant at 49.3–49.8% of total
+                  sales across both periods. Wine ($950 Feb / $848 L30), draft beer ($803 / $894), and bottled beer ($947 / $1,039)
                   hold steady in the 1.0–1.2% range each.
                 </p>
               </div>
@@ -118,7 +118,7 @@ export default function Commentary() {
                   Food sales reached $9,508 (12.1% of revenue) in February 2026, following January&apos;s record
                   12.7% ($11,056). This marks six consecutive months of food percentage at or above 10.3%
                   (Sep 9.7% → Oct 10.3% → Nov 10.6% → Dec 10.9% → Jan 12.7% → Feb 12.1%), validating sustained
-                  menu demand. Last 30 days: $10,592 (12.0%). The food category is firmly established as a
+                  menu demand. Last 30 days: $10,220 (12.0%). The food category is firmly established as a
                   double-digit revenue contributor.
                 </p>
               </div>
@@ -126,8 +126,8 @@ export default function Commentary() {
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
                 <h3 className="font-semibold text-blue-900 mb-2">No-Category Items: 33.5% in February, Rising in Last 30 Days</h3>
                 <p className="text-muted-foreground">
-                  No-category sales were $26,318 (33.5%) in February and $30,220 (34.3%) in the last 30 days,
-                  up 14.8% in absolute terms. Merchandise held at $871 (1.1%) in February and $930 (1.1%) in
+                  No-category sales were $26,318 (33.5%) in February and $29,307 (34.4%) in the last 30 days,
+                  up 11.4% in absolute terms. Merchandise held at $871 (1.1%) in February and $923 (1.1%) in
                   last 30 days. The non-beverage mix held stable at approximately 46–47% of total revenue.
                 </p>
               </div>
@@ -146,22 +146,22 @@ export default function Commentary() {
           <CardContent>
             <div className="space-y-4">
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Traffic Recovery Sustained: 204/day Feb, 208/day Last 30</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Traffic Recovery Sustained: 204/day Feb, 209/day Last 30</h3>
                 <p className="text-muted-foreground mb-2">
                   February closed at 204 orders/day (5,704 total), up from the December trough of 187/day.
-                  The last 30 days (02/16–03/18) accelerated to 208 orders/day (6,458 total)—the highest
+                  The last 30 days (02/17–03/18) held at 209 orders/day (6,258 total)—the highest
                   rolling daily rate since June 2025 (216/day). The traffic recovery that began in January
                   is strengthening. Year-over-year, February 2025 was 209 orders/day (5,865/28), so the
-                  2026 pace of 204/day is close to prior-year volume.
+                  2026 last-30-days pace of 209/day has now matched prior-year traffic volume.
                 </p>
               </div>
 
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Average Order Value: Stable at $13.65–$13.84 Range</h3>
+                <h3 className="font-semibold text-green-900 mb-2">Average Order Value: Stable at $13.63–$13.84 Range</h3>
                 <p className="text-muted-foreground">
                   February AOV: $13.76 (up from $13.61 seen in the partial-month view, reflecting a strong
-                  final week). January was $13.84; last 30 days average $13.65. The Q4 2025 recovery streak
-                  ($12.97 → $13.36 → $13.74 → $13.84) has plateaued in the $13.65–$13.84 range. The key
+                  final week). January was $13.84; last 30 days average $13.63. The Q4 2025 recovery streak
+                  ($12.97 → $13.36 → $13.74 → $13.84) has plateaued in the $13.63–$13.84 range. The key
                   gap to prior year remains AOV: February 2025 was $15.25 vs $13.76 in 2026 (-9.8%). Closing
                   this gap toward $14.50–$15.00 is the highest-leverage revenue opportunity.
                 </p>
@@ -206,17 +206,17 @@ export default function Commentary() {
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">2.</span>
                     <span className="text-muted-foreground">
-                      <strong>Push Traffic Beyond 210+ Orders/Day:</strong> The last 30 days hit 208/day—within
-                      striking distance of 210+. Continue customer acquisition and lunch-period optimization.
-                      At 210 orders/day and $13.76 AOV, monthly revenue would be ~$85K. Recovering to
-                      $15.00 AOV at 210 orders/day reaches ~$94K/month.
+                      <strong>Push Traffic Beyond 215+ Orders/Day:</strong> The last 30 days hit 209/day—effectively
+                      matching February 2025 traffic. Continue customer acquisition and lunch-period optimization.
+                      At 215 orders/day and $13.76 AOV, monthly revenue would be ~$88K. Recovering to
+                      $15.00 AOV at 215 orders/day reaches ~$97K/month.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">3.</span>
                     <span className="text-muted-foreground">
                       <strong>Capture Q2 Seasonal Window:</strong> 2025 showed Q2 as the second-strongest quarter
-                      (avg $97,883). With March-April traffic momentum building (208/day in last 30 days),
+                      (avg $97,883). With March-April traffic momentum building (209/day in last 30 days),
                       maximize the spring lift. Position staffing, inventory, and marketing now to convert
                       traffic growth into revenue.
                     </span>
@@ -238,7 +238,7 @@ export default function Commentary() {
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Beverage Premium Mix:</strong> NA Beverages at 49.5–49.8% of sales are the core
+                      <strong>Beverage Premium Mix:</strong> NA Beverages at 49.3–49.8% of sales are the core
                       revenue engine. Focus on premium and specialty offerings to lift per-unit revenue within
                       this stable, high-volume category. Even a 5% increase in average beverage ticket would
                       add ~$2,000/month.
@@ -267,7 +267,7 @@ export default function Commentary() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-600">
                 <h3 className="font-semibold mb-1">Daily Order Count</h3>
-                <p className="text-sm text-muted-foreground">Current: 208/day (last 30) | Target: 215+ orders/day</p>
+                <p className="text-sm text-muted-foreground">Current: 209/day (last 30) | Target: 215+ orders/day</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
@@ -282,7 +282,7 @@ export default function Commentary() {
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-orange-600">
                 <h3 className="font-semibold mb-1">Monthly Revenue Target</h3>
-                <p className="text-sm text-muted-foreground">Current: $88,169 (last 30 days) | Target: $90,000+</p>
+                <p className="text-sm text-muted-foreground">Current: $85,315 (last 30 days) | Target: $90,000+</p>
               </div>
             </div>
           </CardContent>
@@ -296,8 +296,8 @@ export default function Commentary() {
           <CardContent>
             <p className="text-muted-foreground leading-relaxed mb-4">
               <strong className="text-green-700">February 2026 closed at $78,477 and the last 30 days through
-              03/18 reached $88,169—the strongest rolling period since spring 2025.</strong> Traffic is
-              recovering (204/day in February, 208/day in last 30), food has stabilized above 12%, and beverage
+              03/18 reached $85,315—the strongest rolling period since spring 2025.</strong> Traffic is
+              recovering (204/day in February, 209/day in last 30), food has stabilized above 12%, and beverage
               mix is consistent at ~53%. The seasonal recovery is real and accelerating into Q2.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -308,10 +308,11 @@ export default function Commentary() {
               menu strategy; sustained food percentage improvement is the most likely path to structural AOV gains.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              <strong>The spring seasonal window is now open.</strong> With last-30-day momentum at $88,169
-              and 208 orders/day, the business is well-positioned to capitalize on Q2 strength (2025 Q2 avg
-              $97,883). The path to $90K+ months runs through AOV recovery toward $14.50–$15.00 and sustaining
-              210+ daily orders. Both are within reach given current traffic trends and food category trajectory.
+              <strong>The spring seasonal window is now open.</strong> With last-30-day momentum at $85,315
+              and 209 orders/day—now matching February 2025 traffic levels—the business is well-positioned to
+              capitalize on Q2 strength (2025 Q2 avg $97,883). The path to $90K+ months runs through AOV
+              recovery toward $14.50–$15.00 while sustaining 215+ daily orders. Both are within reach
+              given current traffic trends and the food category&apos;s sustained 12%+ trajectory.
             </p>
           </CardContent>
         </Card>

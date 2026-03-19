@@ -167,14 +167,14 @@ export default function SalesDashboard() {
     },
     {
       month: 'Last 30 Days (03/18)',
-      netSales: 88168.55,
-      tips: 9561.91,
-      taxAmount: 7732.39,
+      netSales: 85314.96,
+      tips: 9240.30,
+      taxAmount: 7482.01,
       deferredGiftCards: 110.00,
-      totalAmount: 105572.85,
-      avgOrder: 13.65,
-      totalOrders: 6458,
-      totalGuests: 6458
+      totalAmount: 102147.27,
+      avgOrder: 13.63,
+      totalOrders: 6258,
+      totalGuests: 6258
     }
   ];
 
@@ -280,10 +280,10 @@ export default function SalesDashboard() {
     },
     {
       month: 'Last 30 Days (03/18)',
-      totalBeverages: 46426.73,
-      totalSales: 88168.55,
-      percentage: 52.7,
-      momGrowth: 11.1
+      totalBeverages: 44865.14,
+      totalSales: 85314.96,
+      percentage: 52.6,
+      momGrowth: 7.4
     }
   ];
 
@@ -389,10 +389,10 @@ export default function SalesDashboard() {
     },
     {
       month: 'Last 30 Days (03/18)',
-      totalFoodNoCategory: 40812.09,
-      totalSales: 88168.55,
+      totalFoodNoCategory: 39527.09,
+      totalSales: 85314.96,
       percentage: 46.3,
-      momGrowth: 13.9
+      momGrowth: 10.3
     }
   ];
 
@@ -484,9 +484,9 @@ export default function SalesDashboard() {
     },
     {
       month: 'Last 30 Days (03/18)',
-      otherSales: 88168.55 - 46426.73,
-      netSales: 88168.55,
-      beverageSales: 46426.73
+      otherSales: 85314.96 - 44865.14,
+      netSales: 85314.96,
+      beverageSales: 44865.14
     }
   ];
 
@@ -636,9 +636,9 @@ export default function SalesDashboard() {
     },
     {
       month: 'Last 30 Days (03/18)',
-      avgOrdersPerDay: Math.round(6458 / 31),
-      totalOrders: 6458,
-      daysInMonth: 31
+      avgOrdersPerDay: Math.round(6258 / 30),
+      totalOrders: 6258,
+      daysInMonth: 30
     }
   ];
 
@@ -730,9 +730,9 @@ export default function SalesDashboard() {
     },
     {
       month: 'Last 30 Days (03/18)',
-      avgNetSalesPerDay: Math.round(88168.55 / 31),
-      netSales: 88168.55,
-      daysInMonth: 31
+      avgNetSalesPerDay: Math.round(85314.96 / 30),
+      netSales: 85314.96,
+      daysInMonth: 30
     }
   ];
 
@@ -1102,7 +1102,7 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">208/day</p>
+              <p className="text-lg font-bold text-blue-900">209/day</p>
               <p className="text-xs text-blue-600">Last 30 Days (03/18)</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
@@ -1193,7 +1193,7 @@ export default function SalesDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
-              <p className="text-sm text-blue-700">February 2026 final: $78,477 (204 orders/day). Last 30 days through 03/18 reached $88,169—strongest rolling period since spring 2025. January 2026 delivered $86,744 (+9.0% vs December). Beverage sales steady at ~53% of revenue.</p>
+              <p className="text-sm text-blue-700">February 2026 final: $78,477 (204 orders/day). Last 30 days through 03/18: $85,315 at 209 orders/day. January 2026 delivered $86,744 (+9.0% vs December). Beverage sales steady at ~53% of revenue.</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h3 className="font-semibold text-green-900 mb-2">Category Leaders</h3>
@@ -1201,7 +1201,7 @@ export default function SalesDashboard() {
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
               <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic</h3>
-              <p className="text-sm text-purple-700">February 2026 averaged 204 orders/day (5,704 total). Last 30 days accelerating to 208 orders/day. Average order value $13.65–$13.76 across recent periods.</p>
+              <p className="text-sm text-purple-700">February 2026 averaged 204 orders/day (5,704 total). Last 30 days at 209 orders/day (6,258 total). Average order value $13.63–$13.76 across recent periods.</p>
             </div>
           </div>
           </CardContent>
