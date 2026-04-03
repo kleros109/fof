@@ -739,6 +739,7 @@ export default function SalesDashboard() {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658'];
 
   const formatCurrency = (value: number) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  const formatCurrencyNoDecimals = (value: number) => `$${value.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
 
   const generateCSV = () => {
     const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order,Tips/Net Sales %\n';
@@ -867,7 +868,7 @@ export default function SalesDashboard() {
               <XAxis dataKey="month" tick={{ fontSize: 12 }} tickMargin={12} />
               <YAxis
                 width={110}
-                tickFormatter={formatCurrency}
+                tickFormatter={formatCurrencyNoDecimals}
                 domain={[65000, 115000]}
                 ticks={[65000, 70000, 75000, 80000, 85000, 90000, 95000, 100000, 105000, 110000, 115000]}
                 interval={0}
@@ -930,7 +931,7 @@ export default function SalesDashboard() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis
-                  tickFormatter={formatCurrency}
+                  tickFormatter={formatCurrencyNoDecimals}
                   tick={{ fontSize: 14 }}
                   interval={0}
                   axisLine={true}
@@ -992,7 +993,7 @@ export default function SalesDashboard() {
               <XAxis dataKey="month" tick={{ fontSize: 12 }} tickMargin={12} />
               <YAxis
                 width={110}
-                tickFormatter={formatCurrency}
+                tickFormatter={formatCurrencyNoDecimals}
                 tick={{ fontSize: 14 }}
                 interval={0}
                 axisLine={true}
@@ -1028,7 +1029,7 @@ export default function SalesDashboard() {
               <XAxis dataKey="month" tick={{ fontSize: 12 }} tickMargin={12} />
               <YAxis
                 width={110}
-                tickFormatter={formatCurrency}
+                tickFormatter={formatCurrencyNoDecimals}
                 tick={{ fontSize: 14 }}
                 interval={0}
                 axisLine={true}
@@ -1135,7 +1136,7 @@ export default function SalesDashboard() {
                 interval={0}
               />
               <YAxis
-                tickFormatter={formatCurrency}
+                tickFormatter={formatCurrencyNoDecimals}
                 tick={{ fontSize: 14 }}
                 interval={0}
                 axisLine={true}
