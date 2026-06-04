@@ -20,7 +20,7 @@ export default function Commentary() {
               Back to Dashboard
             </Link>
             <h1 className="text-2xl sm:text-3xl font-bold">Operating Commentary</h1>
-            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - January 2025 to March 2026</p>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - January 2025 to May 2026</p>
           </CardContent>
         </Card>
 
@@ -38,7 +38,9 @@ export default function Commentary() {
                 the best month since March 2025. February 2026 closed at <strong className="text-blue-700">$78,477</strong> (5,704 orders, 204/day, avg order $13.76)—
                 below January but consistent with the February 2025 seasonal pattern. March 2026 showed
                 accelerating momentum at <strong className="text-green-700">$89,845</strong> (208 orders/day).
-                Q1 2025 averaged $97,532—Q1 2026 is tracking below that benchmark, but with AOV improving to $13.92 in March, it represents a substantial recovery.
+                <strong className="text-green-700"> May 2026 broke through at $93,478</strong> (216 orders/day), the strongest
+                month since April 2025 ($101,404) and the first $90K+ month in over a year.
+                Q1 2025 averaged $97,532—Q1 2026 averaged $85,022, but May proves the recovery is accelerating into summer.
               </p>
             </div>
           </CardContent>
@@ -54,32 +56,34 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">March 2026: $89,845 — Strong Conclusion to Q1</h3>
+              <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
+                <h3 className="font-semibold text-green-900 mb-2">May 2026: $93,478 — First $90K+ Month Since April 2025</h3>
                 <p className="text-muted-foreground">
-                  The full month of March 2026 delivered $89,845 across 6,454 orders—208 orders/day and $2,898/day in net sales. 
-                  Tips reached $9,657 (10.7% of net), and the beverage mix held at 52.4%. March represents the strongest 
-                  month so far in 2026, marking a 14.5% revenue increase over February, and confirming that the seasonal recovery is well underway heading into Q2.
+                  The full month of May 2026 delivered $93,478 across 6,703 orders—216 orders/day and $3,016/day in net sales.
+                  Tips reached $9,421 (10.1% of net), and the beverage mix climbed to 54.1%. May represents the strongest
+                  month since April 2025 ($101,404), marking a 4.0% revenue increase over March 2026 and confirming that
+                  the recovery is not only real but accelerating into the summer season.
                 </p>
               </div>
 
-              <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Q1 2026 Overview: Seasonal Recovery Confirmed</h3>
+              <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
+                <h3 className="font-semibold text-blue-900 mb-2">Q1-Q2 2026 Momentum: From $78K to $93K</h3>
                 <p className="text-muted-foreground">
-                  For the first quarter, total revenue reached $255,066 across 18,425 orders. Traffic showed consistent 
-                  month-over-month strengthening from January (202 orders/day) and February (204 orders/day) to March (208 orders/day), 
-                  averaging 205 orders/day for the quarter. Q1 historically delivers strong performance, with 
-                  2025 seasonality showing Q1 as the second-strongest quarter (avg $97,532/mo). Q1 2026 averaged $85,022/month.
+                  Through January–March and now May 2026 (April data was not reported), total tracked revenue reached
+                  $348,544 across 26,128 orders. Traffic strengthened from January (202/day) to February (204/day) to March
+                  (208/day) and now May (216/day), showing a clear upward trajectory. The May result—216 orders/day—is the
+                  highest daily volume since May 2025 (212/day), erasing the traffic deficit that persisted through most of 2025.
                 </p>
               </div>
 
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Context & Headwinds: AOV Compression</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Context & Headwinds: AOV Still Below 2025 Levels</h3>
                 <p className="text-muted-foreground">
-                  While traffic volume is recovering and matching 2025 periods, Q1 2026 is tracking below prior-year revenue 
-                  primarily due to lower Average Order Value (AOV). For Q1 2026, AOV was $13.84 ($13.84 in Jan, $13.76 in Feb, $13.92 in Mar). 
-                  In contrast, early 2025 observed AOV above $15.00. Per-ticket revenue is climbing heading into spring, but 
-                  remains the primary gap to close to return to sustained $90K+ months.
+                  While traffic volume has fully recovered and daily orders are now exceeding 2025 levels, AOV remains the
+                  primary headwind. May 2026 AOV was $13.95—flat with the trailing 12-month trend but still well below
+                  May 2025 ($15.44). The good news: volume growth is now strong enough to offset the AOV gap. At 216/day and
+                  $13.95 AOV, monthly revenue is $93,478. Returning to $15.00 AOV at this traffic level would push monthly
+                  revenue to ~$100,400—within reach of the 2025 peak.
                 </p>
               </div>
             </div>
@@ -97,30 +101,31 @@ export default function Commentary() {
           <CardContent>
             <div className="space-y-4">
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Beverage Sales at ~53% of Revenue — Consistent Mix</h3>
+                <h3 className="font-semibold text-green-900 mb-2">Beverage Sales at 54.1% — Highest Since October 2025</h3>
                 <p className="text-muted-foreground mb-2">
-                  Beverages accounted for 52.4% of March 2026 sales ($47,085). February full month was $41,780
-                  (53.2%). NA Beverages remain dominant at 50.0% of total
-                  sales in March. Wine ($566), draft beer ($657), and bottled beer ($958)
-                  hold steady in the 0.6–1.1% range each.
+                  Beverages accounted for 54.1% of May 2026 sales ($50,596), the highest beverage mix in eight months.
+                  NA Beverages remain dominant at 51.2% of total sales ($47,839). Wine notably expanded to $2,277 (2.4%), a
+                  meaningful jump from March ($566, 0.6%), while draft beer ($1,388, 1.5%) and bottled beer ($1,092, 1.2%)
+                  also gained share. The alcohol category is showing spring/summer strength consistent with seasonal patterns.
                 </p>
               </div>
 
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Holds Strong at 12.1% in February</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Steady at 10.6%</h3>
                 <p className="text-muted-foreground mb-2">
-                  Food sales reached $10,601 (11.8% of revenue) in March 2026, following February&apos;s 12.1%
-                  ($9,508). This marks seven consecutive months of food percentage near or above 11–12%,
-                  validating sustained menu demand. The food category is firmly established as a
-                  double-digit revenue contributor.
+                  Food sales reached $9,905 (10.6% of revenue) in May 2026, a modest step down from March&apos;s 11.8% ($10,601)
+                  in absolute terms but in line with higher overall revenue. At this volume, food is still contributing
+                  nearly $10K monthly and remains structurally important. The nine-month run of food near or above 10%
+                  confirms the category is a stable, established revenue pillar.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">No-Category Items: 34.6% in March</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">No-Category Items: 32.4% in May</h3>
                 <p className="text-muted-foreground">
-                  No-category sales were $31,081 (34.6%) in March, up in absolute terms compared to February.
-                  Merchandise grew to $1,078 (1.2%) in March. The non-beverage mix holds consistently around 47% of total revenue.
+                  No-category sales were $30,270 (32.4%) in May, down slightly as a percentage of total but steady in absolute
+                  terms compared to March. Merchandise holds at $708 (0.8%). As beverage mix rises into summer, the no-category
+                  share naturally compresses—a healthy sign of category rotation toward higher-value drink sales.
                 </p>
               </div>
             </div>
@@ -137,30 +142,33 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Traffic Recovery Sustained: 204/day Feb, 208/day March</h3>
-                <p className="text-muted-foreground mb-2">
-                  February closed at 204 orders/day (5,704 total).
-                  March held strong at 208 orders/day (6,454 total). The traffic recovery that began in January
-                  continues to strengthen.
-                </p>
-              </div>
-
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Average Order Value: Improving to $13.92 in March</h3>
-                <p className="text-muted-foreground">
-                  March AOV reached $13.92, an improvement over February ($13.76) and January ($13.84). The key
-                  gap to prior year remains AOV. Closing
-                  this gap toward $14.50–$15.00 is the highest-leverage revenue opportunity.
+                <h3 className="font-semibold text-green-900 mb-2">Traffic Hits 216/Day — Best Since May 2025</h3>
+                <p className="text-muted-foreground mb-2">
+                  May 2026 closed at 216 orders/day (6,703 total), decisively surpassing March&apos;s 208/day and moving past
+                  the 215/day threshold previously set as a target. This is the highest daily volume in a full year and
+                  signals that customer acquisition momentum is not just recovering but setting new highs for the post-2025 era.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Daypart Distribution: Lunch 51%, Breakfast 34%</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Average Order Value: Stable at $13.95</h3>
                 <p className="text-muted-foreground">
-                  March 2026 daypart: Lunch 51.5% ($44,956, 3,325 orders), Breakfast 33.7% ($32,423,
-                  2,174 orders), Dinner 8.2% ($7,024, 529 orders), No Service 6.6% ($5,443). Compared to
-                  February, breakfast share tapered slightly while lunch regained dominance over 51% of sales.
+                  May AOV held at $13.95, matching the trailing trend (Jan $13.84, Feb $13.76, Mar $13.92). While this
+                  is still $1.49 below May 2025 ($15.44), the volume surge means total revenue is now materially higher than
+                  early 2026. The key leverage point remains: at 216/day, every $0.50 AOV increase adds ~$3,240/month.
+                  Closing even half the 2025 gap would add ~$4,800/month.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
+                <h3 className="font-semibold text-yellow-900 mb-2">Daypart Distribution: Lunch 50%, Breakfast 35%</h3>
+                <p className="text-muted-foreground">
+                  May 2026 daypart: Lunch 49.8% ($43,739, 3,335 orders), Breakfast 35.4% ($35,920,
+                  2,372 orders), Dinner 8.2% ($7,722, 551 orders), No Service 6.5% ($6,037, 439 orders),
+                  Late Night 0.1% ($60, 6 orders). Breakfast share expanded back toward 35% after tapering in March,
+                  while lunch remained the dominant period near 50%. The new Late Night category appeared in May—minimal
+                  today but worth monitoring as a potential growth window.
                 </p>
               </div>
             </div>
@@ -178,33 +186,31 @@ export default function Commentary() {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-3 text-lg">Immediate Priorities for Q1-Q2 2026</h3>
+                <h3 className="font-semibold mb-3 text-lg">Immediate Priorities for Summer 2026</h3>
                 <ul className="space-y-2">
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">1.</span>
                     <span className="text-muted-foreground">
-                      <strong>Close the AOV Gap:</strong> The single biggest lever is AOV. March 2025 averaged
-                      $15.64; March 2026 averaged $13.92—a $1.72 gap worth ~$11,100/month at current order volume.
-                      Upselling, menu mix optimization, and pricing review are the priority. Each $0.50 increase
-                      in AOV adds ~$3,200/month at 208 orders/day.
+                      <strong>Protect Traffic Gains:</strong> At 216/day, traffic is now the strongest it has been in a full year.
+                      This is the new floor, not the ceiling. Invest in retention (loyalty, email, community programming) to
+                      ensure summer volume doesn&apos;t backslide. Losing even 5 orders/day costs ~$2,100/month at current AOV.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">2.</span>
                     <span className="text-muted-foreground">
-                      <strong>Push Traffic Beyond 215+ Orders/Day:</strong> March hit 208/day—showing continued strength. 
-                      Continue customer acquisition and lunch-period optimization.
-                      At 215 orders/day and $13.92 AOV, monthly revenue would be ~$92.8K. Recovering to
-                      $15.00 AOV at 215 orders/day reaches ~$100K/month.
+                      <strong>Attack AOV with Alcohol &amp; Premium Beverages:</strong> Wine jumped from 0.6% to 2.4% in May—this
+                      is a $1,700+ monthly swing. The spring/summer alcohol window is open. Push wine, draft beer, and specialty
+                      beverages. A 1% shift from NA Beverage to alcohol at higher ticket prices directly lifts total revenue
+                      without requiring new customers.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">3.</span>
                     <span className="text-muted-foreground">
-                      <strong>Capture Q2 Seasonal Window:</strong> 2025 showed Q2 as the second-strongest quarter
-                      (avg $97,883). With March traffic momentum building (208/day),
-                      maximize the spring lift. Position staffing, inventory, and marketing now to convert
-                      traffic growth into revenue.
+                      <strong>Target $100K Months:</strong> The math is now realistic: at 216 orders/day, raising AOV from $13.95
+                      to $15.44 (May 2025 levels) pushes monthly revenue to ~$100,400. Alternatively, sustaining current AOV
+                      and growing traffic to 235 orders/day achieves the same result. Both paths are credible given May momentum.
                     </span>
                   </li>
                 </ul>
@@ -216,26 +222,25 @@ export default function Commentary() {
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Food Category: Hold Above 11-12%:</strong> Seven months of double-digit food percentage
-                      validates the menu strategy. Maintain and build on this—food at 11-12%+ contributes structural
-                      diversification away from beverage-only dependence and typically carries stronger margins.
+                      <strong>Food Category: Hold Above 10%:</strong> At $9,905 (10.6%), food is contributing meaningfully even
+                      as beverage share rises. Food orders typically carry higher margins and drive visit frequency. Maintaining
+                      food above 10% ensures the menu mix stays balanced and revenue isn&apos;t purely drink-dependent.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Beverage Premium Mix:</strong> NA Beverages at 50.0% of sales are the core
-                      revenue engine. Focus on premium and specialty offerings to lift per-unit revenue within
-                      this stable, high-volume category. Even a 5% increase in average beverage ticket would
-                      add ~$2,300/month.
+                      <strong>Wine &amp; Alcohol Upside:</strong> Wine&apos;s 4x growth from March to May is the standout trend.
+                      Double down: wine features, staff training on pairings, and weekend evening pushes could sustain this lift
+                      and grow the 2.4% share toward 3.5%+. At current volume, that&apos;s an incremental $1,500+/month.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Lunch Window Optimization:</strong> Lunch accounts for 51.5% of revenue (3,325 orders
-                      in March). Throughput improvements, targeted promotions, and staffing optimization
-                      during the 11AM–2PM window offer the highest single-period revenue upside.
+                      <strong>Lunch &amp; Breakfast Throughput:</strong> Combined, these periods drive ~85% of orders (5,707 of
+                      6,703). Even modest throughput improvements during the 8AM–2PM window compound meaningfully at this scale.
+                      Staffing, POS speed, and line management deserve attention as volume pushes into uncharted territory.
                     </span>
                   </li>
                 </ul>
@@ -253,22 +258,22 @@ export default function Commentary() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-600">
                 <h3 className="font-semibold mb-1">Daily Order Count</h3>
-                <p className="text-sm text-muted-foreground">Current: 208/day (March) | Target: 215+ orders/day</p>
+                <p className="text-sm text-muted-foreground">Current: 216/day (May) | Target: 225+ orders/day</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
                 <h3 className="font-semibold mb-1">Average Order Value</h3>
-                <p className="text-sm text-muted-foreground">Current: $13.92 (March) | Target: $15.00+ (2025 level)</p>
+                <p className="text-sm text-muted-foreground">Current: $13.95 (May) | Target: $14.50+ (summer 2025 level)</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-purple-600">
                 <h3 className="font-semibold mb-1">Food Category Percentage</h3>
-                <p className="text-sm text-muted-foreground">Current: 11.8% (March) | Target: 14.0%+</p>
+                <p className="text-sm text-muted-foreground">Current: 10.6% (May) | Target: 11.5%+</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-orange-600">
                 <h3 className="font-semibold mb-1">Monthly Revenue Target</h3>
-                <p className="text-sm text-muted-foreground">Current: $89,845 (March) | Target: $90,000+</p>
+                <p className="text-sm text-muted-foreground">Current: $93,478 (May) | Target: $100,000+</p>
               </div>
             </div>
           </CardContent>
@@ -281,20 +286,20 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              <strong className="text-green-700">March 2026 closed strongly at $89,845.</strong> Traffic is
-              recovering well (208/day in March), food has stabilized near 12%, and beverage
-              mix is consistent at ~52.4%. The seasonal recovery is real and accelerating into Q2.
+              <strong className="text-green-700">May 2026 delivered $93,478—the strongest month in over a year.</strong> Traffic hit
+              216 orders/day, the highest daily volume since May 2025. Beverage mix climbed to 54.1%, led by a notable wine
+              resurgence. The $90K barrier, which had held firm since April 2025, is officially broken.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              A key milestone is the uptick in AOV to $13.92 in March, recovering some of the ground lost from the prior year. Traffic volume
-              is stabilizing nicely above 200 orders per day, so AOV recovery remains a critical path
-              to restoring regular $90K+ months. Consistently strong menu mix performance points clearly to sustained consumer demand.
+              The recovery narrative has shifted. For most of 2025 and early 2026, the challenge was rebuilding traffic volume.
+              That mission is largely accomplished. The next phase is converting this volume into $100K+ months by closing the
+              AOV gap—a $1.49 lift back toward 2025 levels. At current traffic, that gap is worth ~$9,700/month.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              <strong>The spring seasonal window has arrived.</strong> With March momentum near $90K,
-              the business is well-positioned to capitalize on Q2 strength (2025 Q2 avg $97,883). The path to $90K+ months runs through AOV
-              recovery toward $14.50–$15.00 and sustaining 215+ daily orders. Both are very much within reach
-              given current traffic trends.
+              <strong>The summer window is open.</strong> With May proving the business can sustain 216+ orders/day and
+              beverage alcohol showing seasonal strength, the conditions are set for sustained $90K+ performance.
+              The path to $100K runs through two levers: (1) protecting and slightly growing traffic, and (2) recovering
+              AOV via premium beverage and upsell discipline. Both are well within reach.
             </p>
           </CardContent>
         </Card>

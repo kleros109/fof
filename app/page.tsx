@@ -175,6 +175,17 @@ export default function SalesDashboard() {
       avgOrder: 13.92,
       totalOrders: 6454,
       totalGuests: 6454
+    },
+    {
+      month: 'May 2026',
+      netSales: 93478.09,
+      tips: 9420.65,
+      taxAmount: 8116.40,
+      deferredGiftCards: 240.00,
+      totalAmount: 111519.14,
+      avgOrder: 13.95,
+      totalOrders: 6703,
+      totalGuests: 6703
     }
   ];
 
@@ -284,6 +295,13 @@ export default function SalesDashboard() {
       totalSales: 89845.18,
       percentage: 52.4,
       momGrowth: 12.7
+    },
+    {
+      month: 'May 2026',
+      totalBeverages: 50595.87,
+      totalSales: 93478.09,
+      percentage: 54.1,
+      momGrowth: 7.5
     }
   ];
 
@@ -393,6 +411,13 @@ export default function SalesDashboard() {
       totalSales: 89845.18,
       percentage: 46.4,
       momGrowth: 16.3
+    },
+    {
+      month: 'May 2026',
+      totalFoodNoCategory: 40882.22,
+      totalSales: 93478.09,
+      percentage: 43.7,
+      momGrowth: -1.9
     }
   ];
 
@@ -487,26 +512,33 @@ export default function SalesDashboard() {
       otherSales: 89845.18 - 47084.85,
       netSales: 89845.18,
       beverageSales: 47084.85
+    },
+    {
+      month: 'May 2026',
+      otherSales: 93478.09 - 50595.87,
+      netSales: 93478.09,
+      beverageSales: 50595.87
     }
   ];
 
-  // Sales by category data (March 2026)
+  // Sales by category data (May 2026)
   const categoryData = [
-    { name: 'NA Beverage', value: 44904.05, percentage: 50.0 },
-    { name: 'No Category', value: 31081.25, percentage: 34.6 },
-    { name: 'Food', value: 10600.65, percentage: 11.8 },
-    { name: 'Merchandise', value: 1078.43, percentage: 1.2 },
-    { name: 'Bottled Beer', value: 958.00, percentage: 1.1 },
-    { name: 'Draft Beer', value: 656.80, percentage: 0.7 },
-    { name: 'Wine', value: 566.00, percentage: 0.6 }
+    { name: 'NA Beverage', value: 47839.23, percentage: 51.2 },
+    { name: 'No Category', value: 30269.80, percentage: 32.4 },
+    { name: 'Food', value: 9904.76, percentage: 10.6 },
+    { name: 'Wine', value: 2276.93, percentage: 2.4 },
+    { name: 'Draft Beer', value: 1387.55, percentage: 1.5 },
+    { name: 'Bottled Beer', value: 1092.16, percentage: 1.2 },
+    { name: 'Merchandise', value: 707.66, percentage: 0.8 }
   ];
 
-  // Daypart analysis (March 2026)
+  // Daypart analysis (May 2026)
   const daypartData = [
-    { name: 'Breakfast', sales: 32422.99, orders: 2174, percentage: 33.7 },
-    { name: 'Lunch', sales: 44955.67, orders: 3325, percentage: 51.5 },
-    { name: 'Dinner', sales: 7023.75, orders: 529, percentage: 8.2 },
-    { name: 'No Service', sales: 5442.77, orders: 426, percentage: 6.6 }
+    { name: 'Breakfast', sales: 35920.02, orders: 2372, percentage: 35.4 },
+    { name: 'Lunch', sales: 43738.57, orders: 3335, percentage: 49.8 },
+    { name: 'Dinner', sales: 7722.10, orders: 551, percentage: 8.2 },
+    { name: 'No Service', sales: 6037.40, orders: 439, percentage: 6.5 },
+    { name: 'Late Night', sales: 60.00, orders: 6, percentage: 0.1 }
   ];
 
   // Hourly sales pattern
@@ -639,6 +671,12 @@ export default function SalesDashboard() {
       avgOrdersPerDay: Math.round(6454 / 31),
       totalOrders: 6454,
       daysInMonth: 31
+    },
+    {
+      month: 'May 2026',
+      avgOrdersPerDay: Math.round(6703 / 31),
+      totalOrders: 6703,
+      daysInMonth: 31
     }
   ];
 
@@ -733,6 +771,12 @@ export default function SalesDashboard() {
       avgNetSalesPerDay: Math.round(89845.18 / 31),
       netSales: 89845.18,
       daysInMonth: 31
+    },
+    {
+      month: 'May 2026',
+      avgNetSalesPerDay: Math.round(93478.09 / 31),
+      netSales: 93478.09,
+      daysInMonth: 31
     }
   ];
 
@@ -773,7 +817,7 @@ export default function SalesDashboard() {
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold">Friends of Friends Sales Dashboard</h1>
-                <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - March 2026 Performance Analysis</p>
+                <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - May 2026 Performance Analysis</p>
               </div>
               <div className="flex gap-2 sm:gap-3 flex-wrap">
                 <Link
@@ -1103,13 +1147,13 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">208/day</p>
-              <p className="text-xs text-blue-600">March 2026</p>
+              <p className="text-lg font-bold text-blue-900">216/day</p>
+              <p className="text-xs text-blue-600">May 2026</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">15-Period Average</p>
-              <p className="text-lg font-bold text-purple-900">203/day</p>
-              <p className="text-xs text-purple-600">Jan 2025 - Mar 2026</p>
+              <p className="text-sm font-medium text-purple-700">16-Period Average</p>
+              <p className="text-lg font-bold text-purple-900">204/day</p>
+              <p className="text-xs text-purple-600">Jan 2025 - May 2026</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1170,13 +1214,13 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">$2,898/day</p>
-              <p className="text-xs text-blue-600">March 2026</p>
+              <p className="text-lg font-bold text-blue-900">$3,016/day</p>
+              <p className="text-xs text-blue-600">May 2026</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">15-Period Average</p>
-              <p className="text-lg font-bold text-purple-900">$2,905/day</p>
-              <p className="text-xs text-purple-600">Jan 2025 - Mar 2026</p>
+              <p className="text-sm font-medium text-purple-700">16-Period Average</p>
+              <p className="text-lg font-bold text-purple-900">$2,912/day</p>
+              <p className="text-xs text-purple-600">Jan 2025 - May 2026</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1194,15 +1238,15 @@ export default function SalesDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
-              <p className="text-sm text-blue-700">March 2026 closed at $89,845 (208 orders/day), exceeding January&apos;s $86,744. Peak performance with 9.6% MoM Net Sales Growth versus February ($78,477).</p>
+              <p className="text-sm text-blue-700">May 2026 closed at $93,478 (216 orders/day), the strongest month since April 2025 ($101,404). Net Sales grew 4.0% versus March 2026 ($89,845), reversing the late-winter decline.</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h3 className="font-semibold text-green-900 mb-2">Category Leaders</h3>
-              <p className="text-sm text-green-700">NA Beverages lead at 50.0% of March sales; Food at 11.8%. No-category items at 34.6%. The beverage portion of revenue holds slightly above 52% overall.</p>
+              <p className="text-sm text-green-700">NA Beverages lead at 51.2% of May sales; Food at 10.6%. No-category items at 32.4%. The beverage portion climbed to 54.1% overall, the highest since October 2025.</p>
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
               <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic</h3>
-              <p className="text-sm text-purple-700">March 2026 averaged 208 orders/day (6,454 total), maintaining momentum from early Q1. Average order value strengthened to $13.92 from February&apos;s $13.76.</p>
+              <p className="text-sm text-purple-700">May 2026 averaged 216 orders/day (6,703 total), the highest daily volume since May 2025. Average order value held at $13.95, matching the trailing 12-month trend.</p>
             </div>
           </div>
           </CardContent>
