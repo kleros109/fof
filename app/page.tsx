@@ -177,6 +177,17 @@ export default function SalesDashboard() {
       totalGuests: 6454
     },
     {
+      month: 'April 2026',
+      netSales: 89128.98,
+      tips: 9358.18,
+      taxAmount: 7796.31,
+      deferredGiftCards: 125.00,
+      totalAmount: 106408.47,
+      avgOrder: 14.11,
+      totalOrders: 6318,
+      totalGuests: 6318
+    },
+    {
       month: 'May 2026',
       netSales: 93478.09,
       tips: 9420.65,
@@ -297,11 +308,18 @@ export default function SalesDashboard() {
       momGrowth: 12.7
     },
     {
+      month: 'April 2026',
+      totalBeverages: 47855.70,
+      totalSales: 89128.98,
+      percentage: 53.7,
+      momGrowth: 1.6
+    },
+    {
       month: 'May 2026',
       totalBeverages: 50595.87,
       totalSales: 93478.09,
       percentage: 54.1,
-      momGrowth: 7.5
+      momGrowth: 3.6
     }
   ];
 
@@ -413,11 +431,18 @@ export default function SalesDashboard() {
       momGrowth: 16.3
     },
     {
+      month: 'April 2026',
+      totalFoodNoCategory: 41273.28,
+      totalSales: 89128.98,
+      percentage: 46.3,
+      momGrowth: -1.0
+    },
+    {
       month: 'May 2026',
       totalFoodNoCategory: 40882.22,
       totalSales: 93478.09,
       percentage: 43.7,
-      momGrowth: -1.9
+      momGrowth: -0.9
     }
   ];
 
@@ -512,6 +537,12 @@ export default function SalesDashboard() {
       otherSales: 89845.18 - 47084.85,
       netSales: 89845.18,
       beverageSales: 47084.85
+    },
+    {
+      month: 'April 2026',
+      otherSales: 89128.98 - 48842.55,
+      netSales: 89128.98,
+      beverageSales: 48842.55
     },
     {
       month: 'May 2026',
@@ -673,6 +704,12 @@ export default function SalesDashboard() {
       daysInMonth: 31
     },
     {
+      month: 'April 2026',
+      avgOrdersPerDay: Math.round(6318 / 30),
+      totalOrders: 6318,
+      daysInMonth: 30
+    },
+    {
       month: 'May 2026',
       avgOrdersPerDay: Math.round(6703 / 31),
       totalOrders: 6703,
@@ -771,6 +808,12 @@ export default function SalesDashboard() {
       avgNetSalesPerDay: Math.round(89845.18 / 31),
       netSales: 89845.18,
       daysInMonth: 31
+    },
+    {
+      month: 'April 2026',
+      avgNetSalesPerDay: Math.round(89128.98 / 30),
+      netSales: 89128.98,
+      daysInMonth: 30
     },
     {
       month: 'May 2026',
@@ -1151,7 +1194,7 @@ export default function SalesDashboard() {
               <p className="text-xs text-blue-600">May 2026</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">16-Period Average</p>
+              <p className="text-sm font-medium text-purple-700">17-Period Average</p>
               <p className="text-lg font-bold text-purple-900">204/day</p>
               <p className="text-xs text-purple-600">Jan 2025 - May 2026</p>
             </div>

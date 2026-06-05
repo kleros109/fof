@@ -38,9 +38,11 @@ export default function Commentary() {
                 the best month since March 2025. February 2026 closed at <strong className="text-blue-700">$78,477</strong> (5,704 orders, 204/day, avg order $13.76)—
                 below January but consistent with the February 2025 seasonal pattern. March 2026 showed
                 accelerating momentum at <strong className="text-green-700">$89,845</strong> (208 orders/day).
-                <strong className="text-green-700"> May 2026 broke through at $93,478</strong> (216 orders/day), the strongest
-                month since April 2025 ($101,404) and the first $90K+ month in over a year.
-                Q1 2025 averaged $97,532—Q1 2026 averaged $85,022, but May proves the recovery is accelerating into summer.
+                April 2026 eased slightly to <strong className="text-blue-700">$89,128</strong> (216/day but 30 days vs 31),
+                before <strong className="text-green-700">May 2026 broke through at $93,478</strong> (216 orders/day).
+                May was the strongest month since April 2025 ($101,404) and the first $90K+ month in over a year.
+                The Q1-Q2 2026 arc shows a clear recovery: Q1 averaged $85,022/mo, and April-May
+                averaged $91,303/mo, proving the business is exiting the trough and rebuilding toward prior highs.
               </p>
             </div>
           </CardContent>
@@ -61,18 +63,18 @@ export default function Commentary() {
                 <p className="text-muted-foreground">
                   The full month of May 2026 delivered $93,478 across 6,703 orders—216 orders/day and $3,016/day in net sales.
                   Tips reached $9,421 (10.1% of net), and the beverage mix climbed to 54.1%. May represents the strongest
-                  month since April 2025 ($101,404), marking a 4.0% revenue increase over March 2026 and confirming that
+                  month since April 2025 ($101,404), marking a 4.9% revenue increase over April 2026 ($89,128) and confirming that
                   the recovery is not only real but accelerating into the summer season.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Q1-Q2 2026 Momentum: From $78K to $93K</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">April 2026: $89,129 — Steady Between March and May</h3>
                 <p className="text-muted-foreground">
-                  Through January–March and now May 2026 (April data was not reported), total tracked revenue reached
-                  $348,544 across 26,128 orders. Traffic strengthened from January (202/day) to February (204/day) to March
-                  (208/day) and now May (216/day), showing a clear upward trajectory. The May result—216 orders/day—is the
-                  highest daily volume since May 2025 (212/day), erasing the traffic deficit that persisted through most of 2025.
+                  April 2026 delivered $89,129 across 6,318 orders—211 orders/day (30 days vs 31). Notably, AOV jumped to
+                  $14.11 from March&apos;s $13.92, a meaningful $0.19 increase and the highest AOV since July 2025 ($14.39).
+                  Beverage mix rose to 53.7% ($47,856) from March&apos;s 52.4%, already hinting at the spring alcohol lift that
+                  would fully materialize in May. April wasn&apos;t a step back—it was a consolidation month that set the stage for May.
                 </p>
               </div>
 
@@ -81,9 +83,9 @@ export default function Commentary() {
                 <p className="text-muted-foreground">
                   While traffic volume has fully recovered and daily orders are now exceeding 2025 levels, AOV remains the
                   primary headwind. May 2026 AOV was $13.95—flat with the trailing 12-month trend but still well below
-                  May 2025 ($15.44). The good news: volume growth is now strong enough to offset the AOV gap. At 216/day and
-                  $13.95 AOV, monthly revenue is $93,478. Returning to $15.00 AOV at this traffic level would push monthly
-                  revenue to ~$100,400—within reach of the 2025 peak.
+                  May 2025 ($15.44). April&apos;s $14.11 AOV was a bright spot, suggesting the gap may be closing. The good news:
+                  volume growth is now strong enough to offset the AOV gap. At 216/day and $13.95 AOV, monthly revenue is $93,478.
+                  Returning to $15.00 AOV at this traffic level would push monthly revenue to ~$100,400—within reach of the 2025 peak.
                 </p>
               </div>
             </div>
@@ -110,10 +112,20 @@ export default function Commentary() {
                 </p>
               </div>
 
+              <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
+                <h3 className="font-semibold text-blue-900 mb-2">April Category Mix Prefigured May Growth</h3>
+                <p className="text-muted-foreground">
+                  April 2026 already showed beverage strength: category mix reached 53.7% ($47,856), driven by NA Beverages
+                  at 51.1% ($45,525). Wine was $967 (1.1%) and alcohol categories combined for 2.3% ($2,330). Food held at
+                  $10,021 (11.2%). The April mix was essentially a preview of May—beverages trending up, food stable near
+                  double digits, no-category items compressing as drink mix becomes more dominant entering warm weather months.
+                </p>
+              </div>
+
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Steady at 10.6%</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Holds Strong at 10.6%</h3>
                 <p className="text-muted-foreground mb-2">
-                  Food sales reached $9,905 (10.6% of revenue) in May 2026, a modest step down from March&apos;s 11.8% ($10,601)
+                  Food sales reached $9,905 (10.6% of revenue) in May 2026, a modest step down from April&apos;s 11.2% ($10,021)
                   in absolute terms but in line with higher overall revenue. At this volume, food is still contributing
                   nearly $10K monthly and remains structurally important. The nine-month run of food near or above 10%
                   confirms the category is a stable, established revenue pillar.
@@ -124,8 +136,8 @@ export default function Commentary() {
                 <h3 className="font-semibold text-blue-900 mb-2">No-Category Items: 32.4% in May</h3>
                 <p className="text-muted-foreground">
                   No-category sales were $30,270 (32.4%) in May, down slightly as a percentage of total but steady in absolute
-                  terms compared to March. Merchandise holds at $708 (0.8%). As beverage mix rises into summer, the no-category
-                  share naturally compresses—a healthy sign of category rotation toward higher-value drink sales.
+                  terms compared to April ($28,265, 31.7%). Merchandise holds at $708 (0.8%). As beverage mix rises into summer,
+                  the no-category share naturally compresses—a healthy sign of category rotation toward higher-value drink sales.
                 </p>
               </div>
             </div>
@@ -145,19 +157,22 @@ export default function Commentary() {
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
                 <h3 className="font-semibold text-green-900 mb-2">Traffic Hits 216/Day — Best Since May 2025</h3>
                 <p className="text-muted-foreground mb-2">
-                  May 2026 closed at 216 orders/day (6,703 total), decisively surpassing March&apos;s 208/day and moving past
-                  the 215/day threshold previously set as a target. This is the highest daily volume in a full year and
-                  signals that customer acquisition momentum is not just recovering but setting new highs for the post-2025 era.
+                  May 2026 closed at 216 orders/day (6,703 total), decisively surpassing April&apos;s 211/day (6,318 total) and
+                  erasing the traffic deficit that persisted through most of 2025. This is the highest daily volume in a full
+                  year—since May 2025&apos;s 212/day—and signals that customer acquisition momentum is now setting new highs for
+                  the post-2025 era. Notably, April also showed 211/day in a 30-day month, meaning both April and May ran at
+                  comparable daily velocity; May simply had one extra calendar day.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Average Order Value: Stable at $13.95</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Average Order Value: April Led at $14.11, May at $13.95</h3>
                 <p className="text-muted-foreground">
-                  May AOV held at $13.95, matching the trailing trend (Jan $13.84, Feb $13.76, Mar $13.92). While this
-                  is still $1.49 below May 2025 ($15.44), the volume surge means total revenue is now materially higher than
-                  early 2026. The key leverage point remains: at 216/day, every $0.50 AOV increase adds ~$3,240/month.
-                  Closing even half the 2025 gap would add ~$4,800/month.
+                  April AOV reached $14.11—the highest since July 2025 ($14.39)—before May settled back to $13.95. The April
+                  uptick is the more interesting signal: it suggests customers are willing to spend more when beverage alcohol
+                  mix rises. The key gap to prior year remains AOV (May 2025: $15.44), but April&apos;s $14.11 proves the
+                  ceiling is not permanently lowered. Closing this gap toward $14.50–$15.00 is the highest-leverage revenue
+                  opportunity at current traffic levels.
                 </p>
               </div>
 
@@ -191,18 +206,19 @@ export default function Commentary() {
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">1.</span>
                     <span className="text-muted-foreground">
-                      <strong>Protect Traffic Gains:</strong> At 216/day, traffic is now the strongest it has been in a full year.
-                      This is the new floor, not the ceiling. Invest in retention (loyalty, email, community programming) to
-                      ensure summer volume doesn&apos;t backslide. Losing even 5 orders/day costs ~$2,100/month at current AOV.
+                      <strong>Protect Traffic Gains:</strong> At 216/day, traffic is now the strongest it has been in a year.
+                      April (211/day, 30 days) and May (216/day, 31 days) ran at virtually identical daily velocity—meaning
+                      the 216 pace is a real operating level, not a one-month blip. Invest in retention (loyalty, email,
+                      community programming) to ensure summer volume doesn&apos;t backslide. Losing even 5 orders/day costs ~$2,100/month.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">2.</span>
                     <span className="text-muted-foreground">
-                      <strong>Attack AOV with Alcohol &amp; Premium Beverages:</strong> Wine jumped from 0.6% to 2.4% in May—this
-                      is a $1,700+ monthly swing. The spring/summer alcohol window is open. Push wine, draft beer, and specialty
-                      beverages. A 1% shift from NA Beverage to alcohol at higher ticket prices directly lifts total revenue
-                      without requiring new customers.
+                      <strong>Attack AOV with Alcohol &amp; Premium Beverages:</strong> Wine jumped from 0.6% in March to 2.4%
+                      in May—this is a $1,700+ monthly swing. April&apos;s $14.11 AOV (highest since July 2025) proves the alcohol
+                      lift directly impacts per-ticket revenue. Push wine, draft beer, and specialty beverages. A 1% shift
+                      from NA Beverage to alcohol at higher ticket prices directly lifts total revenue without requiring new customers.
                     </span>
                   </li>
                   <li className="flex gap-3">
@@ -210,7 +226,7 @@ export default function Commentary() {
                     <span className="text-muted-foreground">
                       <strong>Target $100K Months:</strong> The math is now realistic: at 216 orders/day, raising AOV from $13.95
                       to $15.44 (May 2025 levels) pushes monthly revenue to ~$100,400. Alternatively, sustaining current AOV
-                      and growing traffic to 235 orders/day achieves the same result. Both paths are credible given May momentum.
+                      and growing traffic to 235 orders/day achieves the same result. Both paths are credible given April-May momentum.
                     </span>
                   </li>
                 </ul>
@@ -230,9 +246,10 @@ export default function Commentary() {
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Wine &amp; Alcohol Upside:</strong> Wine&apos;s 4x growth from March to May is the standout trend.
-                      Double down: wine features, staff training on pairings, and weekend evening pushes could sustain this lift
-                      and grow the 2.4% share toward 3.5%+. At current volume, that&apos;s an incremental $1,500+/month.
+                      <strong>Wine &amp; Alcohol Upside:</strong> Wine&apos;s growth from 0.6% (March) to 1.1% (April) to 2.4% (May)
+                      is the standout trend. Double down: wine features, staff training on pairings, and weekend evening pushes
+                      could sustain this lift and grow the 2.4% share toward 3.5%+. At current volume, that&apos;s an incremental
+                      $1,500+/month.
                     </span>
                   </li>
                   <li className="flex gap-3">
@@ -263,7 +280,7 @@ export default function Commentary() {
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
                 <h3 className="font-semibold mb-1">Average Order Value</h3>
-                <p className="text-sm text-muted-foreground">Current: $13.95 (May) | Target: $14.50+ (summer 2025 level)</p>
+                <p className="text-sm text-muted-foreground">Current: $13.95 (May) | Target: $14.50+ (Apr 2026 was $14.11)</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-purple-600">
@@ -288,18 +305,22 @@ export default function Commentary() {
             <p className="text-muted-foreground leading-relaxed mb-4">
               <strong className="text-green-700">May 2026 delivered $93,478—the strongest month in over a year.</strong> Traffic hit
               216 orders/day, the highest daily volume since May 2025. Beverage mix climbed to 54.1%, led by a notable wine
-              resurgence. The $90K barrier, which had held firm since April 2025, is officially broken.
+              resurgence. The $90K barrier, which had held firm since April 2025, is officially broken. April&apos;s
+              consolidation at $89,129 with a higher $14.11 AOV set the table—May capitalized with both volume and mix.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              The recovery narrative has shifted. For most of 2025 and early 2026, the challenge was rebuilding traffic volume.
-              That mission is largely accomplished. The next phase is converting this volume into $100K+ months by closing the
-              AOV gap—a $1.49 lift back toward 2025 levels. At current traffic, that gap is worth ~$9,700/month.
+              The recovery narrative has shifted. The challenge in 2025 and early 2026 was rebuilding traffic volume.
+              That mission is largely accomplished: April (211/day) and May (216/day) prove the new baseline is now above
+              210 orders/day. The next phase is converting this volume into $100K+ months by closing the AOV gap. At current
+              traffic, every $0.50 AOV increase adds ~$3,240/month. April&apos;s $14.11 AOV is proof the ceiling is higher than
+              recent months suggested.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               <strong>The summer window is open.</strong> With May proving the business can sustain 216+ orders/day and
-              beverage alcohol showing seasonal strength, the conditions are set for sustained $90K+ performance.
-              The path to $100K runs through two levers: (1) protecting and slightly growing traffic, and (2) recovering
-              AOV via premium beverage and upsell discipline. Both are well within reach.
+              beverage alcohol showing seasonal strength (wine 2.4%, alcohol total 3.9%), the conditions are set for
+              sustained $90K+ performance. The path to $100K runs through two levers: (1) protecting and slightly growing
+              traffic, and (2) recovering AOV via premium beverage and upsell discipline. April&apos;s $14.11 AOV shows the
+              potential is there. Both levers are well within reach.
             </p>
           </CardContent>
         </Card>
