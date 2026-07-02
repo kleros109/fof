@@ -20,7 +20,7 @@ export default function Commentary() {
               Back to Dashboard
             </Link>
             <h1 className="text-2xl sm:text-3xl font-bold">Operating Commentary</h1>
-            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - January 2025 to May 2026</p>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">Analysis of Sales Trends - 1H2026 & 2Q2026 Performance Focus</p>
           </CardContent>
         </Card>
 
@@ -32,17 +32,13 @@ export default function Commentary() {
           <CardContent>
             <div className="prose prose-gray max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Friends of Friends experienced significant volatility in 2025, peaking in March at $110,321 before
-                declining through September to $74,930 and stabilizing around $76K–$80K in Q4. Entering 2026,
-                <strong className="text-green-700"> January 2026 delivered a strong $86,744 (+9.0% from December)</strong>,
-                the best month since March 2025. February 2026 closed at <strong className="text-blue-700">$78,477</strong> (5,704 orders, 204/day, avg order $13.76)—
-                below January but consistent with the February 2025 seasonal pattern. March 2026 showed
-                accelerating momentum at <strong className="text-green-700">$89,845</strong> (208 orders/day).
-                April 2026 eased slightly to <strong className="text-blue-700">$89,128</strong> (216/day but 30 days vs 31),
-                before <strong className="text-green-700">May 2026 broke through at $93,478</strong> (216 orders/day).
-                May was the strongest month since April 2025 ($101,404) and the first $90K+ month in over a year.
-                The Q1-Q2 2026 arc shows a clear recovery: Q1 averaged $85,022/mo, and April-May
-                averaged $91,303/mo, proving the business is exiting the trough and rebuilding toward prior highs.
+                Friends of Friends experienced significant volatility in 2025, peaking in March at $110,321 before declining to a trough of $74,930 in September and stabilizing around $76K–$80K in Q4. Entering 2026, the first half of the year (<strong>1H2026</strong>) delivered a strong recovery trend, totaling <strong className="text-green-700">$515,199 in Net Sales</strong> and averaging $85,866/mo. 
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Quarterly analysis shows that <strong>2Q2026 (April–June) grew to $260,133</strong>, representing a <strong className="text-green-700">+2.0% growth QoQ</strong> over 1Q2026 ($255,066). This performance was driven by a powerful surge in April ($89,129, 211 orders/day) and May (<strong className="text-green-700">$93,461</strong>, 216 orders/day), which marked the highest monthly sales since April 2025 ($101,404). 
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                However, <strong>June 2026 saw a seasonal contraction, closing at $77,543</strong> (193 orders/day). This contraction was driven by a drop in customer traffic (-13.7% MoM) and a decline in average order value (AOV) to $13.41, primarily due to a sharp pullback in beverage alcohol sales (Wine and Draft Beer). Despite June&apos;s dip, the overall 1H2026 trajectory remains highly encouraging, proving the business has established a higher operational baseline compared to late 2025.
               </p>
             </div>
           </CardContent>
@@ -58,34 +54,31 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">May 2026: $93,478 — First $90K+ Month Since April 2025</h3>
+              <div className="border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-r">
+                <h3 className="font-semibold text-red-900 mb-2">June 2026: $77,543 — Seasonal Slump & Traffic Contraction</h3>
                 <p className="text-muted-foreground">
-                  The full month of May 2026 delivered $93,478 across 6,703 orders—216 orders/day and $3,016/day in net sales.
-                  Tips reached $9,421 (10.1% of net), and the beverage mix climbed to 54.1%. May represents the strongest
-                  month since April 2025 ($101,404), marking a 4.9% revenue increase over April 2026 ($89,128) and confirming that
-                  the recovery is not only real but accelerating into the summer season.
+                  June contracted to $77,543 across 5,781 orders—193 orders/day and $2,585/day in Net Sales. This represents a -17.0% decline from May&apos;s peak of $93,461. The slide was driven by both volume (920 fewer orders, or -13.7% MoM) and ticket size, with AOV dropping from $13.95 in May to $13.41 in June. This contraction echoes the seasonal slide observed in summer 2025, underlining the need to protect traffic levels during summer months.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
+                <h3 className="font-semibold text-green-900 mb-2">May 2026: $93,461 — Q2 Peak and Highest Month in a Year</h3>
+                <p className="text-muted-foreground">
+                  May delivered a standout performance at $93,461 across 6,701 orders, averaging 216 orders/day (highest daily volume since May 2025) and $3,015/day in net sales. Beverage mix climbed to a 1H26 high of 56.3%, fueled by a Wine category peak of $2,277 (2.4% of sales) and Draft Beer at $1,388 (1.5%). May confirmed the recovery potential of the brand when traffic and beverage attachment align.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">April 2026: $89,129 — Steady Between March and May</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">April 2026: $89,129 — Strong AOV Foundations</h3>
                 <p className="text-muted-foreground">
-                  April 2026 delivered $89,129 across 6,318 orders—211 orders/day (30 days vs 31). Notably, AOV jumped to
-                  $14.11 from March&apos;s $13.92, a meaningful $0.19 increase and the highest AOV since July 2025 ($14.39).
-                  Beverage mix rose to 53.7% ($47,856) from March&apos;s 52.4%, already hinting at the spring alcohol lift that
-                  would fully materialize in May. April wasn&apos;t a step back—it was a consolidation month that set the stage for May.
+                  April generated $89,129 across 6,318 orders (211/day). AOV peaked in April at $14.11 (highest in 1H2026), demonstrating strong ticket health. Total beverages comprised 53.7% of sales, laying the groundwork for May&apos;s breakthrough.
                 </p>
               </div>
 
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Context & Headwinds: AOV Still Below 2025 Levels</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">Quarterly Outlook: Q2 Outperformed Q1 by +2.0%</h3>
                 <p className="text-muted-foreground">
-                  While traffic volume has fully recovered and daily orders are now exceeding 2025 levels, AOV remains the
-                  primary headwind. May 2026 AOV was $13.95—flat with the trailing 12-month trend but still well below
-                  May 2025 ($15.44). April&apos;s $14.11 AOV was a bright spot, suggesting the gap may be closing. The good news:
-                  volume growth is now strong enough to offset the AOV gap. At 216/day and $13.95 AOV, monthly revenue is $93,478.
-                  Returning to $15.00 AOV at this traffic level would push monthly revenue to ~$100,400—within reach of the 2025 peak.
+                  From a quarterly perspective, Q2 2026 Net Sales reached $260,133, beating Q1 2026 ($255,066) by $5,067 (+2.0%). Q2 average monthly sales stood at $86,711 compared to Q1&apos;s $85,022. This demonstrates that despite June&apos;s contraction, the quarterly momentum has accelerated, reinforcing the recovery narrative.
                 </p>
               </div>
             </div>
@@ -102,42 +95,24 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
+              <div className="border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-r">
+                <h3 className="font-semibold text-red-900 mb-2">Beverage Alcohol Collapse in June (-60.1% MoM)</h3>
+                <p className="text-muted-foreground mb-2">
+                  While total beverages remained high at 56.1% of June sales ($43,466), the high-margin alcohol subcategories collapsed. Wine sales plummeted from $2,277 (2.4% of sales) in May to just $645 (0.8%) in June, a -71.7% drop. Draft Beer fell from $1,388 (1.5%) to $527 (0.7%), a -62.0% drop. Overall beverage alcohol dropped from $4,757 in May to $1,896 in June. This collapse directly dragged down AOV.
+                </p>
+              </div>
+
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Beverage Sales at 54.1% — Highest Since October 2025</h3>
-                <p className="text-muted-foreground mb-2">
-                  Beverages accounted for 54.1% of May 2026 sales ($50,596), the highest beverage mix in eight months.
-                  NA Beverages remain dominant at 51.2% of total sales ($47,839). Wine notably expanded to $2,277 (2.4%), a
-                  meaningful jump from March ($566, 0.6%), while draft beer ($1,388, 1.5%) and bottled beer ($1,092, 1.2%)
-                  also gained share. The alcohol category is showing spring/summer strength consistent with seasonal patterns.
+                <h3 className="font-semibold text-green-900 mb-2">Wavy Merchandise: A Surprise Bright Spot (+94.1% MoM)</h3>
+                <p className="text-muted-foreground">
+                  Merchandise sales rose sharply in June, reaching $1,374 (1.8% of sales), nearly doubling from May&apos;s $708. This suggests that summer merchandise offerings are finding strong customer reception and providing a valuable buffer against beverage contraction.
                 </p>
               </div>
 
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">April Category Mix Prefigured May Growth</h3>
-                <p className="text-muted-foreground">
-                  April 2026 already showed beverage strength: category mix reached 53.7% ($47,856), driven by NA Beverages
-                  at 51.1% ($45,525). Wine was $967 (1.1%) and alcohol categories combined for 2.3% ($2,330). Food held at
-                  $10,021 (11.2%). The April mix was essentially a preview of May—beverages trending up, food stable near
-                  double digits, no-category items compressing as drink mix becomes more dominant entering warm weather months.
-                </p>
-              </div>
-
-              <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Food Category Holds Strong at 10.6%</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">NA Beverage and Food Categories Remain Stable</h3>
                 <p className="text-muted-foreground mb-2">
-                  Food sales reached $9,905 (10.6% of revenue) in May 2026, a modest step down from April&apos;s 11.2% ($10,021)
-                  in absolute terms but in line with higher overall revenue. At this volume, food is still contributing
-                  nearly $10K monthly and remains structurally important. The nine-month run of food near or above 10%
-                  confirms the category is a stable, established revenue pillar.
-                </p>
-              </div>
-
-              <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">No-Category Items: 32.4% in May</h3>
-                <p className="text-muted-foreground">
-                  No-category sales were $30,270 (32.4%) in May, down slightly as a percentage of total but steady in absolute
-                  terms compared to April ($28,265, 31.7%). Merchandise holds at $708 (0.8%). As beverage mix rises into summer,
-                  the no-category share naturally compresses—a healthy sign of category rotation toward higher-value drink sales.
+                  NA Beverages continue to anchor the business, contributing 53.6% ($41,570) of sales in June. Food sales were $7,652 (9.9% share) in June, compared to $9,905 (10.6% share) in May, remaining near the 10% target. No-category items held stable at 32.3% ($25,052).
                 </p>
               </div>
             </div>
@@ -154,36 +129,24 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r">
-                <h3 className="font-semibold text-green-900 mb-2">Traffic Hits 216/Day — Best Since May 2025</h3>
-                <p className="text-muted-foreground mb-2">
-                  May 2026 closed at 216 orders/day (6,703 total), decisively surpassing April&apos;s 211/day (6,318 total) and
-                  erasing the traffic deficit that persisted through most of 2025. This is the highest daily volume in a full
-                  year—since May 2025&apos;s 212/day—and signals that customer acquisition momentum is now setting new highs for
-                  the post-2025 era. Notably, April also showed 211/day in a 30-day month, meaning both April and May ran at
-                  comparable daily velocity; May simply had one extra calendar day.
-                </p>
-              </div>
-
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
-                <h3 className="font-semibold text-blue-900 mb-2">Average Order Value: April Led at $14.11, May at $13.95</h3>
-                <p className="text-muted-foreground">
-                  April AOV reached $14.11—the highest since July 2025 ($14.39)—before May settled back to $13.95. The April
-                  uptick is the more interesting signal: it suggests customers are willing to spend more when beverage alcohol
-                  mix rises. The key gap to prior year remains AOV (May 2025: $15.44), but April&apos;s $14.11 proves the
-                  ceiling is not permanently lowered. Closing this gap toward $14.50–$15.00 is the highest-leverage revenue
-                  opportunity at current traffic levels.
+                <h3 className="font-semibold text-blue-900 mb-2">Dine-In vs. Takeout Dynamics</h3>
+                <p className="text-muted-foreground mb-2">
+                  In June, Dine-In generated $38,790 across 2,559 orders, averaging $15.16 per order. Takeout generated $35,041 across 2,967 orders, averaging $11.81 per order. The significantly higher AOV of Dine-In ($15.16 vs. $11.81) highlights that in-house dining remains the primary driver of profitability. The contraction in June was heavily felt in Dine-In orders, which dropped from 3,055 in May to 2,559 in June (-16.2%).
                 </p>
               </div>
 
               <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-50 rounded-r">
-                <h3 className="font-semibold text-yellow-900 mb-2">Daypart Distribution: Lunch 50%, Breakfast 35%</h3>
+                <h3 className="font-semibold text-yellow-900 mb-2">AOV Compression is the Primary Challenge</h3>
                 <p className="text-muted-foreground">
-                  May 2026 daypart: Lunch 49.8% ($43,739, 3,335 orders), Breakfast 35.4% ($35,920,
-                  2,372 orders), Dinner 8.2% ($7,722, 551 orders), No Service 6.5% ($6,037, 439 orders),
-                  Late Night 0.1% ($60, 6 orders). Breakfast share expanded back toward 35% after tapering in March,
-                  while lunch remained the dominant period near 50%. The new Late Night category appeared in May—minimal
-                  today but worth monitoring as a potential growth window.
+                  June&apos;s AOV of $13.41 represents the lowest level since January 2026. The main culprit is the lack of alcohol attachment on takeout tickets and the drop in Dine-In order sizes. Restoring AOV to the $14.00+ level seen in April ($14.11) is the most immediate path to lifting top-line revenue.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 rounded-r">
+                <h3 className="font-semibold text-blue-900 mb-2">Daypart Split: Breakfast Gains Share</h3>
+                <p className="text-muted-foreground">
+                  June daypart analysis: Lunch remained the largest period at 48.2% ($35,536, 2,785 orders), followed by Breakfast at 37.2% ($31,277, 2,152 orders). Dinner contributed 7.4% ($4,927), and No Service was 7.2% ($5,469). Breakfast expanded its share by 1.8 percentage points MoM, showing resilient morning routines.
                 </p>
               </div>
             </div>
@@ -201,32 +164,24 @@ export default function Commentary() {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-3 text-lg">Immediate Priorities for Summer 2026</h3>
+                <h3 className="font-semibold mb-3 text-lg">Immediate Priorities for 2H2026</h3>
                 <ul className="space-y-2">
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">1.</span>
                     <span className="text-muted-foreground">
-                      <strong>Protect Traffic Gains:</strong> At 216/day, traffic is now the strongest it has been in a year.
-                      April (211/day, 30 days) and May (216/day, 31 days) ran at virtually identical daily velocity—meaning
-                      the 216 pace is a real operating level, not a one-month blip. Invest in retention (loyalty, email,
-                      community programming) to ensure summer volume doesn&apos;t backslide. Losing even 5 orders/day costs ~$2,100/month.
+                      <strong>Reclaim the Beverage Alcohol Lift:</strong> The collapse in Wine (-71.7%) and Draft Beer (-62.0%) was the primary contributor to June&apos;s AOV drop. We must launch immediate summer alcohol pairings, weekend wine flights, and happy hour draft specials to restore wine and draft beer sales.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">2.</span>
                     <span className="text-muted-foreground">
-                      <strong>Attack AOV with Alcohol &amp; Premium Beverages:</strong> Wine jumped from 0.6% in March to 2.4%
-                      in May—this is a $1,700+ monthly swing. April&apos;s $14.11 AOV (highest since July 2025) proves the alcohol
-                      lift directly impacts per-ticket revenue. Push wine, draft beer, and specialty beverages. A 1% shift
-                      from NA Beverage to alcohol at higher ticket prices directly lifts total revenue without requiring new customers.
+                      <strong>Drive Dine-In Traffic:</strong> Dine-In orders average $15.16, compared to Takeout&apos;s $11.81. Shifting 5% of takeout customers to dine-in would lift overall AOV. Consider hosting summer community events, in-house acoustic sessions, or trivia nights to draw guests through the door.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-blue-600 font-bold">3.</span>
                     <span className="text-muted-foreground">
-                      <strong>Target $100K Months:</strong> The math is now realistic: at 216 orders/day, raising AOV from $13.95
-                      to $15.44 (May 2025 levels) pushes monthly revenue to ~$100,400. Alternatively, sustaining current AOV
-                      and growing traffic to 235 orders/day achieves the same result. Both paths are credible given April-May momentum.
+                      <strong>Stabilize Traffic Baseline:</strong> While June volume dropped to 193/day, the Q2 average of 207/day indicates strong customer interest. Implementing a summer loyalty reward or local business lunch program can keep Friends of Friends top-of-mind during vacation periods.
                     </span>
                   </li>
                 </ul>
@@ -238,26 +193,13 @@ export default function Commentary() {
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Food Category: Hold Above 10%:</strong> At $9,905 (10.6%), food is contributing meaningfully even
-                      as beverage share rises. Food orders typically carry higher margins and drive visit frequency. Maintaining
-                      food above 10% ensures the menu mix stays balanced and revenue isn&apos;t purely drink-dependent.
+                      <strong>Capitalize on Merchandise Success:</strong> With Wavy Merchandise growing +94.1% MoM to $1,374, we should release limited-edition summer capsules (e.g., hats, tote bags, apparel) to maintain this margin-rich revenue stream.
                     </span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-green-600 font-bold">•</span>
                     <span className="text-muted-foreground">
-                      <strong>Wine &amp; Alcohol Upside:</strong> Wine&apos;s growth from 0.6% (March) to 1.1% (April) to 2.4% (May)
-                      is the standout trend. Double down: wine features, staff training on pairings, and weekend evening pushes
-                      could sustain this lift and grow the 2.4% share toward 3.5%+. At current volume, that&apos;s an incremental
-                      $1,500+/month.
-                    </span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="text-green-600 font-bold">•</span>
-                    <span className="text-muted-foreground">
-                      <strong>Lunch &amp; Breakfast Throughput:</strong> Combined, these periods drive ~85% of orders (5,707 of
-                      6,703). Even modest throughput improvements during the 8AM–2PM window compound meaningfully at this scale.
-                      Staffing, POS speed, and line management deserve attention as volume pushes into uncharted territory.
+                      <strong>Enhance Dinner & Late Night Throughput:</strong> Dinner ($4,927, 7.4% share) remains under-indexed. Evaluating the dinner menu or offering early-evening dinner specials could capture more of this high-ticket daypart.
                     </span>
                   </li>
                 </ul>
@@ -275,22 +217,22 @@ export default function Commentary() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-600">
                 <h3 className="font-semibold mb-1">Daily Order Count</h3>
-                <p className="text-sm text-muted-foreground">Current: 216/day (May) | Target: 225+ orders/day</p>
+                <p className="text-sm text-muted-foreground">Current: 193/day (June) | Target: 215+ orders/day</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-green-600">
                 <h3 className="font-semibold mb-1">Average Order Value</h3>
-                <p className="text-sm text-muted-foreground">Current: $13.95 (May) | Target: $14.50+ (Apr 2026 was $14.11)</p>
+                <p className="text-sm text-muted-foreground">Current: $13.41 (June) | Target: $14.25+ (1H26 average was $13.84)</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-purple-600">
                 <h3 className="font-semibold mb-1">Food Category Percentage</h3>
-                <p className="text-sm text-muted-foreground">Current: 10.6% (May) | Target: 11.5%+</p>
+                <p className="text-sm text-muted-foreground">Current: 9.9% (June) | Target: 10.5%+</p>
               </div>
 
               <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-orange-600">
                 <h3 className="font-semibold mb-1">Monthly Revenue Target</h3>
-                <p className="text-sm text-muted-foreground">Current: $93,478 (May) | Target: $100,000+</p>
+                <p className="text-sm text-muted-foreground">Current: $77,543 (June) | Target: $90,000+</p>
               </div>
             </div>
           </CardContent>
@@ -303,24 +245,13 @@ export default function Commentary() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              <strong className="text-green-700">May 2026 delivered $93,478—the strongest month in over a year.</strong> Traffic hit
-              216 orders/day, the highest daily volume since May 2025. Beverage mix climbed to 54.1%, led by a notable wine
-              resurgence. The $90K barrier, which had held firm since April 2025, is officially broken. April&apos;s
-              consolidation at $89,129 with a higher $14.11 AOV set the table—May capitalized with both volume and mix.
+              <strong>First Half 2026 (1H2026) Net Sales totaled $515,199</strong>, reflecting a solid recovery trajectory compared to the late 2025 slowdown. Q2 2026 ($260,133) demonstrated continued acceleration with <strong>+2.0% growth over Q1 2026</strong> ($255,066). May 2026 was the absolute peak of the period, breaking through the $90K barrier at $93,461.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              The recovery narrative has shifted. The challenge in 2025 and early 2026 was rebuilding traffic volume.
-              That mission is largely accomplished: April (211/day) and May (216/day) prove the new baseline is now above
-              210 orders/day. The next phase is converting this volume into $100K+ months by closing the AOV gap. At current
-              traffic, every $0.50 AOV increase adds ~$3,240/month. April&apos;s $14.11 AOV is proof the ceiling is higher than
-              recent months suggested.
+              June&apos;s contraction to $77,543 serves as a warning of summer seasonality and the volatility of high-margin alcohol categories (Wine down -71.7% and Draft Beer down -62.0%). However, because the business has shown it can sustain daily traffic of 216+ orders/day (as in May), the operational potential remains very high. 
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              <strong>The summer window is open.</strong> With May proving the business can sustain 216+ orders/day and
-              beverage alcohol showing seasonal strength (wine 2.4%, alcohol total 3.9%), the conditions are set for
-              sustained $90K+ performance. The path to $100K runs through two levers: (1) protecting and slightly growing
-              traffic, and (2) recovering AOV via premium beverage and upsell discipline. April&apos;s $14.11 AOV shows the
-              potential is there. Both levers are well within reach.
+              <strong>Looking toward 2H2026</strong>, the strategy centers on two primary goals: (1) recovering alcohol category attachment to push AOV back above $14.00, and (2) encouraging dine-in visits which yield a 28% higher ticket value compared to takeout. With stable core volume and strong merchandise demand ($1,374 in June), Friends of Friends is well-positioned for a robust second half of the year.
             </p>
           </CardContent>
         </Card>

@@ -189,14 +189,25 @@ export default function SalesDashboard() {
     },
     {
       month: 'May 2026',
-      netSales: 93478.09,
+      netSales: 93460.59,
       tips: 9420.65,
-      taxAmount: 8116.40,
+      taxAmount: 8114.84,
       deferredGiftCards: 240.00,
-      totalAmount: 111519.14,
+      totalAmount: 111500.08,
       avgOrder: 13.95,
-      totalOrders: 6703,
-      totalGuests: 6703
+      totalOrders: 6701,
+      totalGuests: 6701
+    },
+    {
+      month: 'June 2026',
+      netSales: 77543.20,
+      tips: 7686.44,
+      taxAmount: 6684.69,
+      deferredGiftCards: 280.00,
+      totalAmount: 92524.33,
+      avgOrder: 13.41,
+      totalOrders: 5781,
+      totalGuests: 5781
     }
   ];
 
@@ -316,10 +327,17 @@ export default function SalesDashboard() {
     },
     {
       month: 'May 2026',
-      totalBeverages: 50595.87,
-      totalSales: 93478.09,
-      percentage: 54.1,
-      momGrowth: 3.6
+      totalBeverages: 52578.37,
+      totalSales: 93460.59,
+      percentage: 56.3,
+      momGrowth: 9.9
+    },
+    {
+      month: 'June 2026',
+      totalBeverages: 43466.00,
+      totalSales: 77543.20,
+      percentage: 56.1,
+      momGrowth: -17.3
     }
   ];
 
@@ -439,10 +457,17 @@ export default function SalesDashboard() {
     },
     {
       month: 'May 2026',
-      totalFoodNoCategory: 40882.22,
-      totalSales: 93478.09,
-      percentage: 43.7,
-      momGrowth: -0.9
+      totalFoodNoCategory: 40174.56,
+      totalSales: 93460.59,
+      percentage: 43.0,
+      momGrowth: -2.7
+    },
+    {
+      month: 'June 2026',
+      totalFoodNoCategory: 32703.40,
+      totalSales: 77543.20,
+      percentage: 42.2,
+      momGrowth: -18.6
     }
   ];
 
@@ -546,30 +571,36 @@ export default function SalesDashboard() {
     },
     {
       month: 'May 2026',
-      otherSales: 93478.09 - 50595.87,
-      netSales: 93478.09,
-      beverageSales: 50595.87
+      otherSales: 93460.59 - 52578.37,
+      netSales: 93460.59,
+      beverageSales: 52578.37
+    },
+    {
+      month: 'June 2026',
+      otherSales: 77543.20 - 43466.00,
+      netSales: 77543.20,
+      beverageSales: 43466.00
     }
   ];
 
-  // Sales by category data (May 2026)
+  // Sales by category data (June 2026)
   const categoryData = [
-    { name: 'NA Beverage', value: 47839.23, percentage: 51.2 },
-    { name: 'No Category', value: 30269.80, percentage: 32.4 },
-    { name: 'Food', value: 9904.76, percentage: 10.6 },
-    { name: 'Wine', value: 2276.93, percentage: 2.4 },
-    { name: 'Draft Beer', value: 1387.55, percentage: 1.5 },
-    { name: 'Bottled Beer', value: 1092.16, percentage: 1.2 },
-    { name: 'Merchandise', value: 707.66, percentage: 0.8 }
+    { name: 'NA Beverage', value: 41569.79, percentage: 53.6 },
+    { name: 'No Category', value: 25051.60, percentage: 32.3 },
+    { name: 'Food', value: 7651.80, percentage: 9.9 },
+    { name: 'Merchandise', value: 1373.80, percentage: 1.8 },
+    { name: 'Bottled Beer', value: 724.61, percentage: 0.9 },
+    { name: 'Wine', value: 644.60, percentage: 0.8 },
+    { name: 'Draft Beer', value: 527.00, percentage: 0.7 }
   ];
 
-  // Daypart analysis (May 2026)
+  // Daypart analysis (June 2026)
   const daypartData = [
-    { name: 'Breakfast', sales: 35920.02, orders: 2372, percentage: 35.4 },
-    { name: 'Lunch', sales: 43738.57, orders: 3335, percentage: 49.8 },
-    { name: 'Dinner', sales: 7722.10, orders: 551, percentage: 8.2 },
-    { name: 'No Service', sales: 6037.40, orders: 439, percentage: 6.5 },
-    { name: 'Late Night', sales: 60.00, orders: 6, percentage: 0.1 }
+    { name: 'Breakfast', sales: 31276.89, orders: 2152, percentage: 37.2 },
+    { name: 'Lunch', sales: 35536.45, orders: 2785, percentage: 48.2 },
+    { name: 'Dinner', sales: 4927.39, orders: 428, percentage: 7.4 },
+    { name: 'No Service', sales: 5469.47, orders: 415, percentage: 7.2 },
+    { name: 'Late Night', sales: 333.00, orders: 1, percentage: 0.0 }
   ];
 
   // Hourly sales pattern
@@ -711,9 +742,15 @@ export default function SalesDashboard() {
     },
     {
       month: 'May 2026',
-      avgOrdersPerDay: Math.round(6703 / 31),
-      totalOrders: 6703,
+      avgOrdersPerDay: Math.round(6701 / 31),
+      totalOrders: 6701,
       daysInMonth: 31
+    },
+    {
+      month: 'June 2026',
+      avgOrdersPerDay: Math.round(5781 / 30),
+      totalOrders: 5781,
+      daysInMonth: 30
     }
   ];
 
@@ -817,9 +854,15 @@ export default function SalesDashboard() {
     },
     {
       month: 'May 2026',
-      avgNetSalesPerDay: Math.round(93478.09 / 31),
-      netSales: 93478.09,
+      avgNetSalesPerDay: Math.round(93460.59 / 31),
+      netSales: 93460.59,
       daysInMonth: 31
+    },
+    {
+      month: 'June 2026',
+      avgNetSalesPerDay: Math.round(77543.20 / 30),
+      netSales: 77543.20,
+      daysInMonth: 30
     }
   ];
 
@@ -860,7 +903,7 @@ export default function SalesDashboard() {
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold">Friends of Friends Sales Dashboard</h1>
-                <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - May 2026 Performance Analysis</p>
+                <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - June 2026 Performance Analysis</p>
               </div>
               <div className="flex gap-2 sm:gap-3 flex-wrap">
                 <Link
@@ -982,7 +1025,7 @@ export default function SalesDashboard() {
           {/* Sales by Category */}
           <Card>
             <CardHeader>
-              <CardTitle>Sales by Category (March 2026)</CardTitle>
+              <CardTitle>Sales by Category (June 2026)</CardTitle>
             </CardHeader>
             <CardContent>
             <ResponsiveContainer width="100%" height={350}>
@@ -1010,7 +1053,7 @@ export default function SalesDashboard() {
           {/* Daypart Analysis */}
           <Card>
             <CardHeader>
-              <CardTitle>Sales by Daypart (March 2026)</CardTitle>
+              <CardTitle>Sales by Daypart (June 2026)</CardTitle>
             </CardHeader>
             <CardContent>
             <ResponsiveContainer width="100%" height={350}>
@@ -1190,13 +1233,13 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">216/day</p>
-              <p className="text-xs text-blue-600">May 2026</p>
+              <p className="text-lg font-bold text-blue-900">193/day</p>
+              <p className="text-xs text-blue-600">June 2026</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">17-Period Average</p>
+              <p className="text-sm font-medium text-purple-700">18-Period Average</p>
               <p className="text-lg font-bold text-purple-900">204/day</p>
-              <p className="text-xs text-purple-600">Jan 2025 - May 2026</p>
+              <p className="text-xs text-purple-600">Jan 2025 - June 2026</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1257,13 +1300,13 @@ export default function SalesDashboard() {
             </div>
             <div className="bg-blue-50 p-3 rounded-lg">
               <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">$3,016/day</p>
-              <p className="text-xs text-blue-600">May 2026</p>
+              <p className="text-lg font-bold text-blue-900">$2,585/day</p>
+              <p className="text-xs text-blue-600">June 2026</p>
             </div>
             <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">16-Period Average</p>
-              <p className="text-lg font-bold text-purple-900">$2,912/day</p>
-              <p className="text-xs text-purple-600">Jan 2025 - May 2026</p>
+              <p className="text-sm font-medium text-purple-700">18-Period Average</p>
+              <p className="text-lg font-bold text-purple-900">$2,900/day</p>
+              <p className="text-xs text-purple-600">Jan 2025 - June 2026</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1281,15 +1324,15 @@ export default function SalesDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             <div className="p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
-              <p className="text-sm text-blue-700">May 2026 closed at $93,478 (216 orders/day), the strongest month since April 2025 ($101,404). Net Sales grew 4.0% versus March 2026 ($89,845), reversing the late-winter decline.</p>
+              <p className="text-sm text-blue-700">1H2026 Net Sales totaled $515,199, averaging $85,866/mo. 2Q2026 grew to $260,133 (+2.0% QoQ over 1Q26) despite a June contraction to $77,543 (193 orders/day) following a peak in May of $93,461 (216 orders/day).</p>
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <h3 className="font-semibold text-green-900 mb-2">Category Leaders</h3>
-              <p className="text-sm text-green-700">NA Beverages lead at 51.2% of May sales; Food at 10.6%. No-category items at 32.4%. The beverage portion climbed to 54.1% overall, the highest since October 2025.</p>
+              <p className="text-sm text-green-700">For June 2026, NA Beverages led at 53.6% of sales, with Food at 9.9%. Wavy Merchandise grew to 1.8% ($1,374), representing a +94.1% MoM surge. Total beverages comprised 56.1% of June sales.</p>
             </div>
             <div className="p-4 bg-purple-50 rounded-lg">
-              <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic</h3>
-              <p className="text-sm text-purple-700">May 2026 averaged 216 orders/day (6,703 total), the highest daily volume since May 2025. Average order value held at $13.95, matching the trailing 12-month trend.</p>
+              <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic & AOV</h3>
+              <p className="text-sm text-purple-700">Traffic averaged 205 orders/day in 1H26, peaking in May (216/day) before easing to 193/day in June. June AOV fell to $13.41, primarily driven by a drop in alcohol beverage ticket sizes.</p>
             </div>
           </div>
           </CardContent>
