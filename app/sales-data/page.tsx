@@ -62,7 +62,7 @@ export default function SalesDataTable() {
               <div>
                 <button
                   onClick={generateCSV}
-                  className="inline-flex items-center gap-2 rounded-sm border border-outline bg-background px-4 py-2 text-label-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  className="inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-label-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
                 >
                   <Download size={18} />
                   <span>Download CSV Data</span>
