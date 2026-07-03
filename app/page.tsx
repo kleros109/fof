@@ -202,12 +202,12 @@ export default function SalesDashboard() {
                 axisLine={true}
                 tickLine={true}
               />
-              <Tooltip formatter={(value) => formatCurrency(value as number)} />
+              <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
               <Bar dataKey="netSales" fill={CHART_COLORS[0]}>
                 <LabelList
                   dataKey="netSales"
                   position="top"
-                  formatter={formatCurrency}
+                  formatter={formatCurrencyNoDecimals}
                   style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
@@ -240,7 +240,7 @@ export default function SalesDashboard() {
                     <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value) => formatCurrency(value as number)} />
+                <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
               </PieChart>
             </ResponsiveContainer>
             </CardContent>
@@ -263,7 +263,7 @@ export default function SalesDashboard() {
                   axisLine={true}
                   tickLine={true}
                 />
-                <Tooltip formatter={(value) => formatCurrency(value as number)} />
+                <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
                 <Bar dataKey="sales" fill={CHART_COLORS[0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -327,12 +327,12 @@ export default function SalesDashboard() {
                 tickLine={true}
                 domain={[30000, 55000]}
               />
-              <Tooltip formatter={(value) => formatCurrency(value as number)} />
+              <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
               <Bar dataKey="totalBeverages" fill={CHART_COLORS[2]}>
                 <LabelList
                   dataKey="totalBeverages"
                   position="top"
-                  formatter={formatCurrency}
+                  formatter={formatCurrencyNoDecimals}
                   style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
@@ -363,12 +363,12 @@ export default function SalesDashboard() {
                 tickLine={true}
                 domain={[25000, 65000]}
               />
-              <Tooltip formatter={(value) => formatCurrency(value as number)} />
+              <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
               <Bar dataKey="otherSales" fill={CHART_COLORS[3]}>
                 <LabelList
                   dataKey="otherSales"
                   position="top"
-                  formatter={formatCurrency}
+                  formatter={formatCurrencyNoDecimals}
                   style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
@@ -471,14 +471,14 @@ export default function SalesDashboard() {
                 domain={[2000, 3800]}
               />
               <Tooltip
-                formatter={(value) => [formatCurrency(value as number), 'Avg Net Sales Per Day']}
+                formatter={(value) => [formatCurrencyNoDecimals(value as number), 'Avg Net Sales Per Day']}
                 labelFormatter={(label) => `Month: ${label}`}
               />
               <Bar dataKey="avgNetSalesPerDay" fill={CHART_COLORS[2]}>
                 <LabelList
                   dataKey="avgNetSalesPerDay"
                   position="top"
-                  formatter={formatCurrency}
+                  formatter={formatCurrencyNoDecimals}
                   style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>

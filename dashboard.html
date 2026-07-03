@@ -1507,6 +1507,10 @@
       return '$' + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    function formatCurrencyNoDecimals(num) {
+      return '$' + num.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    }
+
     function calculateOverallAverages() {
       // Get the latest month (last item in the array)
       const latestMonth = monthlyData[monthlyData.length - 1];
@@ -1692,7 +1696,7 @@
               borderColor: themeColors.tooltipBorder,
               borderWidth: 1,
               callbacks: {
-                label: function(context) { return formatCurrency(context.parsed.y); }
+                label: function(context) { return formatCurrencyNoDecimals(context.parsed.y); }
               }
             }
           },
@@ -1840,7 +1844,7 @@
               titleColor: themeColors.tooltipText,
               bodyColor: themeColors.tooltipText,
               callbacks: {
-                label: function(context) { return formatCurrency(context.parsed.y); }
+                label: function(context) { return formatCurrencyNoDecimals(context.parsed.y); }
               }
             }
           },
@@ -1893,7 +1897,7 @@
               titleColor: themeColors.tooltipText,
               bodyColor: themeColors.tooltipText,
               callbacks: {
-                label: function(context) { return formatCurrency(context.parsed.y); }
+                label: function(context) { return formatCurrencyNoDecimals(context.parsed.y); }
               }
             }
           },
@@ -1947,7 +1951,7 @@
               titleColor: themeColors.tooltipText,
               bodyColor: themeColors.tooltipText,
               callbacks: {
-                label: function(context) { return formatCurrency(context.parsed.y) + '/day'; }
+                 label: function(context) { return formatCurrencyNoDecimals(context.parsed.y) + '/day'; }
               }
             }
           },
@@ -2024,7 +2028,7 @@
                   const val = context.parsed;
                   const total = context.dataset.data.reduce((a, b) => a + b, 0);
                   const percent = ((val / total) * 100).toFixed(1);
-                  return context.label + ': ' + formatCurrency(val) + ' (' + percent + '%)';
+                   return context.label + ': ' + formatCurrencyNoDecimals(val) + ' (' + percent + '%)';
                 }
               }
             }
@@ -2055,7 +2059,7 @@
               titleColor: themeColors.tooltipText,
               bodyColor: themeColors.tooltipText,
               callbacks: {
-                label: function(context) { return formatCurrency(context.parsed.y); }
+                label: function(context) { return formatCurrencyNoDecimals(context.parsed.y); }
               }
             }
           },
