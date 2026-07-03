@@ -1,0 +1,9 @@
+Sales category,Items,Net sales,Discount amount,Refund amount,Gross sales,Tax amount
+Bottled Beer,178.0,1092.16,11.84,0.0,1104.0,77.82
+Draft Beer,204.0,1387.55,36.45,0.0,1424.0,121.86
+Food,1751.0,9904.76,225.49,0.0,10130.25,797.13
+NA Beverage,7926.0,47821.73,937.27,0.0,48759.0,4198.06
+No Sales Category Assigned,3356.0,30269.8,902.45,0.0,31172.25,2658.88
+Wavy Merchandise,122.0,2276.93,44.57,0.0,2321.5,199.08
+Wine,45.0,707.66,10.34,0.0,718.0,62.01
+Total,13582.0,93460.59,2168.41,0.0,95629.00,8114.84

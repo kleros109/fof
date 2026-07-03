@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function SalesDashboard() {
   const [selectedMonth, setSelectedMonth] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Monthly data extracted from the sales summaries
   const monthlyData = [
@@ -893,6 +894,12 @@ export default function SalesDashboard() {
       URL.revokeObjectURL(url);
     }
   };
+  const latestMonth = monthlyData[monthlyData.length - 1];
+  const latestMonthSales = latestMonth.netSales;
+  const latestMonthTipsPercent = ((latestMonth.tips / latestMonth.netSales) * 100).toFixed(1) + '%';
+  const latestMonthOrdersPerDay = Math.round(latestMonth.totalOrders / 30); // June has 30 days
+  const latestMonthAOV = latestMonth.avgOrder;
+  const latestMonthName = latestMonth.month;
 
   return (
     <div className="min-h-screen bg-background p-3 sm:p-6">
@@ -901,9 +908,12 @@ export default function SalesDashboard() {
         <Card className="mb-4 sm:mb-6">
           <CardContent className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold">Friends of Friends Sales Dashboard</h1>
-                <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - June 2026 Performance Analysis</p>
+              <div className="flex items-center gap-4">
+                <img src="/images/FOF.jpg" alt="FoF Logo" className="h-12 w-auto rounded-lg object-contain" />
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-bold">Friends of Friends</h1>
+                  <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - June 2026 Performance Analysis</p>
+                </div>
               </div>
               <div className="flex gap-2 sm:gap-3 flex-wrap">
                 <Link
@@ -933,10 +943,13 @@ export default function SalesDashboard() {
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Average Monthly Sales</p>
+                  <p className="text-sm font-medium text-muted-foreground">Monthly Sales</p>
                   <p className="text-2xl font-bold">
-                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.netSales, 0) / monthlyData.length)}
+                    {formatCurrency(latestMonthSales)}
                   </p>
+                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-green-100 text-green-800">
+                    {latestMonthName}
+                  </span>
                 </div>
                 <DollarSign className="h-6 w-6 text-green-600" />
               </div>
@@ -947,10 +960,13 @@ export default function SalesDashboard() {
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Average Tips/Net Sales</p>
+                  <p className="text-sm font-medium text-muted-foreground">Tips/Net Sales</p>
                   <p className="text-2xl font-bold">
-                    {(monthlyData.reduce((sum, m) => sum + (m.tips / m.netSales), 0) / monthlyData.length * 100).toFixed(1)}%
+                    {latestMonthTipsPercent}
                   </p>
+                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                    {latestMonthName}
+                  </span>
                 </div>
                 <TrendingUp className="h-6 w-6 text-blue-600" />
               </div>
@@ -961,10 +977,13 @@ export default function SalesDashboard() {
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Average Orders/Day</p>
+                  <p className="text-sm font-medium text-muted-foreground">Orders / Day</p>
                   <p className="text-2xl font-bold">
-                    {Math.round((monthlyData.reduce((sum, m) => sum + m.totalOrders, 0) / monthlyData.length) / 30).toLocaleString()}
+                    {latestMonthOrdersPerDay.toLocaleString()}
                   </p>
+                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-purple-100 text-purple-800">
+                    {latestMonthName}
+                  </span>
                 </div>
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
@@ -975,10 +994,13 @@ export default function SalesDashboard() {
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Avg Order Value</p>
+                  <p className="text-sm font-medium text-muted-foreground">Order Value</p>
                   <p className="text-2xl font-bold">
-                    {formatCurrency(monthlyData.reduce((sum, m) => sum + m.avgOrder, 0) / monthlyData.length)}
+                    {formatCurrency(latestMonthAOV)}
                   </p>
+                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-orange-100 text-orange-800">
+                    {latestMonthName}
+                  </span>
                 </div>
                 <Clock className="h-6 w-6 text-orange-600" />
               </div>
@@ -1335,6 +1357,116 @@ export default function SalesDashboard() {
               <p className="text-sm text-purple-700">Traffic averaged 205 orders/day in 1H26, peaking in May (216/day) before easing to 193/day in June. June AOV fell to $13.41, primarily driven by a drop in alcohol beverage ticket sizes.</p>
             </div>
           </div>
+          </CardContent>
+        </Card>
+
+        {/* Uncategorized Toast POS Items Section */}
+        <Card className="mb-6 sm:mb-8">
+          <CardHeader>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+              <div>
+                <CardTitle className="text-xl sm:text-2xl">Uncategorized Toast POS Items</CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">Wavy Burgers menu items currently reported under &quot;No Sales Category Assigned&quot;</p>
+              </div>
+              <div className="flex gap-2">
+                <a href="/uncategorized_toast_items.xlsx" download className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-600 text-white rounded text-sm hover:bg-green-700 transition-colors">
+                  <Download size={14} /> Download XLSX
+                </a>
+                <a href="/uncategorized_toast_items.csv" download className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition-colors">
+                  <Download size={14} /> Download CSV
+                </a>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {/* Overview Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6">
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-2xl font-bold">2,820</p>
+                <p className="text-xs text-muted-foreground mt-1">Uncategorized Items Sold (June 2026)</p>
+              </div>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-2xl font-bold">$25,051.60</p>
+                <p className="text-xs text-muted-foreground mt-1">Uncategorized Net Sales (June 2026)</p>
+              </div>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-2xl font-bold">32.3%</p>
+                <p className="text-xs text-muted-foreground mt-1">Share of Total Net Sales</p>
+              </div>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-2xl font-bold">Wavy Burgers</p>
+                <p className="text-xs text-muted-foreground mt-1">Associated Sub-Concept</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+              {/* Left Side: Search and List */}
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Search menu items..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full px-3 py-2 border rounded-lg bg-background text-foreground text-sm focus:outline-none focus:ring-1 focus:ring-ring"
+                />
+
+                <div className="overflow-x-auto border rounded-lg">
+                  <table className="min-w-full divide-y divide-border">
+                    <thead className="bg-muted">
+                      <tr>
+                        <th className="px-4 py-2 text-left text-xs font-semibold text-muted-foreground uppercase">Item Name</th>
+                        <th className="px-4 py-2 text-left text-xs font-semibold text-muted-foreground uppercase">Concept</th>
+                        <th className="px-4 py-2 text-right text-xs font-semibold text-muted-foreground uppercase">Typical Price</th>
+                        <th className="px-4 py-2 text-left text-xs font-semibold text-muted-foreground uppercase">Target Category</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border bg-card">
+                      {[
+                        { name: 'The OG (Smash Burger)', concept: 'Wavy Burgers', price: '$10.00 - $12.00', target: 'Food - Wavy Burgers' },
+                        { name: 'Chili Crisp OG', concept: 'Wavy Burgers', price: '$11.00 - $13.00', target: 'Food - Wavy Burgers' },
+                        { name: 'Bacon Heirloom Burger', concept: 'Wavy Burgers', price: '$11.00 - $13.00', target: 'Food - Wavy Burgers' },
+                        { name: 'Prosciutto Sando', concept: 'Wavy Burgers', price: '$10.00 - $12.00', target: 'Food - Wavy Burgers' },
+                        { name: 'Crispy Tater Tots', concept: 'Wavy Burgers', price: '$4.00 - $6.00', target: 'Sides - Wavy Burgers' },
+                        { name: 'Breakfast Biscuit Sandwiches', concept: 'Wavy Burgers', price: '$6.00 - $8.00', target: 'Food - Wavy Burgers' }
+                      ]
+                        .filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                        .map((item, idx) => (
+                          <tr key={idx} className="hover:bg-muted/50 transition-colors">
+                            <td className="px-4 py-2 text-sm font-semibold">{item.name}</td>
+                            <td className="px-4 py-2 text-xs"><span className="px-2 py-0.5 rounded bg-yellow-100 text-yellow-900 font-semibold">{item.concept}</span></td>
+                            <td className="px-4 py-2 text-sm text-right font-medium">{item.price}</td>
+                            <td className="px-4 py-2 text-xs"><span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 font-semibold">{item.target}</span></td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Right Side: Setup Instructions */}
+              <div className="space-y-4">
+                <h4 className="font-semibold text-sm text-foreground uppercase tracking-wider">Toast POS Setup Instructions</h4>
+                <div className="space-y-3">
+                  {[
+                    { step: '1', title: 'Navigate to Product Mix', text: 'Log in to Toast Web, go to Reports > Menus > Product Mix (PMIX), and toggle on the new version of the PMIX report.' },
+                    { step: '2', title: 'Filter for Unassigned Items', text: 'Click More filters, open the Sales categories dropdown, select No sales category, and click Apply filters.' },
+                    { step: '3', title: 'Assign Category in Menu Editor', text: 'Open the Menu Editor (under Menus > Bulk Edit / Menu Setup), locate the Wavy Burgers items, and set their Sales Category.' },
+                    { step: '4', title: 'Publish Changes', text: 'Click the Publish button in the top right to push the updates to your POS devices and clean up future reports.' }
+                  ].map((inst, idx) => (
+                    <div key={idx} className="flex gap-3">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">{inst.step}</div>
+                      <div>
+                        <p className="text-sm font-bold text-foreground">{inst.title}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{inst.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-3 rounded bg-yellow-50 border border-yellow-100 text-yellow-800 text-xs mt-4">
+                  <strong>Why this matters:</strong> Leaving these items unassigned makes it impossible to analyze COGS (Cost of Goods Sold) and prime costs per sub-concept. Mappings will isolate Wavy Burgers food sales from Friends of Friends pastry sales.
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 

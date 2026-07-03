@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends of Friends - Sales Dashboard</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* -------------------------------------------------------------
+       CUSTOM PROPERTIES & VARIABLES (SLATE & EMERALD MODERN SYSTEM)
+       ------------------------------------------------------------- */
+    :root[data-theme="dark"] {
+      --bg-color: #0b0f19;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --card-border: rgba(37, 99, 235, 0.1);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --accent-light: rgba(16, 185, 129, 0.15);
+      --sidebar-bg: #111827;
+      --sidebar-border: rgba(31, 41, 55, 0.5);
+      --card-glow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      --active-tab-bg: rgba(16, 185, 129, 0.1);
+      --active-tab-text: #10b981;
+      --table-stripe: rgba(31, 41, 55, 0.3);
+      --table-border: rgba(31, 41, 55, 0.5);
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      --input-bg: #1f2937;
+      --card-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+      --trend-up: #10b981;
+      --trend-down: #ef4444;
+      --chart-grid: rgba(75, 85, 99, 0.1);
+    }
+
+    :root[data-theme="light"] {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: rgba(226, 232, 240, 0.8);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #0f766e;
+      --accent-hover: #115e59;
+      --accent-light: rgba(15, 118, 110, 0.1);
+      --sidebar-bg: #ffffff;
+      --sidebar-border: rgba(226, 232, 240, 0.8);
+      --card-glow: 0 4px 20px rgba(148, 163, 184, 0.1);
+      --active-tab-bg: rgba(15, 118, 110, 0.08);
+      --active-tab-text: #0f766e;
+      --table-stripe: #f8fafc;
+      --table-border: #e2e8f0;
+      --shadow: 0 10px 15px -3px rgba(148, 163, 184, 0.1);
+      --input-bg: #f1f5f9;
+      --card-shadow: none;
+      --trend-up: #0f766e;
+      --trend-down: #dc2626;
+      --chart-grid: rgba(148, 163, 184, 0.1);
+    }
+
+    /* -------------------------------------------------------------
+       BASE SETUP & LAYOUT
+       ------------------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* -------------------------------------------------------------
+       SIDEBAR & APPS WRAPPER
+       ------------------------------------------------------------- */
+    .sidebar {
+      width: 260px;
+      background-color: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 2rem 1.5rem;
+      border-bottom: 1px solid var(--sidebar-border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sidebar-logo {
+      height: 42px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .sidebar-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar-item:hover, .sidebar-item.active {
+      color: var(--text-main);
+    }
+
+    .sidebar-item.active {
+      background-color: var(--active-tab-bg);
+      color: var(--active-tab-text);
+      font-weight: 600;
+    }
+
+    .sidebar-item i {
+      width: 20px;
+      height: 20px;
+    }
+
+    .sidebar-footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--sidebar-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: var(--input-bg);
+      color: var(--text-main);
+    }
+
+    /* -------------------------------------------------------------
+       MAIN CONTENT CONTAINER
+       ------------------------------------------------------------- */
+    .main-content {
+      margin-left: 260px;
+      flex-grow: 1;
+      padding: 2rem;
+      min-height: 100vh;
+      width: calc(100% - 260px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-title-group h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 0.25rem;
+    }
+
+    .header-title-group p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* -------------------------------------------------------------
+       BUTTONS & CONTROL ELEMENTS
+       ------------------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--sidebar-border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--input-bg);
+    }
+
+    .select-input {
+      background-color: var(--input-bg);
+      border: 1px solid var(--sidebar-border);
+      color: var(--text-main);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      outline: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* -------------------------------------------------------------
+       METRIC CARDS (OVERVIEW STATS)
+       ------------------------------------------------------------- */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: var(--card-shadow);
+      pointer-events: none;
+      border-radius: 12px;
+    }
+
+    .metric-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: default;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .metric-info h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .metric-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .emerald-glow {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+    }
+
+    .blue-glow {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+    }
+
+    .purple-glow {
+      background-color: rgba(139, 92, 246, 0.1);
+      color: #8b5cf6;
+    }
+
+    .orange-glow {
+      background-color: rgba(249, 115, 22, 0.1);
+      color: #f97316;
+    }
+
+    /* -------------------------------------------------------------
+       DASHBOARD GRID & CHARTS
+       ------------------------------------------------------------- */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid-full {
+      grid-column: 1 / -1;
+    }
+
+    .chart-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chart-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .chart-net-sales {
+      height: 380px;
+    }
+
+    .chart-drilldown {
+      height: 280px;
+    }
+
+    .drilldowns-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* -------------------------------------------------------------
+       MONTHLY DATA TABLE
+       ------------------------------------------------------------- */
+    .table-card {
+      padding: 1.5rem 0;
+    }
+
+    .table-header-row {
+      padding: 0 1.5rem 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--sidebar-border);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      padding: 1rem 1.5rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--table-border);
+    }
+
+    td {
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--table-border);
+      color: var(--text-main);
+    }
+
+    tr:nth-child(even) td {
+      background-color: var(--table-stripe);
+    }
+
+    tr:hover td {
+      background-color: var(--accent-light);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background-color: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+
+    /* -------------------------------------------------------------
+       OPERATING COMMENTARY PAGE
+       ------------------------------------------------------------- */
+    .commentary-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .commentary-alert {
+      border-left: 4px solid var(--accent);
+      padding: 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1rem;
+    }
+
+    .alert-red {
+      border-left-color: var(--trend-down);
+      background-color: rgba(239, 68, 68, 0.05);
+    }
+
+    .alert-green {
+      border-left-color: var(--trend-up);
+      background-color: rgba(16, 185, 129, 0.05);
+    }
+
+    .alert-blue {
+      border-left-color: #3b82f6;
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+
+    .alert-yellow {
+      border-left-color: #f59e0b;
+      background-color: rgba(245, 158, 11, 0.05);
+    }
+
+    .alert-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .alert-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .list-numbered {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .list-numbered li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .list-numbered li::before {
+      content: attr(data-number);
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .recommendations-box {
+      margin-top: 1rem;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .metric-monitor-box {
+      background-color: var(--input-bg);
+      border-radius: 8px;
+      padding: 1.25rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .metric-monitor-box.blue { border-left-color: #3b82f6; }
+    .metric-monitor-box.green { border-left-color: #10b981; }
+    .metric-monitor-box.purple { border-left-color: #8b5cf6; }
+    .metric-monitor-box.orange { border-left-color: #f97316; }
+
+    .metric-monitor-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-monitor-value {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------
+       TAB SYSTEM AND DYNAMIC SWITCHING
+       ------------------------------------------------------------- */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* -------------------------------------------------------------
+       RESPONSIVE DESIGN (BREAKPOINTS)
+       ------------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-border);
+      }
+
+      .sidebar-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.75rem;
+        gap: 0.25rem;
+      }
+
+      .sidebar-item {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+
+      .sidebar-header {
+        padding: 1rem;
+      }
+
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .header-actions {
+        width: 100%;
+      }
+
+      .header-actions .btn, .header-actions select {
+        flex-grow: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       SIDEBAR NAVIGATION
+       ========================================== -->
+  <div class="sidebar">
+    <div class="sidebar-header" style="padding: 1.5rem 1.25rem;">
+      <img src="images/FOF.jpg" alt="FoF Logo" class="sidebar-logo">
+      <span class="sidebar-title">Friends of Friends</span>
+    </div>
+    
+    <ul class="sidebar-menu">
+      <li>
+        <a class="sidebar-item active" data-tab="dashboard">
+          <i data-lucide="bar-chart-3"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a class="sidebar-item" data-tab="commentary">
+          <i data-lucide="file-text"></i>
+          <span>Commentary</span>
+        </a>
+      </li>
+      <li>
+        <a class="sidebar-item" data-tab="food-analysis">
+          <i data-lucide="pie-chart"></i>
+          <span>Food Analysis</span>
+        </a>
+      </li>
+      <li>
+        <a class="sidebar-item" data-tab="data-table">
+          <i data-lucide="table"></i>
+          <span>Monthly Data</span>
+        </a>
+      </li>
+      <li>
+        <a class="sidebar-item" data-tab="uncategorized-items">
+          <i data-lucide="alert-triangle"></i>
+          <span>Uncategorized Items</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <span style="font-size: 0.8rem; color: var(--text-muted);">Theme Toggle</span>
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light/Dark Mode">
+        <i data-lucide="sun" id="themeIcon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MAIN CONTENT PANEL
+       ========================================== -->
+  <div class="main-content">
+    
+    <!-- -----------------------------
+         TAB: DASHBOARD
+         ----------------------------- -->
+    <div class="tab-content active" id="dashboardTab">
+      <div class="header-container">
+        <div class="header-title-group">
+          <h1>Friends of Friends Sales Dashboard</h1>
+          <p>January 2025 - June 2026 Performance Analysis</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-outline" onclick="exportDataCSV()">
+            <i data-lucide="download"></i>
+            CSV Export
+          </button>
+        </div>
+      </div>
+
+      <!-- Overview Cards -->
+      <div class="metrics-row">
+        <div class="card metric-card">
+          <div class="metric-info">
+            <h3>Monthly Sales</h3>
+            <div class="metric-value" id="avgMonthlySales">$88,888.88</div>
+            <div class="metric-sub">
+              <span class="badge badge-success" id="salesBadge">Latest Month</span>
+            </div>
+          </div>
+          <div class="metric-icon-box emerald-glow">
+            <i data-lucide="dollar-sign"></i>
+          </div>
+        </div>
+
+        <div class="card metric-card">
+          <div class="metric-info">
+            <h3>Tips/Net Sales</h3>
+            <div class="metric-value" id="avgTipsPercentage">11.1%</div>
+            <div class="metric-sub">
+              <span class="badge badge-success" id="tipsBadge">Latest Month</span>
+            </div>
+          </div>
+          <div class="metric-icon-box blue-glow">
+            <i data-lucide="trending-up"></i>
+          </div>
+        </div>
+
+        <div class="card metric-card">
+          <div class="metric-info">
+            <h3>Orders / Day</h3>
+            <div class="metric-value" id="avgOrdersPerDay">204</div>
+            <div class="metric-sub">
+              <span class="badge badge-success" id="ordersBadge">Latest Month</span>
+            </div>
+          </div>
+          <div class="metric-icon-box purple-glow">
+            <i data-lucide="users"></i>
+          </div>
+        </div>
+
+        <div class="card metric-card">
+          <div class="metric-info">
+            <h3>Order Value</h3>
+            <div class="metric-value" id="avgOrderValue">$14.25</div>
+            <div class="metric-sub">
+              <span class="badge badge-success" id="aovBadge">Latest Month</span>
+            </div>
+          </div>
+          <div class="metric-icon-box orange-glow">
+            <i data-lucide="clock"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="dashboard-grid">
+        <!-- Net Sales Trend -->
+        <div class="card grid-full">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="bar-chart-3" style="color:var(--accent);"></i>
+              Net Sales by Month
+            </div>
+          </div>
+          <div class="chart-container chart-net-sales">
+            <canvas id="netSalesChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Sales Category Mix Card -->
+        <div class="card">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="pie-chart" style="color:var(--accent);"></i>
+              Sales Category Mix
+            </div>
+            <select class="select-input" id="categoryMonthSelector" onchange="syncDrilldownMonths(this.value)">
+              <option value="June 2026">June 2026 (Latest)</option>
+              <option value="May 2026">May 2026</option>
+              <option value="August 2025">August 2025</option>
+            </select>
+          </div>
+          <div class="chart-container chart-drilldown">
+            <canvas id="categoryPieChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Sales by Daypart Card -->
+        <div class="card">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="bar-chart-3" style="color:var(--accent);"></i>
+              Sales by Daypart
+            </div>
+            <select class="select-input" id="daypartMonthSelector" onchange="syncDrilldownMonths(this.value)">
+              <option value="June 2026">June 2026 (Latest)</option>
+              <option value="May 2026">May 2026</option>
+              <option value="August 2025">August 2025</option>
+            </select>
+          </div>
+          <div class="chart-container chart-drilldown">
+            <canvas id="daypartBarChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Beverage Share Trend -->
+        <div class="card grid-full">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="trending-up" style="color:var(--accent);"></i>
+              Beverage Sales Percentage Trend
+            </div>
+          </div>
+          <div class="chart-container" style="height: 300px;">
+            <canvas id="beveragePercentageChart"></canvas>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            Total beverage share includes: NA Beverage, Bottled Beer, Draft Beer, and Wine.
+          </p>
+        </div>
+
+        <!-- Daily Orders Trend -->
+        <div class="card grid-full">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="users" style="color:var(--accent);"></i>
+              Average Daily Orders by Period
+            </div>
+          </div>
+          <div class="chart-container" style="height: 300px;">
+            <canvas id="dailyOrdersChart"></canvas>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            Average daily orders are computed by dividing total monthly orders by number of days in the month.
+          </p>
+        </div>
+
+        <!-- Beverage Sales Value Trend -->
+        <div class="card grid-full">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="cup-soda" style="color:var(--accent);"></i>
+              Beverage Sales by Month
+            </div>
+          </div>
+          <div class="chart-container" style="height: 300px;">
+            <canvas id="beverageSalesChart"></canvas>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            Total beverage sales by month including NA Beverages, Wine, Draft Beer, and Bottled Beer.
+          </p>
+        </div>
+
+        <!-- Other Sales Value Trend -->
+        <div class="card grid-full">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="cookie" style="color:var(--accent);"></i>
+              Other Sales by Month
+            </div>
+          </div>
+          <div class="chart-container" style="height: 300px;">
+            <canvas id="otherSalesChart"></canvas>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            Other sales by month including Food (pastries), unassigned items (Wavy Burgers), and Merchandise.
+          </p>
+        </div>
+
+        <!-- Average Net Sales Per Day by Month -->
+        <div class="card grid-full">
+          <div class="chart-card-header">
+            <div class="chart-title">
+              <i data-lucide="trending-up" style="color:var(--accent);"></i>
+              Average Net Sales Per Day by Month
+            </div>
+          </div>
+          <div class="chart-container" style="height: 300px;">
+            <canvas id="dailySalesChart"></canvas>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            Average daily net sales calculated by dividing total net sales by number of days in each month.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- -----------------------------
+         TAB: OPERATING COMMENTARY
+         ----------------------------- -->
+    <div class="tab-content" id="commentaryTab">
+      <div class="header-container">
+        <div class="header-title-group">
+          <h1>Operating Commentary</h1>
+          <p>Analysis of Sales Trends - 1H2026 & 2Q2026 Performance Focus</p>
+        </div>
+      </div>
+
+      <div class="commentary-container">
+        
+        <!-- Executive Summary -->
+        <div class="card">
+          <h2 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Executive Summary</h2>
+          <div style="line-height: 1.6; color: var(--text-muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 1rem;">
+            <p>
+              Friends of Friends experienced significant volatility in 2025, peaking in March at $110,321 before declining to a trough of $74,930 in September and stabilizing around $76K–$80K in Q4. Entering 2026, the first half of the year (<strong>1H2026</strong>) delivered a strong recovery trend, totaling <strong style="color:var(--accent)">$515,199 in Net Sales</strong> and averaging $85,866/mo.
+            </p>
+            <p>
+              Quarterly analysis shows that <strong>2Q2026 (April–June) grew to $260,133</strong>, representing a <strong style="color:var(--accent)">+2.0% growth QoQ</strong> over 1Q2026 ($255,066). This performance was driven by a powerful surge in April ($89,129, 211 orders/day) and May (<strong style="color:var(--accent)">$93,461</strong>, 216 orders/day), which marked the highest monthly sales since April 2025 ($101,404).
+            </p>
+            <p>
+              However, <strong>June 2026 saw a seasonal contraction, closing at $77,543</strong> (193 orders/day). This contraction was driven by a drop in customer traffic (-13.7% MoM) and a decline in average order value (AOV) to $13.41, primarily due to a sharp pullback in beverage alcohol sales (Wine and Draft Beer). Despite June's dip, the overall 1H2026 trajectory remains highly encouraging, proving the business has established a higher operational baseline compared to late 2025.
+            </p>
+          </div>
+        </div>
+
+        <!-- Revenue Performance details -->
+        <div class="card">
+          <h2 style="font-weight: 700; margin-bottom: 1.5rem; font-size: 1.3rem; display:flex; align-items:center; gap:0.5rem;">
+            <i data-lucide="trending-up" style="color:var(--accent);"></i>
+            Revenue Performance
+          </h2>
+
+          <div style="display:flex; flex-direction:column; gap:1.25rem;">
+            <div class="commentary-alert alert-red">
+              <div class="alert-title">June 2026: $77,543 — Seasonal Slump & Traffic Contraction</div>
+              <p class="alert-text">
+                June contracted to $77,543 across 5,781 orders—193 orders/day and $2,585/day in Net Sales. This represents a -17.0% decline from May's peak of $93,461. The slide was driven by both volume (920 fewer orders, or -13.7% MoM) and ticket size, with AOV dropping from $13.95 in May to $13.41 in June. This contraction echoes the seasonal slide observed in summer 2025, underlining the need to protect traffic levels during summer months.
+              </p>
+            </div>
+
+            <div class="commentary-alert alert-green">
+              <div class="alert-title">May 2026: $93,461 — Q2 Peak and Highest Month in a Year</div>
+              <p class="alert-text">
+                May delivered a standout performance at $93,461 across 6,701 orders, averaging 216 orders/day (highest daily volume since May 2025) and $3,015/day in net sales. Beverage mix climbed to a 1H26 high of 56.3%, fueled by a Wine category peak of $2,277 (2.4% of sales) and Draft Beer at $1,388 (1.5%). May confirmed the recovery potential of the brand when traffic and beverage attachment align.
+              </p>
+            </div>
+
+            <div class="commentary-alert alert-blue">
+              <div class="alert-title">April 2026: $89,129 — Strong AOV Foundations</div>
+              <p class="alert-text">
+                April generated $89,129 across 6,318 orders (211/day). AOV peaked in April at $14.11 (highest in 1H2026), demonstrating strong ticket health. Total beverages comprised 53.7% of sales, laying the groundwork for May's breakthrough.
+              </p>
+            </div>
+
+            <div class="commentary-alert alert-yellow">
+              <div class="alert-title">Quarterly Outlook: Q2 Outperformed Q1 by +2.0%</div>
+              <p class="alert-text">
+                From a quarterly perspective, Q2 2026 Net Sales reached $260,133, beating Q1 2026 ($255,066) by $5,067 (+2.0%). Q2 average monthly sales stood at $86,711 compared to Q1's $85,022. This demonstrates that despite June's contraction, the quarterly momentum has accelerated, reinforcing the recovery narrative.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategic Recommendations -->
+        <div class="card">
+          <h2 style="font-weight: 700; margin-bottom: 1.5rem; font-size: 1.3rem; display:flex; align-items:center; gap:0.5rem;">
+            <i data-lucide="check-circle" style="color:var(--accent);"></i>
+            Strategic Recommendations & Priorities
+          </h2>
+
+          <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            <div>
+              <h3 style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.75rem; color:var(--text-main);">Immediate Priorities for 2H2026</h3>
+              <ul class="list-numbered">
+                <li data-number="1.">
+                  <strong>Reclaim the Beverage Alcohol Lift:</strong> The collapse in Wine (-71.7%) and Draft Beer (-62.0%) was the primary contributor to June's AOV drop. We must launch immediate summer alcohol pairings, weekend wine flights, and happy hour draft specials to restore wine and draft beer sales.
+                </li>
+                <li data-number="2.">
+                  <strong>Drive Dine-In Traffic:</strong> Dine-In orders average $15.16, compared to Takeout's $11.81. Shifting 5% of takeout customers to dine-in would lift overall AOV. Consider hosting summer community events, in-house acoustic sessions, or trivia nights to draw guests through the door.
+                </li>
+                <li data-number="3.">
+                  <strong>Stabilize Traffic Baseline:</strong> While June volume dropped to 193/day, the Q2 average of 207/day indicates strong customer interest. Implementing a summer loyalty reward or local business lunch program can keep Friends of Friends top-of-mind during vacation periods.
+                </li>
+              </ul>
+            </div>
+
+            <div style="border-top:1px solid var(--sidebar-border); padding-top:1.5rem;">
+              <h3 style="font-weight: 600; font-size: 1.05rem; margin-bottom: 0.75rem; color:var(--text-main);">Strategic Focus Areas</h3>
+              <ul style="list-style-type: none; padding-left: 0;">
+                <li style="position:relative; padding-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6; color: var(--text-muted); font-size:0.95rem;">
+                  <span style="position:absolute; left:0; color:var(--accent); font-weight:bold;">•</span>
+                  <strong>Capitalize on Merchandise Success:</strong> With Wavy Merchandise growing +94.1% MoM to $1,374, we should release limited-edition summer capsules (e.g., hats, tote bags, apparel) to maintain this margin-rich revenue stream.
+                </li>
+                <li style="position:relative; padding-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6; color: var(--text-muted); font-size:0.95rem;">
+                  <span style="position:absolute; left:0; color:var(--accent); font-weight:bold;">•</span>
+                  <strong>Enhance Dinner & Late Night Throughput:</strong> Dinner ($4,927, 7.4% share) remains under-indexed. Evaluating the dinner menu or offering early-evening dinner specials could capture more of this high-ticket daypart.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics to Monitor -->
+        <div class="card">
+          <h2 style="font-weight: 700; margin-bottom: 1.5rem; font-size: 1.3rem;">Critical Metrics to Monitor Weekly</h2>
+          
+          <div class="grid-2col">
+            <div class="metric-monitor-box blue">
+              <div class="metric-monitor-title">Daily Order Count</div>
+              <div class="metric-monitor-value">Current: 193/day (June) | Target: 215+ orders/day</div>
+            </div>
+            
+            <div class="metric-monitor-box green">
+              <div class="metric-monitor-title">Average Order Value</div>
+              <div class="metric-monitor-value">Current: $13.41 (June) | Target: $14.25+ (1H26 average was $13.84)</div>
+            </div>
+            
+            <div class="metric-monitor-box purple">
+              <div class="metric-monitor-title">Food Category Percentage</div>
+              <div class="metric-monitor-value">Current: 9.9% (June) | Target: 10.5%+</div>
+            </div>
+            
+            <div class="metric-monitor-box orange">
+              <div class="metric-monitor-title">Monthly Revenue Target</div>
+              <div class="metric-monitor-value">Current: $77,543 (June) | Target: $90,000+</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- -----------------------------
+         TAB: FOOD ANALYSIS (PASTRIES DETAIL)
+         ----------------------------- -->
+    <div class="tab-content" id="food-analysisTab">
+      <div class="header-container">
+        <div class="header-title-group">
+          <h1>Food Type & Pastry Analysis</h1>
+          <p>Detailed performance drill-down comparing Friends of Friends (Pastries) and Wavy Burgers (No Category)</p>
+        </div>
+      </div>
+
+      <div class="commentary-container">
+        <!-- Classification Intro -->
+        <div class="card">
+          <h2 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">POS Category Mapping</h2>
+          <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1rem;">
+            Because Friends of Friends and Wavy Burgers share the same POS system, their menu items are tracked in distinct categories:
+          </p>
+          <div style="display:flex; flex-direction:column; gap:0.75rem;">
+            <div style="background-color: var(--input-bg); padding:1rem; border-radius:8px;">
+              <strong style="color:var(--accent);">Food Category (`Food`)</strong>: Represents **Friends of Friends Pastries** (e.g. Snickerdoodles, Brown Butter Cookies, Banana Puddin).
+            </div>
+            <div style="background-color: var(--input-bg); padding:1rem; border-radius:8px;">
+              <strong style="color:#3b82f6;">No Category Assigned (`No Category`)</strong>: Represents **Wavy Burgers menu items** (smash burgers, breakfast sandwiches, fries) which remain uncategorized in Toast POS.
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative Tables -->
+        <div class="card table-card">
+          <div class="table-header-row" style="border:none;">
+            <div class="chart-title">May vs. June 2026 Comparison Table</div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Food Type / Category</th>
+                  <th class="text-right">May 2026 (Qty)</th>
+                  <th class="text-right">May 2026 (Sales)</th>
+                  <th class="text-right">June 2026 (Qty)</th>
+                  <th class="text-right">June 2026 (Sales)</th>
+                  <th class="text-right">Qty Change</th>
+                  <th class="text-right">Sales Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold" style="color:var(--accent);">Food / Pastries (Friends of Friends)</td>
+                  <td class="text-right">1,751</td>
+                  <td class="text-right">$9,904.76</td>
+                  <td class="text-right">1,258</td>
+                  <td class="text-right">$7,651.80</td>
+                  <td class="text-right" style="color:var(--trend-down); font-weight:600;">-28.2%</td>
+                  <td class="text-right" style="color:var(--trend-down); font-weight:600;">-22.7%</td>
+                </tr>
+                <tr>
+                  <td class="font-semibold" style="color:#3b82f6;">No Category / Wavy Burgers</td>
+                  <td class="text-right">3,356</td>
+                  <td class="text-right">$30,269.80</td>
+                  <td class="text-right">2,820</td>
+                  <td class="text-right">$25,051.60</td>
+                  <td class="text-right" style="color:var(--trend-down); font-weight:600;">-16.0%</td>
+                  <td class="text-right" style="color:var(--trend-down); font-weight:600;">-17.2%</td>
+                </tr>
+                <tr style="background-color: var(--active-tab-bg); font-weight: 700;">
+                  <td>Total Combined Food</td>
+                  <td class="text-right">5,107</td>
+                  <td class="text-right">$40,174.56</td>
+                  <td class="text-right">4,078</td>
+                  <td class="text-right">$32,703.40</td>
+                  <td class="text-right" style="color:var(--trend-down);">-20.1%</td>
+                  <td class="text-right" style="color:var(--trend-down);">-18.6%</td>
+                </tr>
+                <tr style="color: var(--text-muted);">
+                  <td><em>Total Business Net Sales (All Categories)</em></td>
+                  <td class="text-right"><em>13,582</em></td>
+                  <td class="text-right"><em>$93,460.59</em></td>
+                  <td class="text-right"><em>11,370</em></td>
+                  <td class="text-right"><em>$77,543.20</em></td>
+                  <td class="text-right"><em>-16.3%</em></td>
+                  <td class="text-right"><em>-17.0%</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Food Category Specific Trends -->
+        <div class="card">
+          <h2 style="font-weight: 700; margin-bottom: 1.25rem; font-size: 1.3rem;">Key Pastry and Food Trends</h2>
+          
+          <div style="display:flex; flex-direction:column; gap:1.25rem; line-height:1.6; color:var(--text-muted); font-size:0.95rem;">
+            <div class="commentary-alert alert-blue" style="margin-bottom:0;">
+              <div class="alert-title">Pastry Sales Volume Slide</div>
+              <p class="alert-text">
+                Pastry quantities fell from **1,751 in May** down to **1,258 in June** (a **-28.2% drop**). The volume drop was much steeper than the decline in overall customer transaction volume (-13.7%), meaning pastry attach rate weakened in June.
+              </p>
+            </div>
+
+            <div class="commentary-alert alert-yellow" style="margin-bottom:0;">
+              <div class="alert-title">Wavy Burgers Resilience</div>
+              <p class="alert-text">
+                Wavy Burgers food items dropped by only **-16.0% MoM** in volume (3,356 down to 2,820), matching the seasonal contraction closely. Wavy Burgers held its share of total business sales steady at **32.3%** in June, while pastries slipped from **10.6% share** in May down to **9.9%** in June.
+              </p>
+            </div>
+
+            <div class="commentary-alert alert-green" style="margin-bottom:0;">
+              <div class="alert-title">Pastry Average Price Increase</div>
+              <p class="alert-text">
+                Despite lower volume, the average net sales value per pastry item rose from **$5.66** in May to **$6.08** in June (a **+7.4% MoM increase**). This suggests a shift toward higher-priced pastry combinations, specialty boxes, or a minor price increase, which helped insulate the overall category revenue.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- -----------------------------
+         TAB: UNCATEGORIZED ITEMS
+         ----------------------------- -->
+    <div class="tab-content" id="uncategorized-itemsTab">
+      <div class="header-container">
+        <div class="header-title-group">
+          <h1>Uncategorized Toast POS Items</h1>
+          <p>Wavy Burgers menu items currently reported under "No Sales Category Assigned"</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="file:///home/kleros/Documents/fof/uncategorized_toast_items.xlsx" class="btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem;" download>
+            <i data-lucide="download"></i> Download XLSX
+          </a>
+          <a href="file:///home/kleros/Documents/fof/uncategorized_toast_items.csv" class="btn btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem;" download>
+            <i data-lucide="file-spreadsheet"></i> Download CSV
+          </a>
+        </div>
+      </div>
+
+      <!-- Overview Cards -->
+      <div class="metrics-grid">
+        <div class="card metric-card">
+          <div class="metric-value">2,820</div>
+          <div class="metric-label">Uncategorized Items Sold (June 2026)</div>
+        </div>
+        <div class="card metric-card">
+          <div class="metric-value">$25,051.60</div>
+          <div class="metric-label">Uncategorized Net Sales (June 2026)</div>
+        </div>
+        <div class="card metric-card">
+          <div class="metric-value">32.3%</div>
+          <div class="metric-label">Share of Total Net Sales</div>
+        </div>
+        <div class="card metric-card">
+          <div class="metric-value">Wavy Burgers</div>
+          <div class="metric-label">Associated Sub-Concept</div>
+        </div>
+      </div>
+
+      <div class="two-column-grid" style="margin-top: 1.5rem;">
+        <!-- Left Column: Itemized List -->
+        <div class="card table-card">
+          <div class="table-header-row" style="border:none; padding-bottom: 0;">
+            <div class="chart-title">Uncategorized Menu Items</div>
+            <div class="commentary-meta">6 Items Listed</div>
+          </div>
+          
+          <div style="padding: 0 1.5rem 1rem 1.5rem;">
+            <input type="text" id="uncategorizedSearch" placeholder="Search menu items..." style="width:100%; padding:0.6rem 1rem; border-radius:6px; border:1px solid var(--border-color); background-color:var(--card-bg); color:var(--text-main); font-size:0.9rem; outline:none; transition:border-color 0.2s;" onkeyup="filterUncategorizedTable()">
+          </div>
+
+          <div class="table-wrapper">
+            <table id="uncategorizedTable">
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Sub-Concept</th>
+                  <th>Typical Price</th>
+                  <th>Current Category</th>
+                  <th>Target Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>The OG (Smash Burger)</strong></td>
+                  <td><span class="badge badge-yellow">Wavy Burgers</span></td>
+                  <td>$10.00 - $12.00</td>
+                  <td style="color:var(--text-muted)">Unassigned</td>
+                  <td><span class="badge badge-emerald">Food - Wavy Burgers</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Chili Crisp OG</strong></td>
+                  <td><span class="badge badge-yellow">Wavy Burgers</span></td>
+                  <td>$11.00 - $13.00</td>
+                  <td style="color:var(--text-muted)">Unassigned</td>
+                  <td><span class="badge badge-emerald">Food - Wavy Burgers</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Bacon Heirloom Burger</strong></td>
+                  <td><span class="badge badge-yellow">Wavy Burgers</span></td>
+                  <td>$11.00 - $13.00</td>
+                  <td style="color:var(--text-muted)">Unassigned</td>
+                  <td><span class="badge badge-emerald">Food - Wavy Burgers</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Prosciutto Sando</strong></td>
+                  <td><span class="badge badge-yellow">Wavy Burgers</span></td>
+                  <td>$10.00 - $12.00</td>
+                  <td style="color:var(--text-muted)">Unassigned</td>
+                  <td><span class="badge badge-emerald">Food - Wavy Burgers</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Crispy Tater Tots</strong></td>
+                  <td><span class="badge badge-yellow">Wavy Burgers</span></td>
+                  <td>$4.00 - $6.00</td>
+                  <td style="color:var(--text-muted)">Unassigned</td>
+                  <td><span class="badge badge-emerald">Sides - Wavy Burgers</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Breakfast Biscuit Sandwiches</strong></td>
+                  <td><span class="badge badge-yellow">Wavy Burgers</span></td>
+                  <td>$6.00 - $8.00</td>
+                  <td style="color:var(--text-muted)">Unassigned</td>
+                  <td><span class="badge badge-emerald">Food - Wavy Burgers</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right Column: Instructions -->
+        <div class="card">
+          <div class="card-header" style="border:none; padding-bottom:0;">
+            <div class="chart-title">Toast POS Setup Instructions</div>
+            <div class="chart-subtitle">How to map these items to their correct categories in Toast</div>
+          </div>
+          <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="background-color: var(--active-tab-bg); color: var(--active-tab-text); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</div>
+              <div>
+                <strong style="display: block; color: var(--text-main); margin-bottom: 0.2rem;">Navigate to Product Mix</strong>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Log in to Toast Web and go to <strong>Reports > Menus > Product Mix (PMIX)</strong>. If prompted, toggle on the new version of the PMIX report.</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="background-color: var(--active-tab-bg); color: var(--active-tab-text); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</div>
+              <div>
+                <strong style="display: block; color: var(--text-main); margin-bottom: 0.2rem;">Filter for Unassigned Items</strong>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Click <strong>More filters</strong>, open the <strong>Sales categories</strong> dropdown, select <strong>No sales category</strong>, and click <strong>Apply filters</strong> to see the live list.</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="background-color: var(--active-tab-bg); color: var(--active-tab-text); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</div>
+              <div>
+                <strong style="display: block; color: var(--text-main); margin-bottom: 0.2rem;">Assign Category in Menu Editor</strong>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Open the **Menu Editor** (under Menus > Bulk Edit / Menu Setup). Find the target Wavy Burgers items, and update their **Sales Category** field to the appropriate category name.</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div style="background-color: var(--active-tab-bg); color: var(--active-tab-text); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">4</div>
+              <div>
+                <strong style="display: block; color: var(--text-main); margin-bottom: 0.2rem;">Publish Changes</strong>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Click the **Publish** button in the top right to apply the changes to your POS and clean up future reports.</span>
+              </div>
+            </div>
+
+            <div class="commentary-alert alert-yellow" style="margin-top: 1rem; margin-bottom: 0;">
+              <div class="alert-title">Why this matters</div>
+              <p class="alert-text" style="font-size: 0.85rem;">
+                Leaving these items unassigned makes it impossible to analyze COGS (Cost of Goods Sold) and prime costs accurately per sub-concept. Properly mapping them separates Wavy Burgers food sales from Friends of Friends pastry sales.
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- -----------------------------
+         TAB: MONTHLY DATA TABLE
+         ----------------------------- -->
+    <div class="tab-content" id="data-tableTab">
+      <div class="header-container">
+        <div class="header-title-group">
+          <h1>Historical Monthly Sales Data</h1>
+          <p>Full record of Net Sales, Tips, Tax, and Orders (January 2025 - June 2026)</p>
+        </div>
+      </div>
+
+      <div class="card table-card">
+        <div class="table-header-row">
+          <div class="chart-title">Historical Sales Ledger</div>
+          <button class="btn btn-primary" onclick="exportDataCSV()">
+            <i data-lucide="download"></i>
+            Download CSV
+          </button>
+        </div>
+        
+        <div class="table-wrapper">
+          <table id="monthlyLedgerTable">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th class="text-right">Net Sales</th>
+                <th class="text-right">Tips Collected</th>
+                <th class="text-right">Tax Collected</th>
+                <th class="text-right">Deferred Gift Cards</th>
+                <th class="text-right">Total Amount</th>
+                <th class="text-right">Total Orders</th>
+                <th class="text-right">Avg Order (AOV)</th>
+                <th class="text-right">Tips / Net Sales %</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerTableBody">
+              <!-- Dynamically populated by JS -->
+            </tbody>
+            <tfoot>
+              <!-- Averages row populated by JS -->
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       DASHBOARD JAVASCRIPT LOGIC
+       ========================================== -->
+  <script>
+    /* -------------------------------------------------------------
+       1. DATA SETS DECLARATION
+       ------------------------------------------------------------- */
+    const monthlyData = [
+      { month: 'January 2025', netSales: 92847.95, tips: 10468.27, taxAmount: 8129.02, deferredGiftCards: 395.00, totalAmount: 111840.24, avgOrder: 15.22, totalOrders: 6099, totalGuests: 6099 },
+      { month: 'February 2025', netSales: 89425.57, tips: 10026.07, taxAmount: 7811.37, deferredGiftCards: 250.00, totalAmount: 107513.01, avgOrder: 15.25, totalOrders: 5865, totalGuests: 5865 },
+      { month: 'March 2025', netSales: 110321.40, tips: 12173.11, taxAmount: 9588.35, deferredGiftCards: 260.00, totalAmount: 132342.86, avgOrder: 15.64, totalOrders: 7055, totalGuests: 7055 },
+      { month: 'April 2025', netSales: 95918.02, tips: 10503.39, taxAmount: 8379.71, deferredGiftCards: 320.00, totalAmount: 115121.12, avgOrder: 15.42, totalOrders: 6220, totalGuests: 6220 },
+      { month: 'May 2025', netSales: 101404.46, tips: 10813.40, taxAmount: 8765.82, deferredGiftCards: 300.00, totalAmount: 121680.44, avgOrder: 15.44, totalOrders: 6567, totalGuests: 6567 },
+      { month: 'June 2025', netSales: 96325.49, tips: 10827.27, taxAmount: 8452.63, deferredGiftCards: 104.00, totalAmount: 115709.39, avgOrder: 14.89, totalOrders: 6470, totalGuests: 6470 },
+      { month: 'July 2025', netSales: 91778.17, tips: 10135.32, taxAmount: 7926.67, deferredGiftCards: 185.00, totalAmount: 110025.16, avgOrder: 14.39, totalOrders: 6377, totalGuests: 6377 },
+      { month: 'August 2025', netSales: 81195.86, tips: 8741.47, taxAmount: 7130.47, deferredGiftCards: 190.00, totalAmount: 97257.80, avgOrder: 13.39, totalOrders: 6062, totalGuests: 6062 },
+      { month: 'September 2025', netSales: 74930.18, tips: 7788.88, taxAmount: 6577.90, deferredGiftCards: 205.00, totalAmount: 89501.96, avgOrder: 13.26, totalOrders: 5650, totalGuests: 5650 },
+      { month: 'October 2025', netSales: 78210.75, tips: 8219.04, taxAmount: 6868.18, deferredGiftCards: 120.00, totalAmount: 94736.30, avgOrder: 12.97, totalOrders: 6032, totalGuests: 6032 },
+      { month: 'November 2025', netSales: 76193.65, tips: 8115.77, taxAmount: 6687.01, deferredGiftCards: 140.00, totalAmount: 91136.43, avgOrder: 13.36, totalOrders: 5702, totalGuests: 5702 },
+      { month: 'December 2025', netSales: 79624.79, tips: 8634.52, taxAmount: 6986.53, deferredGiftCards: 1170.00, totalAmount: 96421.83, avgOrder: 13.74, totalOrders: 5796, totalGuests: 5796 },
+      { month: 'January 2026', netSales: 86743.66, tips: 9622.71, taxAmount: 7611.81, deferredGiftCards: 75.00, totalAmount: 104053.18, avgOrder: 13.84, totalOrders: 6267, totalGuests: 6267 },
+      { month: 'February 2026', netSales: 78476.93, tips: 8355.89, taxAmount: 6885.09, deferredGiftCards: 235.00, totalAmount: 93952.91, avgOrder: 13.76, totalOrders: 5704, totalGuests: 5704 },
+      { month: 'March 2026', netSales: 89845.18, tips: 9656.55, taxAmount: 7877.81, deferredGiftCards: 145.00, totalAmount: 107524.54, avgOrder: 13.92, totalOrders: 6454, totalGuests: 6454 },
+      { month: 'April 2026', netSales: 89128.98, tips: 9358.18, taxAmount: 7796.31, deferredGiftCards: 125.00, totalAmount: 106408.47, avgOrder: 14.11, totalOrders: 6318, totalGuests: 6318 },
+      { month: 'May 2026', netSales: 93460.59, tips: 9420.65, taxAmount: 8114.84, deferredGiftCards: 240.00, totalAmount: 111500.08, avgOrder: 13.95, totalOrders: 6701, totalGuests: 6701 },
+      { month: 'June 2026', netSales: 77543.20, tips: 7686.44, taxAmount: 6684.69, deferredGiftCards: 280.00, totalAmount: 92524.33, avgOrder: 13.41, totalOrders: 5781, totalGuests: 5781 }
+    ];
+
+    const beverageData = [
+      { month: 'January 2025', totalBeverages: 42073.30, totalSales: 92847.95, percentage: 45.3 },
+      { month: 'February 2025', totalBeverages: 41474.59, totalSales: 89425.57, percentage: 46.4 },
+      { month: 'March 2025', totalBeverages: 50272.87, totalSales: 110321.40, percentage: 45.6 },
+      { month: 'April 2025', totalBeverages: 45792.18, totalSales: 95918.02, percentage: 47.7 },
+      { month: 'May 2025', totalBeverages: 49762.47, totalSales: 101404.46, percentage: 49.1 },
+      { month: 'June 2025', totalBeverages: 49103.62, totalSales: 96325.49, percentage: 51.0 },
+      { month: 'July 2025', totalBeverages: 50300.99, totalSales: 91778.17, percentage: 54.8 },
+      { month: 'August 2025', totalBeverages: 48419.25, totalSales: 81195.86, percentage: 59.6 },
+      { month: 'September 2025', totalBeverages: 44273.96, totalSales: 74930.18, percentage: 59.1 },
+      { month: 'October 2025', totalBeverages: 45603.96, totalSales: 78210.75, percentage: 58.3 },
+      { month: 'November 2025', totalBeverages: 42715.59, totalSales: 76193.65, percentage: 56.1 },
+      { month: 'December 2025', totalBeverages: 44286.78, totalSales: 79624.79, percentage: 55.6 },
+      { month: 'January 2026', totalBeverages: 46756.16, totalSales: 86743.66, percentage: 53.9 },
+      { month: 'February 2026', totalBeverages: 41779.69, totalSales: 78476.93, percentage: 53.2 },
+      { month: 'March 2026', totalBeverages: 47084.85, totalSales: 89845.18, percentage: 52.4 },
+      { month: 'April 2026', totalBeverages: 47855.70, totalSales: 89128.98, percentage: 53.7 },
+      { month: 'May 2026', totalBeverages: 52578.37, totalSales: 93460.59, percentage: 56.3 },
+      { month: 'June 2026', totalBeverages: 43466.00, totalSales: 77543.20, percentage: 56.1 }
+    ];
+
+    const categoryMap = {
+      'May 2026': [
+        { name: 'NA Beverage', value: 47821.73, percentage: 51.2 },
+        { name: 'No Category (Wavy Burgers)', value: 30269.80, percentage: 32.4 },
+        { name: 'Food (Pastries)', value: 9904.76, percentage: 10.6 },
+        { name: 'Merchandise', value: 2276.93, percentage: 2.4 },
+        { name: 'Draft Beer', value: 1387.55, percentage: 1.5 },
+        { name: 'Bottled Beer', value: 1092.16, percentage: 1.2 },
+        { name: 'Wine', value: 707.66, percentage: 0.8 }
+      ],
+      'June 2026': [
+        { name: 'NA Beverage', value: 41569.79, percentage: 53.6 },
+        { name: 'No Category (Wavy Burgers)', value: 25051.60, percentage: 32.3 },
+        { name: 'Food (Pastries)', value: 7651.80, percentage: 9.9 },
+        { name: 'Merchandise', value: 1373.80, percentage: 1.8 },
+        { name: 'Bottled Beer', value: 724.61, percentage: 0.9 },
+        { name: 'Wine', value: 644.60, percentage: 0.8 },
+        { name: 'Draft Beer', value: 527.00, percentage: 0.7 }
+      ],
+      'August 2025': [
+        { name: 'NA Beverage', value: 44399.23, percentage: 54.7 },
+        { name: 'No Category (Wavy Burgers)', value: 25076.36, percentage: 30.9 },
+        { name: 'Food (Pastries)', value: 7011.75, percentage: 8.6 },
+        { name: 'Bottled Beer', value: 1923.42, percentage: 2.4 },
+        { name: 'Draft Beer', value: 1137.80, percentage: 1.4 },
+        { name: 'Wine', value: 958.80, percentage: 1.2 },
+        { name: 'Merchandise', value: 688.50, percentage: 0.8 }
+      ]
+    };
+
+    const daypartMap = {
+      'May 2026': [
+        { name: 'Breakfast', sales: 35916.52, orders: 2371 },
+        { name: 'Lunch', sales: 43724.57, orders: 3334 },
+        { name: 'Dinner', sales: 7722.10, orders: 551 },
+        { name: 'No Service', sales: 6037.40, orders: 439 },
+        { name: 'Late Night', sales: 60.00, orders: 6 }
+      ],
+      'June 2026': [
+        { name: 'Breakfast', sales: 31276.89, orders: 2152 },
+        { name: 'Lunch', sales: 35536.45, orders: 2785 },
+        { name: 'Dinner', sales: 4927.39, orders: 428 },
+        { name: 'No Service', sales: 5469.47, orders: 415 },
+        { name: 'Late Night', sales: 333.00, orders: 1 }
+      ],
+      'August 2025': [
+        { name: 'Breakfast', sales: 29513.01, orders: 2105 },
+        { name: 'Lunch', sales: 40688.81, orders: 3076 },
+        { name: 'Dinner', sales: 6804.96, orders: 511 },
+        { name: 'No Service', sales: 4189.08, orders: 370 }
+      ]
+    };
+
+    const daysInMonthMap = {
+      'January': 31, 'February': 28, 'March': 31, 'April': 30, 'May': 31, 'June': 30,
+      'July': 31, 'August': 31, 'September': 30, 'October': 31, 'November': 30, 'December': 31
+    };
+
+    /* -------------------------------------------------------------
+       2. STATS & RENDER FUNCTIONS
+       ------------------------------------------------------------- */
+    function formatCurrency(num) {
+      return '$' + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calculateOverallAverages() {
+      // Get the latest month (last item in the array)
+      const latestMonth = monthlyData[monthlyData.length - 1];
+      
+      const parts = latestMonth.month.split(' ');
+      const monthName = parts[0];
+      const year = parseInt(parts[1]);
+      let days = daysInMonthMap[monthName] || 30;
+      // Leap year check
+      if (monthName === 'February' && year % 4 === 0) days = 29;
+
+      const latestNetSales = latestMonth.netSales;
+      const latestTipsPercent = ((latestMonth.tips / latestMonth.netSales) * 100).toFixed(1) + '%';
+      const latestOrdersPerDay = Math.round(latestMonth.totalOrders / days);
+      const latestAOV = latestMonth.avgOrder;
+
+      // Update values in header cards
+      document.getElementById('avgMonthlySales').innerText = formatCurrency(latestNetSales);
+      document.getElementById('avgTipsPercentage').innerText = latestTipsPercent;
+      document.getElementById('avgOrdersPerDay').innerText = latestOrdersPerDay.toLocaleString();
+      document.getElementById('avgOrderValue').innerText = formatCurrency(latestAOV);
+      
+      // Update badge labels with the month name
+      document.getElementById('salesBadge').innerText = latestMonth.month;
+      document.getElementById('tipsBadge').innerText = latestMonth.month;
+      document.getElementById('ordersBadge').innerText = latestMonth.month;
+      document.getElementById('aovBadge').innerText = latestMonth.month;
+    }
+
+    /* Populate Ledger Data Table */
+    function populateLedgerTable() {
+      const tbody = document.getElementById('ledgerTableBody');
+      tbody.innerHTML = '';
+      
+      monthlyData.forEach(row => {
+        const tr = document.createElement('tr');
+        const tipRatio = ((row.tips / row.netSales) * 100).toFixed(1) + '%';
+        
+        tr.innerHTML = `
+          <td class="font-semibold">${row.month}</td>
+          <td class="text-right">${formatCurrency(row.netSales)}</td>
+          <td class="text-right">${formatCurrency(row.tips)}</td>
+          <td class="text-right">${formatCurrency(row.taxAmount)}</td>
+          <td class="text-right">${formatCurrency(row.deferredGiftCards)}</td>
+          <td class="text-right">${formatCurrency(row.totalAmount)}</td>
+          <td class="text-right">${row.totalOrders.toLocaleString()}</td>
+          <td class="text-right">${formatCurrency(row.avgOrder)}</td>
+          <td class="text-right font-semibold">${tipRatio}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Populate averages/totals footer
+      const tfoot = document.createElement('tfoot');
+      const totalNetSales = monthlyData.reduce((sum, m) => sum + m.netSales, 0);
+      const totalTips = monthlyData.reduce((sum, m) => sum + m.tips, 0);
+      const totalTax = monthlyData.reduce((sum, m) => sum + m.taxAmount, 0);
+      const totalDeferred = monthlyData.reduce((sum, m) => sum + m.deferredGiftCards, 0);
+      const totalAmount = monthlyData.reduce((sum, m) => sum + m.totalAmount, 0);
+      const totalOrders = monthlyData.reduce((sum, m) => sum + m.totalOrders, 0);
+      const avgAOV = monthlyData.reduce((sum, m) => sum + m.avgOrder, 0) / monthlyData.length;
+      const overallTipPercentage = ((totalTips / totalNetSales) * 100).toFixed(1) + '%';
+
+      tfoot.innerHTML = `
+        <tr style="background-color: var(--active-tab-bg); font-weight:700; border-top: 2px solid var(--accent);">
+          <td>Averages / Totals</td>
+          <td class="text-right">${formatCurrency(totalNetSales / monthlyData.length)} <br><small style="color:var(--text-muted);font-weight:normal;">Avg/Mo</small></td>
+          <td class="text-right">${formatCurrency(totalTips)} <br><small style="color:var(--text-muted);font-weight:normal;">Total</small></td>
+          <td class="text-right">${formatCurrency(totalTax)} <br><small style="color:var(--text-muted);font-weight:normal;">Total</small></td>
+          <td class="text-right">${formatCurrency(totalDeferred)} <br><small style="color:var(--text-muted);font-weight:normal;">Total</small></td>
+          <td class="text-right">${formatCurrency(totalAmount / monthlyData.length)} <br><small style="color:var(--text-muted);font-weight:normal;">Avg/Mo</small></td>
+          <td class="text-right">${totalOrders.toLocaleString()} <br><small style="color:var(--text-muted);font-weight:normal;">Total</small></td>
+          <td class="text-right">${formatCurrency(avgAOV)} <br><small style="color:var(--text-muted);font-weight:normal;">Average</small></td>
+          <td class="text-right">${overallTipPercentage} <br><small style="color:var(--text-muted);font-weight:normal;">Tips/Net</small></td>
+        </tr>
+      `;
+      document.getElementById('monthlyLedgerTable').appendChild(tfoot);
+    }
+
+    /* Export ledger as CSV file */
+    function exportDataCSV() {
+      const csvHeader = 'Month,Net Sales,Tips,Tax Amount,Deferred Gift Cards,Total Amount,Average Order,Tips/Net Sales %\n';
+      const csvRows = monthlyData.map(row => {
+        const tipsPercentage = ((row.tips / row.netSales) * 100).toFixed(1);
+        return `"${row.month}",${row.netSales},${row.tips},${row.taxAmount},${row.deferredGiftCards},${row.totalAmount},${row.avgOrder},${tipsPercentage}%`;
+      }).join('\n');
+
+      const csvContent = csvHeader + csvRows;
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'friends_of_friends_monthly_sales.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       3. CHARTS INITIALIZATION
+       ------------------------------------------------------------- */
+    let netSalesChart, categoryPieChart, daypartBarChart, beveragePercentageChart, dailyOrdersChart, beverageSalesChart, otherSalesChart, dailySalesChart;
+    
+    // Theme configurations for Chart.js
+    function getChartThemeColors() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      return {
+        text: isDark ? '#e5e7eb' : '#1e293b',
+        grid: isDark ? 'rgba(75, 85, 99, 0.15)' : 'rgba(148, 163, 184, 0.12)',
+        tooltipBg: isDark ? '#1f2937' : '#ffffff',
+        tooltipText: isDark ? '#f3f4f6' : '#0f172a'
+      };
+    }
+
+    function initGlobalCharts() {
+      const themeColors = getChartThemeColors();
+      const labels = monthlyData.map(d => d.month);
+
+      // --- 1. Net Sales Chart ---
+      const ctxSales = document.getElementById('netSalesChart').getContext('2d');
+      const salesGlow = ctxSales.createLinearGradient(0, 0, 0, 400);
+      salesGlow.addColorStop(0, 'rgba(59, 130, 246, 0.8)');
+      salesGlow.addColorStop(1, 'rgba(16, 185, 129, 0.2)');
+
+      netSalesChart = new Chart(ctxSales, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Net Sales ($)',
+            data: monthlyData.map(d => d.netSales),
+            backgroundColor: salesGlow,
+            borderColor: '#3b82f6',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            hoverBackgroundColor: '#10b981'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              borderColor: 'rgba(16, 185, 129, 0.2)',
+              borderWidth: 1,
+              callbacks: {
+                label: function(context) { return formatCurrency(context.parsed.y); }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 65000,
+              max: 115000,
+              ticks: { 
+                color: themeColors.text, 
+                stepSize: 5000,
+                callback: function(val) { return '$' + (val / 1000) + 'K'; }
+              },
+              grid: { color: themeColors.grid }
+            }
+          }
+        }
+      });
+
+      // --- 2. Beverage Percentage Trend ---
+      const ctxBev = document.getElementById('beveragePercentageChart').getContext('2d');
+      beveragePercentageChart = new Chart(ctxBev, {
+        type: 'line',
+        data: {
+          labels: beverageData.map(d => d.month),
+          datasets: [{
+            label: 'Beverage Share %',
+            data: beverageData.map(d => d.percentage),
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            fill: true,
+            tension: 0.35,
+            borderWidth: 3,
+            pointBackgroundColor: '#10b981',
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) { return context.parsed.y.toFixed(1) + '% of sales'; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 40,
+              max: 65,
+              ticks: { color: themeColors.text, callback: function(val) { return val + '%'; } },
+              grid: { color: themeColors.grid }
+            }
+          }
+        }
+      });
+
+      // --- 3. Daily Orders Chart ---
+      const orderDailyAvgs = monthlyData.map(item => {
+        const parts = item.month.split(' ');
+        const days = daysInMonthMap[parts[0]] || 30;
+        return Math.round(item.totalOrders / days);
+      });
+
+      const ctxOrders = document.getElementById('dailyOrdersChart').getContext('2d');
+      dailyOrdersChart = new Chart(ctxOrders, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Avg Orders / Day',
+            data: orderDailyAvgs,
+            backgroundColor: 'rgba(139, 92, 246, 0.7)',
+            borderColor: '#8b5cf6',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            hoverBackgroundColor: '#f97316'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) { return context.parsed.y + ' orders/day'; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 170,
+              max: 240,
+              ticks: { color: themeColors.text, stepSize: 10 },
+              grid: { color: themeColors.grid }
+            }
+          }
+        }
+      });
+
+      // --- 4. Beverage Sales by Month ---
+      const ctxBevSales = document.getElementById('beverageSalesChart').getContext('2d');
+      beverageSalesChart = new Chart(ctxBevSales, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Beverage Sales ($)',
+            data: beverageData.map(d => d.totalBeverages),
+            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+            borderColor: '#3b82f6',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            hoverBackgroundColor: '#10b981'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) { return formatCurrency(context.parsed.y); }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 30000,
+              max: 60000,
+              ticks: { 
+                color: themeColors.text,
+                callback: function(val) { return '$' + (val / 1000) + 'K'; }
+              },
+              grid: { color: themeColors.grid }
+            }
+          }
+        }
+      });
+
+      // --- 5. Other Sales by Month ---
+      const otherSalesData = monthlyData.map((d, index) => {
+        const bev = beverageData[index] ? beverageData[index].totalBeverages : 0;
+        return d.netSales - bev;
+      });
+
+      const ctxOtherSales = document.getElementById('otherSalesChart').getContext('2d');
+      otherSalesChart = new Chart(ctxOtherSales, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Other Sales ($)',
+            data: otherSalesData,
+            backgroundColor: 'rgba(236, 72, 153, 0.7)',
+            borderColor: '#ec4899',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            hoverBackgroundColor: '#f97316'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) { return formatCurrency(context.parsed.y); }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 25000,
+              max: 65000,
+              ticks: { 
+                color: themeColors.text,
+                callback: function(val) { return '$' + (val / 1000) + 'K'; }
+              },
+              grid: { color: themeColors.grid }
+            }
+          }
+        }
+      });
+
+      // --- 6. Average Net Sales Per Day by Month ---
+      const dailyNetSales = monthlyData.map(item => {
+        const parts = item.month.split(' ');
+        const days = daysInMonthMap[parts[0]] || 30;
+        return Math.round(item.netSales / days);
+      });
+
+      const ctxDailySales = document.getElementById('dailySalesChart').getContext('2d');
+      dailySalesChart = new Chart(ctxDailySales, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Avg Sales / Day ($)',
+            data: dailyNetSales,
+            backgroundColor: 'rgba(20, 184, 166, 0.7)',
+            borderColor: '#14b8a6',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            hoverBackgroundColor: '#ec4899'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) { return formatCurrency(context.parsed.y) + '/day'; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 2200,
+              max: 3700,
+              ticks: { 
+                color: themeColors.text,
+                callback: function(val) { return '$' + val.toLocaleString(); }
+              },
+              grid: { color: themeColors.grid }
+            }
+          }
+        }
+      });
+
+      // --- 7. Drilldown Charts Initial Load ---
+      initDrilldownCharts();
+    }
+
+    function initDrilldownCharts() {
+      const themeColors = getChartThemeColors();
+      const initialMonth = document.getElementById('categoryMonthSelector').value;
+      const initialCatData = categoryMap[initialMonth];
+      const initialDpData = daypartMap[initialMonth];
+
+      // --- Category Pie Chart ---
+      const ctxCat = document.getElementById('categoryPieChart').getContext('2d');
+      categoryPieChart = new Chart(ctxCat, {
+        type: 'doughnut',
+        data: {
+          labels: initialCatData.map(c => c.name),
+          datasets: [{
+            data: initialCatData.map(c => c.value),
+            backgroundColor: ['#3b82f6', '#4b5563', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#f43f5e'],
+            borderWidth: 2,
+            borderColor: themeColors.tooltipBg,
+            hoverOffset: 12
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '60%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { 
+                color: themeColors.text, 
+                font: { family: 'Inter', size: 10 },
+                boxWidth: 10,
+                boxHeight: 10
+              }
+            },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) {
+                  const val = context.parsed;
+                  const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                  const percent = ((val / total) * 100).toFixed(1);
+                  return context.label + ': ' + formatCurrency(val) + ' (' + percent + '%)';
+                }
+              }
+            }
+          }
+        }
+      });
+
+      // --- Daypart Bar Chart ---
+      const ctxDp = document.getElementById('daypartBarChart').getContext('2d');
+      daypartBarChart = new Chart(ctxDp, {
+        type: 'bar',
+        data: {
+          labels: initialDpData.map(dp => dp.name),
+          datasets: [{
+            data: initialDpData.map(dp => dp.sales),
+            backgroundColor: 'rgba(59, 130, 246, 0.75)',
+            hoverBackgroundColor: '#10b981',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: themeColors.tooltipBg,
+              titleColor: themeColors.tooltipText,
+              bodyColor: themeColors.tooltipText,
+              callbacks: {
+                label: function(context) { return formatCurrency(context.parsed.y); }
+              }
+            }
+          },
+          scales: {
+            x: { ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } }, grid: { display: false } },
+            y: { ticks: { color: themeColors.text }, grid: { color: themeColors.grid } }
+          }
+        }
+      });
+    }
+
+    function updateDrilldownCharts(month) {
+      const catData = categoryMap[month];
+      const dpData = daypartMap[month];
+
+      // Update Category Doughnut
+      categoryPieChart.data.labels = catData.map(c => c.name);
+      categoryPieChart.data.datasets[0].data = catData.map(c => c.value);
+      categoryPieChart.update();
+
+      // Update Daypart Bar
+      daypartBarChart.data.labels = dpData.map(dp => dp.name);
+      daypartBarChart.data.datasets[0].data = dpData.map(dp => dp.sales);
+      daypartBarChart.update();
+    }
+
+    function syncDrilldownMonths(month) {
+      document.getElementById('categoryMonthSelector').value = month;
+      document.getElementById('daypartMonthSelector').value = month;
+      updateDrilldownCharts(month);
+    }
+
+    function updateChartsTheme() {
+      const themeColors = getChartThemeColors();
+      const allCharts = [netSalesChart, categoryPieChart, daypartBarChart, beveragePercentageChart, dailyOrdersChart, beverageSalesChart, otherSalesChart, dailySalesChart];
+      
+      allCharts.forEach(chart => {
+        if (!chart) return;
+        
+        // Update grid line colors
+        if (chart.options.scales) {
+          if (chart.options.scales.x && chart.options.scales.x.ticks) chart.options.scales.x.ticks.color = themeColors.text;
+          if (chart.options.scales.y && chart.options.scales.y.ticks) chart.options.scales.y.ticks.color = themeColors.text;
+          if (chart.options.scales.y && chart.options.scales.y.grid) chart.options.scales.y.grid.color = themeColors.grid;
+        }
+
+        // Update legend/tooltip text colors
+        if (chart.options.plugins) {
+          if (chart.options.plugins.legend && chart.options.plugins.legend.labels) chart.options.plugins.legend.labels.color = themeColors.text;
+          if (chart.options.plugins.tooltip) {
+            chart.options.plugins.tooltip.backgroundColor = themeColors.tooltipBg;
+            chart.options.plugins.tooltip.titleColor = themeColors.tooltipText;
+            chart.options.plugins.tooltip.bodyColor = themeColors.tooltipText;
+          }
+        }
+
+        // Doughnut border styling
+        if (chart.config.type === 'doughnut') {
+          chart.data.datasets[0].borderColor = themeColors.tooltipBg;
+        }
+        
+        chart.update();
+      });
+    }
+
+    /* -------------------------------------------------------------
+       4. NAVIGATION & TAB SWITCHING
+       ------------------------------------------------------------- */
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Toggle Sidebar Active
+        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+
+        // Toggle Tab Panels
+        const targetTab = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(panel => {
+          panel.classList.remove('active');
+        });
+        document.getElementById(targetTab + 'Tab').classList.add('active');
+      });
+    });
+
+    /* -------------------------------------------------------------
+       5. LIGHT/DARK MODE TOGGLE
+       ------------------------------------------------------------- */
+    const themeBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      let newTheme = 'dark';
+      
+      if (currentTheme === 'dark') {
+        newTheme = 'light';
+        themeIcon.setAttribute('data-lucide', 'moon');
+      } else {
+        newTheme = 'dark';
+        themeIcon.setAttribute('data-lucide', 'sun');
+      }
+
+      document.documentElement.setAttribute('data-theme', newTheme);
+      lucide.createIcons(); // Redraw icons
+      
+      // Update charts for new theme
+      setTimeout(updateChartsTheme, 50);
+    });
+
+    /* -------------------------------------------------------------
+       5.5 FILTER UNCATEGORIZED TABLE
+       ------------------------------------------------------------- */
+    function filterUncategorizedTable() {
+      const input = document.getElementById("uncategorizedSearch");
+      const filter = input.value.toLowerCase();
+      const table = document.getElementById("uncategorizedTable");
+      const tr = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < tr.length; i++) {
+        let tdName = tr[i].getElementsByTagName("td")[0];
+        let tdConcept = tr[i].getElementsByTagName("td")[1];
+        if (tdName || tdConcept) {
+          const nameValue = tdName.textContent || tdName.innerText;
+          const conceptValue = tdConcept.textContent || tdConcept.innerText;
+          if (nameValue.toLowerCase().indexOf(filter) > -1 || conceptValue.toLowerCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    /* -------------------------------------------------------------
+       6. ONLOAD INITS
+       ------------------------------------------------------------- */
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateOverallAverages();
+      populateLedgerTable();
+      initGlobalCharts();
+      lucide.createIcons(); // Process Lucide markup
+    });
+  </script>
+</body>
+</html>
