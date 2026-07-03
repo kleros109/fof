@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Friends of Friends - Sales Dashboard</title>
   
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Roboto Flex + Roboto Mono (M3 reference fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -18,54 +18,56 @@
 
   <style>
     /* -------------------------------------------------------------
-       CUSTOM PROPERTIES & VARIABLES (SLATE & EMERALD MODERN SYSTEM)
+       CUSTOM PROPERTIES & VARIABLES — Material Design 3, palette B
+       (Charcoal Blue, seed #3B5872). Mirrors app/globals.css so the
+       standalone HTML matches the Next.js app.
        ------------------------------------------------------------- */
     :root[data-theme="dark"] {
-      --bg-color: #0b0f19;
-      --card-bg: rgba(17, 24, 39, 0.7);
-      --card-border: rgba(37, 99, 235, 0.1);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent: #10b981;
-      --accent-hover: #059669;
-      --accent-light: rgba(16, 185, 129, 0.15);
-      --sidebar-bg: #111827;
-      --sidebar-border: rgba(31, 41, 55, 0.5);
-      --card-glow: 0 4px 30px rgba(0, 0, 0, 0.4);
-      --active-tab-bg: rgba(16, 185, 129, 0.1);
-      --active-tab-text: #10b981;
-      --table-stripe: rgba(31, 41, 55, 0.3);
-      --table-border: rgba(31, 41, 55, 0.5);
-      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-      --input-bg: #1f2937;
-      --card-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-      --trend-up: #10b981;
-      --trend-down: #ef4444;
-      --chart-grid: rgba(75, 85, 99, 0.1);
+      --bg-color: #101418;          /* M3 surface */
+      --card-bg: #161B20;           /* M3 surface-container */
+      --card-border: #42474E;       /* M3 outline-variant */
+      --text-main: #E0E2E8;         /* M3 on-surface */
+      --text-muted: #C2C7CF;        /* M3 on-surface-variant */
+      --accent: #9ACBFA;            /* M3 primary */
+      --accent-hover: #B8D8FB;
+      --accent-light: rgba(154, 203, 250, 0.15);
+      --sidebar-bg: #161B20;
+      --sidebar-border: #42474E;
+      --card-glow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.2);
+      --active-tab-bg: rgba(154, 203, 250, 0.12);
+      --active-tab-text: #9ACBFA;
+      --table-stripe: rgba(255, 255, 255, 0.04);
+      --table-border: #42474E;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15);
+      --input-bg: #1C2126;
+      --card-shadow: none;
+      --trend-up: #5BD5B0;
+      --trend-down: #FFB4AB;
+      --chart-grid: rgba(255, 255, 255, 0.08);
     }
 
     :root[data-theme="light"] {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --card-border: rgba(226, 232, 240, 0.8);
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --accent: #0f766e;
-      --accent-hover: #115e59;
-      --accent-light: rgba(15, 118, 110, 0.1);
-      --sidebar-bg: #ffffff;
-      --sidebar-border: rgba(226, 232, 240, 0.8);
-      --card-glow: 0 4px 20px rgba(148, 163, 184, 0.1);
-      --active-tab-bg: rgba(15, 118, 110, 0.08);
-      --active-tab-text: #0f766e;
-      --table-stripe: #f8fafc;
-      --table-border: #e2e8f0;
-      --shadow: 0 10px 15px -3px rgba(148, 163, 184, 0.1);
-      --input-bg: #f1f5f9;
+      --bg-color: #F7F9FF;          /* M3 surface */
+      --card-bg: #FFFFFF;
+      --card-border: #C2C7CF;       /* M3 outline-variant */
+      --text-main: #181C20;         /* M3 on-surface */
+      --text-muted: #42474E;        /* M3 on-surface-variant */
+      --accent: #2D628C;            /* M3 primary */
+      --accent-hover: #1F5FA8;
+      --accent-light: rgba(45, 98, 140, 0.10);
+      --sidebar-bg: #FFFFFF;
+      --sidebar-border: #C2C7CF;
+      --card-glow: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px 1px rgba(0,0,0,0.06);
+      --active-tab-bg: rgba(45, 98, 140, 0.08);
+      --active-tab-text: #2D628C;
+      --table-stripe: #F4F6FB;
+      --table-border: #DEE3EB;
+      --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px 1px rgba(0,0,0,0.06);
+      --input-bg: #EEF1F8;
       --card-shadow: none;
-      --trend-up: #0f766e;
-      --trend-down: #dc2626;
-      --chart-grid: rgba(148, 163, 184, 0.1);
+      --trend-up: #2D7D5B;
+      --trend-down: #BA1A1A;
+      --chart-grid: rgba(0, 0, 0, 0.06);
     }
 
     /* -------------------------------------------------------------
@@ -75,7 +77,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Roboto Flex', Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
     }
 
@@ -313,7 +315,7 @@
 
     .metric-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(16, 185, 129, 0.3);
+      border-color: rgba(45, 98, 140, 0.30);
     }
 
     .metric-info h3 {
@@ -349,23 +351,23 @@
     }
 
     .emerald-glow {
-      background-color: rgba(16, 185, 129, 0.1);
-      color: #10b981;
+      background-color: rgba(45, 98, 140, 0.08);
+      color: #2D628C;
     }
 
     .blue-glow {
-      background-color: rgba(59, 130, 246, 0.1);
-      color: #3b82f6;
+      background-color: rgba(103, 88, 122, 0.08);
+      color: #67587A;
     }
 
     .purple-glow {
-      background-color: rgba(139, 92, 246, 0.1);
-      color: #8b5cf6;
+      background-color: rgba(103, 88, 122, 0.08);
+      color: #67587A;
     }
 
     .orange-glow {
-      background-color: rgba(249, 115, 22, 0.1);
-      color: #f97316;
+      background-color: rgba(199, 106, 78, 0.10);
+      color: #C76A4E;
     }
 
     /* -------------------------------------------------------------
@@ -484,8 +486,8 @@
     }
 
     .badge-success {
-      background-color: rgba(16, 185, 129, 0.15);
-      color: #10b981;
+      background-color: rgba(63, 133, 52, 0.12);
+      color: #3F8534;
     }
 
     /* -------------------------------------------------------------
@@ -511,17 +513,17 @@
 
     .alert-green {
       border-left-color: var(--trend-up);
-      background-color: rgba(16, 185, 129, 0.05);
+      background-color: rgba(63, 133, 52, 0.06);
     }
 
     .alert-blue {
-      border-left-color: #3b82f6;
-      background-color: rgba(59, 130, 246, 0.05);
+      border-left-color: #2D628C;
+      background-color: rgba(45, 98, 140, 0.06);
     }
 
     .alert-yellow {
-      border-left-color: #f59e0b;
-      background-color: rgba(245, 158, 11, 0.05);
+      border-left-color: #C76A4E;
+      background-color: rgba(199, 106, 78, 0.06);
     }
 
     .alert-title {
@@ -576,10 +578,10 @@
       border-left: 4px solid var(--accent);
     }
 
-    .metric-monitor-box.blue { border-left-color: #3b82f6; }
-    .metric-monitor-box.green { border-left-color: #10b981; }
-    .metric-monitor-box.purple { border-left-color: #8b5cf6; }
-    .metric-monitor-box.orange { border-left-color: #f97316; }
+    .metric-monitor-box.blue { border-left-color: #2D628C; }
+    .metric-monitor-box.green { border-left-color: #3F8534; }
+    .metric-monitor-box.purple { border-left-color: #67587A; }
+    .metric-monitor-box.orange { border-left-color: #C76A4E; }
 
     .metric-monitor-title {
       font-weight: 600;
@@ -1086,7 +1088,7 @@
               <strong style="color:var(--accent);">Food Category (`Food`)</strong>: Represents **Friends of Friends Pastries** (e.g. Snickerdoodles, Brown Butter Cookies, Banana Puddin).
             </div>
             <div style="background-color: var(--input-bg); padding:1rem; border-radius:8px;">
-              <strong style="color:#3b82f6;">No Category Assigned (`No Category`)</strong>: Represents **Wavy Burgers menu items** (smash burgers, breakfast sandwiches, fries) which remain uncategorized in Toast POS.
+              <strong style="color:#2D628C;">No Category Assigned (`No Category`)</strong>: Represents **Wavy Burgers menu items** (smash burgers, breakfast sandwiches, fries) which remain uncategorized in Toast POS.
             </div>
           </div>
         </div>
@@ -1120,7 +1122,7 @@
                   <td class="text-right" style="color:var(--trend-down); font-weight:600;">-22.7%</td>
                 </tr>
                 <tr>
-                  <td class="font-semibold" style="color:#3b82f6;">No Category / Wavy Burgers</td>
+                  <td class="font-semibold" style="color:#2D628C;">No Category / Wavy Burgers</td>
                   <td class="text-right">3,356</td>
                   <td class="text-right">$30,269.80</td>
                   <td class="text-right">2,820</td>
@@ -1613,15 +1615,45 @@
        ------------------------------------------------------------- */
     let netSalesChart, categoryPieChart, daypartBarChart, beveragePercentageChart, dailyOrdersChart, beverageSalesChart, otherSalesChart, dailySalesChart;
     
-    // Theme configurations for Chart.js
+    // Theme configurations for Chart.js — M3 palette B
+    const CHART_PALETTE = {
+      light: {
+        primary:   '#2D628C',  // M3 primary 40
+        onPrimary: '#FFFFFF',
+        secondary: '#67587A',  // M3 tertiary 40 (purple)
+        tertiary:  '#3F7B73',  // M3 teal accent
+        warm:      '#C76A4E',  // warm orange (warm category)
+        green:     '#3F8534',  // M3 success/green
+        pink:      '#BA1A1A',  // M3 error
+        muted:     '#42474E',  // on-surface-variant
+        text:      '#42474E',  // alias for muted (chart axis labels)
+        grid:      'rgba(24, 28, 32, 0.08)',
+        tooltipBg: '#FFFFFF',
+        tooltipText: '#181C20',
+        tooltipBorder: 'rgba(45, 98, 140, 0.25)',
+        surfaceContainer: '#EEF1F8',
+      },
+      dark: {
+        primary:   '#9ACBFA',  // M3 primary 80
+        onPrimary: '#003352',
+        secondary: '#D2BFE7',
+        tertiary:  '#5BD5B0',
+        warm:      '#FFB59B',
+        green:     '#7BD96A',
+        pink:      '#FFB4AB',
+        muted:     '#C2C7CF',
+        text:      '#C2C7CF',  // alias for muted
+        grid:      'rgba(224, 226, 232, 0.10)',
+        tooltipBg: '#1C2126',
+        tooltipText: '#E0E2E8',
+        tooltipBorder: 'rgba(154, 203, 250, 0.30)',
+        surfaceContainer: '#1C2126',
+      },
+    };
+
     function getChartThemeColors() {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      return {
-        text: isDark ? '#e5e7eb' : '#1e293b',
-        grid: isDark ? 'rgba(75, 85, 99, 0.15)' : 'rgba(148, 163, 184, 0.12)',
-        tooltipBg: isDark ? '#1f2937' : '#ffffff',
-        tooltipText: isDark ? '#f3f4f6' : '#0f172a'
-      };
+      return isDark ? CHART_PALETTE.dark : CHART_PALETTE.light;
     }
 
     function initGlobalCharts() {
@@ -1631,8 +1663,8 @@
       // --- 1. Net Sales Chart ---
       const ctxSales = document.getElementById('netSalesChart').getContext('2d');
       const salesGlow = ctxSales.createLinearGradient(0, 0, 0, 400);
-      salesGlow.addColorStop(0, 'rgba(59, 130, 246, 0.8)');
-      salesGlow.addColorStop(1, 'rgba(16, 185, 129, 0.2)');
+      salesGlow.addColorStop(0, themeColors.primary);
+      salesGlow.addColorStop(1, themeColors.tertiary);
 
       netSalesChart = new Chart(ctxSales, {
         type: 'bar',
@@ -1642,10 +1674,10 @@
             label: 'Net Sales ($)',
             data: monthlyData.map(d => d.netSales),
             backgroundColor: salesGlow,
-            borderColor: '#3b82f6',
+            borderColor: themeColors.primary,
             borderWidth: 1.5,
             borderRadius: 6,
-            hoverBackgroundColor: '#10b981'
+            hoverBackgroundColor: themeColors.tertiary
           }]
         },
         options: {
@@ -1657,7 +1689,7 @@
               backgroundColor: themeColors.tooltipBg,
               titleColor: themeColors.tooltipText,
               bodyColor: themeColors.tooltipText,
-              borderColor: 'rgba(16, 185, 129, 0.2)',
+              borderColor: themeColors.tooltipBorder,
               borderWidth: 1,
               callbacks: {
                 label: function(context) { return formatCurrency(context.parsed.y); }
@@ -1666,7 +1698,7 @@
           },
           scales: {
             x: {
-              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } },
               grid: { display: false }
             },
             y: {
@@ -1692,12 +1724,12 @@
           datasets: [{
             label: 'Beverage Share %',
             data: beverageData.map(d => d.percentage),
-            borderColor: '#10b981',
-            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            borderColor: themeColors.tertiary,
+            pointBackgroundColor: themeColors.tertiary,
+            backgroundColor: themeColors.tertiary + '22',  // ~13% alpha
             fill: true,
             tension: 0.35,
             borderWidth: 3,
-            pointBackgroundColor: '#10b981',
             pointRadius: 4,
             pointHoverRadius: 6
           }]
@@ -1718,7 +1750,7 @@
           },
           scales: {
             x: {
-              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } },
               grid: { display: false }
             },
             y: {
@@ -1746,11 +1778,11 @@
           datasets: [{
             label: 'Avg Orders / Day',
             data: orderDailyAvgs,
-            backgroundColor: 'rgba(139, 92, 246, 0.7)',
-            borderColor: '#8b5cf6',
+            backgroundColor: themeColors.secondary + 'B3',
+            borderColor: themeColors.secondary,
             borderWidth: 1.5,
             borderRadius: 6,
-            hoverBackgroundColor: '#f97316'
+            hoverBackgroundColor: themeColors.primary
           }]
         },
         options: {
@@ -1769,7 +1801,7 @@
           },
           scales: {
             x: {
-              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } },
               grid: { display: false }
             },
             y: {
@@ -1791,11 +1823,11 @@
           datasets: [{
             label: 'Beverage Sales ($)',
             data: beverageData.map(d => d.totalBeverages),
-            backgroundColor: 'rgba(59, 130, 246, 0.7)',
-            borderColor: '#3b82f6',
+            backgroundColor: themeColors.tertiary + 'B3',
+            borderColor: themeColors.tertiary,
             borderWidth: 1.5,
             borderRadius: 6,
-            hoverBackgroundColor: '#10b981'
+            hoverBackgroundColor: themeColors.primary
           }]
         },
         options: {
@@ -1814,7 +1846,7 @@
           },
           scales: {
             x: {
-              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } },
               grid: { display: false }
             },
             y: {
@@ -1844,11 +1876,11 @@
           datasets: [{
             label: 'Other Sales ($)',
             data: otherSalesData,
-            backgroundColor: 'rgba(236, 72, 153, 0.7)',
-            borderColor: '#ec4899',
+            backgroundColor: themeColors.warm + 'B3',
+            borderColor: themeColors.warm,
             borderWidth: 1.5,
             borderRadius: 6,
-            hoverBackgroundColor: '#f97316'
+            hoverBackgroundColor: themeColors.primary
           }]
         },
         options: {
@@ -1867,7 +1899,7 @@
           },
           scales: {
             x: {
-              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } },
               grid: { display: false }
             },
             y: {
@@ -1898,11 +1930,11 @@
           datasets: [{
             label: 'Avg Sales / Day ($)',
             data: dailyNetSales,
-            backgroundColor: 'rgba(20, 184, 166, 0.7)',
-            borderColor: '#14b8a6',
+            backgroundColor: themeColors.tertiary + 'B3',
+            borderColor: themeColors.tertiary,
             borderWidth: 1.5,
             borderRadius: 6,
-            hoverBackgroundColor: '#ec4899'
+            hoverBackgroundColor: themeColors.warm
           }]
         },
         options: {
@@ -1921,7 +1953,7 @@
           },
           scales: {
             x: {
-              ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } },
+              ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } },
               grid: { display: false }
             },
             y: {
@@ -1955,7 +1987,15 @@
           labels: initialCatData.map(c => c.name),
           datasets: [{
             data: initialCatData.map(c => c.value),
-            backgroundColor: ['#3b82f6', '#4b5563', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#f43f5e'],
+            backgroundColor: [
+              themeColors.primary,
+              themeColors.muted,
+              themeColors.tertiary,
+              themeColors.warm,
+              themeColors.secondary,
+              themeColors.pink,
+              themeColors.green,
+            ],
             borderWidth: 2,
             borderColor: themeColors.tooltipBg,
             hoverOffset: 12
@@ -1970,7 +2010,7 @@
               position: 'right',
               labels: { 
                 color: themeColors.text, 
-                font: { family: 'Inter', size: 10 },
+                font: { family: 'Roboto Flex', size: 10 },
                 boxWidth: 10,
                 boxHeight: 10
               }
@@ -2000,8 +2040,8 @@
           labels: initialDpData.map(dp => dp.name),
           datasets: [{
             data: initialDpData.map(dp => dp.sales),
-            backgroundColor: 'rgba(59, 130, 246, 0.75)',
-            hoverBackgroundColor: '#10b981',
+            backgroundColor: themeColors.primary + 'BF',  // ~75% alpha
+            hoverBackgroundColor: themeColors.tertiary,
             borderRadius: 4
           }]
         },
@@ -2020,7 +2060,7 @@
             }
           },
           scales: {
-            x: { ticks: { color: themeColors.text, font: { family: 'Inter', size: 10 } }, grid: { display: false } },
+            x: { ticks: { color: themeColors.text, font: { family: 'Roboto Flex', size: 10 } }, grid: { display: false } },
             y: { ticks: { color: themeColors.text }, grid: { color: themeColors.grid } }
           }
         }
@@ -2107,10 +2147,24 @@
     const themeBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
 
+    // Initialize theme from localStorage or system preference
+    (function() {
+      try {
+        var t = localStorage.getItem('fof-theme');
+        if (!t) {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+          themeIcon.setAttribute('data-lucide', t === 'dark' ? 'sun' : 'moon');
+        }
+      } catch (e) {}
+    })();
+
     themeBtn.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       let newTheme = 'dark';
-      
+
       if (currentTheme === 'dark') {
         newTheme = 'light';
         themeIcon.setAttribute('data-lucide', 'moon');
@@ -2120,8 +2174,9 @@
       }
 
       document.documentElement.setAttribute('data-theme', newTheme);
+      try { localStorage.setItem('fof-theme', newTheme); } catch (e) {}
       lucide.createIcons(); // Redraw icons
-      
+
       // Update charts for new theme
       setTimeout(updateChartsTheme, 50);
     });

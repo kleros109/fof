@@ -867,7 +867,16 @@ export default function SalesDashboard() {
     }
   ];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658'];
+  const CHART_COLORS = [
+    'hsl(var(--chart-1))',
+    'hsl(var(--chart-2))',
+    'hsl(var(--chart-3))',
+    'hsl(var(--chart-4))',
+    'hsl(var(--chart-5))',
+  ];
+  const CHART_GRID = 'hsl(var(--border))';
+  const CHART_AXIS = 'hsl(var(--muted-foreground))';
+  const CHART_LABEL = 'hsl(var(--foreground))';
 
   const formatCurrency = (value: number) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const formatCurrencyNoDecimals = (value: number) => `$${value.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
@@ -911,14 +920,14 @@ export default function SalesDashboard() {
               <div className="flex items-center gap-4">
                 <img src="/images/FOF.jpg" alt="FoF Logo" className="h-12 w-auto rounded-lg object-contain" />
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-bold">Friends of Friends</h1>
-                  <p className="text-muted-foreground mt-1 text-sm sm:text-base">January 2025 - June 2026 Performance Analysis</p>
+                  <h1 className="text-headline-md">Friends of Friends</h1>
+                  <p className="text-muted-foreground mt-1 text-body-md">January 2025 - June 2026 Performance Analysis</p>
                 </div>
               </div>
               <div className="flex gap-2 sm:gap-3 flex-wrap">
                 <Link
                   href="/commentary"
-                  className="flex items-center gap-2 bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base whitespace-nowrap"
+                  className="inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2 text-label-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
                 >
                   <FileText size={18} className="sm:w-5 sm:h-5" />
                   <span className="hidden sm:inline">View Commentary</span>
@@ -926,7 +935,7 @@ export default function SalesDashboard() {
                 </Link>
                 <button
                   onClick={generateCSV}
-                  className="flex items-center gap-2 bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base whitespace-nowrap"
+                  className="inline-flex items-center gap-2 rounded-sm border border-outline bg-background px-4 py-2 text-label-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
                   <Download size={18} className="sm:w-5 sm:h-5" />
                   <span className="hidden sm:inline">Download CSV Data</span>
@@ -943,66 +952,66 @@ export default function SalesDashboard() {
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Monthly Sales</p>
-                  <p className="text-2xl font-bold">
+                  <p className="text-label-md text-muted-foreground">Monthly Sales</p>
+                  <p className="text-headline-sm">
                     {formatCurrency(latestMonthSales)}
                   </p>
-                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-green-100 text-green-800">
+                  <span className="inline-block mt-1 rounded-full bg-accent px-2 py-0.5 text-label-sm font-medium text-accent-foreground">
                     {latestMonthName}
                   </span>
                 </div>
-                <DollarSign className="h-6 w-6 text-green-600" />
+                <DollarSign className="h-6 w-6 text-primary" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-md transition-shadow">
+          <Card className="hover:shadow-m3-2 transition-shadow">
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Tips/Net Sales</p>
-                  <p className="text-2xl font-bold">
+                  <p className="text-label-md text-muted-foreground">Tips/Net Sales</p>
+                  <p className="text-headline-sm">
                     {latestMonthTipsPercent}
                   </p>
-                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                  <span className="inline-block mt-1 rounded-full bg-accent px-2 py-0.5 text-label-sm font-medium text-accent-foreground">
                     {latestMonthName}
                   </span>
                 </div>
-                <TrendingUp className="h-6 w-6 text-blue-600" />
+                <TrendingUp className="h-6 w-6 text-primary" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-md transition-shadow">
+          <Card className="hover:shadow-m3-2 transition-shadow">
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Orders / Day</p>
-                  <p className="text-2xl font-bold">
+                  <p className="text-label-md text-muted-foreground">Orders / Day</p>
+                  <p className="text-headline-sm">
                     {latestMonthOrdersPerDay.toLocaleString()}
                   </p>
-                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-purple-100 text-purple-800">
+                  <span className="inline-block mt-1 rounded-full bg-accent px-2 py-0.5 text-label-sm font-medium text-accent-foreground">
                     {latestMonthName}
                   </span>
                 </div>
-                <Users className="h-6 w-6 text-purple-600" />
+                <Users className="h-6 w-6 text-primary" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-md transition-shadow">
+          <Card className="hover:shadow-m3-2 transition-shadow">
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Order Value</p>
-                  <p className="text-2xl font-bold">
+                  <p className="text-label-md text-muted-foreground">Order Value</p>
+                  <p className="text-headline-sm">
                     {formatCurrency(latestMonthAOV)}
                   </p>
-                  <span className="inline-block mt-1 text-xs font-semibold px-2 py-0.5 rounded bg-orange-100 text-orange-800">
+                  <span className="inline-block mt-1 rounded-full bg-accent px-2 py-0.5 text-label-sm font-medium text-accent-foreground">
                     {latestMonthName}
                   </span>
                 </div>
-                <Clock className="h-6 w-6 text-orange-600" />
+                <Clock className="h-6 w-6 text-primary" />
               </div>
             </CardContent>
           </Card>
@@ -1029,12 +1038,12 @@ export default function SalesDashboard() {
                 tickLine={true}
               />
               <Tooltip formatter={(value) => formatCurrency(value as number)} />
-              <Bar dataKey="netSales" fill="#0088FE">
-                <LabelList 
-                  dataKey="netSales" 
-                  position="top" 
+              <Bar dataKey="netSales" fill={CHART_COLORS[0]}>
+                <LabelList
+                  dataKey="netSales"
+                  position="top"
                   formatter={formatCurrency}
-                  style={{ fontSize: '12px', fontWeight: 'bold', fill: '#374151' }}
+                  style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
             </BarChart>
@@ -1059,11 +1068,11 @@ export default function SalesDashboard() {
                   labelLine={true}
                   label={({ name, percentage }: { name: string; percentage: number }) => `${name} ${percentage}%`}
                   outerRadius={90}
-                  fill="#8884d8"
+                  fill={CHART_COLORS[0]}
                   dataKey="value"
                 >
                   {categoryData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip formatter={(value) => formatCurrency(value as number)} />
@@ -1090,7 +1099,7 @@ export default function SalesDashboard() {
                   tickLine={true}
                 />
                 <Tooltip formatter={(value) => formatCurrency(value as number)} />
-                <Bar dataKey="sales" fill="#0088FE" />
+                <Bar dataKey="sales" fill={CHART_COLORS[0]} />
               </BarChart>
             </ResponsiveContainer>
             </CardContent>
@@ -1124,7 +1133,7 @@ export default function SalesDashboard() {
                 formatter={(value) => `${value}%`}
                 labelFormatter={(label) => `Month: ${label}`}
               />
-              <Bar dataKey="percentage" fill="#00C49F" />
+              <Bar dataKey="percentage" fill={CHART_COLORS[2]} />
             </BarChart>
           </ResponsiveContainer>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1153,12 +1162,12 @@ export default function SalesDashboard() {
                 domain={[30000, 55000]}
               />
               <Tooltip formatter={(value) => formatCurrency(value as number)} />
-              <Bar dataKey="totalBeverages" fill="#00C49F">
+              <Bar dataKey="totalBeverages" fill={CHART_COLORS[2]}>
                 <LabelList
                   dataKey="totalBeverages"
                   position="top"
                   formatter={formatCurrency}
-                  style={{ fontSize: '12px', fontWeight: 'bold', fill: '#374151' }}
+                  style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
             </BarChart>
@@ -1189,12 +1198,12 @@ export default function SalesDashboard() {
                 domain={[25000, 65000]}
               />
               <Tooltip formatter={(value) => formatCurrency(value as number)} />
-              <Bar dataKey="otherSales" fill="#FF8042">
+              <Bar dataKey="otherSales" fill={CHART_COLORS[3]}>
                 <LabelList
                   dataKey="otherSales"
                   position="top"
                   formatter={formatCurrency}
-                  style={{ fontSize: '12px', fontWeight: 'bold', fill: '#374151' }}
+                  style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
             </BarChart>
@@ -1233,35 +1242,35 @@ export default function SalesDashboard() {
                 formatter={(value) => [`${value} orders/day`, 'Avg Orders Per Day']}
                 labelFormatter={(label) => `Period: ${label}`}
               />
-              <Bar dataKey="avgOrdersPerDay" fill="#8884D8">
+              <Bar dataKey="avgOrdersPerDay" fill={CHART_COLORS[1]}>
                 <LabelList
                   dataKey="avgOrdersPerDay"
                   position="top"
-                  style={{ fontSize: '12px', fontWeight: 'bold', fill: '#374151' }}
+                  style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
           <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
-            <div className="bg-green-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-green-700">Highest Daily Orders</p>
-              <p className="text-lg font-bold text-green-900">228/day</p>
-              <p className="text-xs text-green-600">March 2025</p>
+            <div className="callout-success p-3">
+              <p className="text-label-md font-medium">Highest Daily Orders</p>
+              <p className="text-title-md font-semibold">228/day</p>
+              <p className="text-label-sm opacity-80">March 2025</p>
             </div>
-            <div className="bg-red-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-red-700">Lowest Daily Orders</p>
-              <p className="text-lg font-bold text-red-900">188/day</p>
-              <p className="text-xs text-red-600">September 2025</p>
+            <div className="callout-error p-3">
+              <p className="text-label-md font-medium">Lowest Daily Orders</p>
+              <p className="text-title-md font-semibold">188/day</p>
+              <p className="text-label-sm opacity-80">September 2025</p>
             </div>
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">193/day</p>
-              <p className="text-xs text-blue-600">June 2026</p>
+            <div className="callout-info p-3">
+              <p className="text-label-md font-medium">Current Period</p>
+              <p className="text-title-md font-semibold">193/day</p>
+              <p className="text-label-sm opacity-80">June 2026</p>
             </div>
-            <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">18-Period Average</p>
-              <p className="text-lg font-bold text-purple-900">204/day</p>
-              <p className="text-xs text-purple-600">Jan 2025 - June 2026</p>
+            <div className="callout-warning p-3">
+              <p className="text-label-md font-medium">18-Period Average</p>
+              <p className="text-title-md font-semibold">204/day</p>
+              <p className="text-label-sm opacity-80">Jan 2025 - June 2026</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1299,36 +1308,36 @@ export default function SalesDashboard() {
                 formatter={(value) => [formatCurrency(value as number), 'Avg Net Sales Per Day']}
                 labelFormatter={(label) => `Month: ${label}`}
               />
-              <Bar dataKey="avgNetSalesPerDay" fill="#00C49F">
+              <Bar dataKey="avgNetSalesPerDay" fill={CHART_COLORS[2]}>
                 <LabelList
                   dataKey="avgNetSalesPerDay"
                   position="top"
                   formatter={formatCurrency}
-                  style={{ fontSize: '12px', fontWeight: 'bold', fill: '#374151' }}
+                  style={{ fontSize: '12px', fontWeight: 'bold', fill: CHART_LABEL }}
                 />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
           <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
-            <div className="bg-green-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-green-700">Highest Daily Sales</p>
-              <p className="text-lg font-bold text-green-900">$3,559/day</p>
-              <p className="text-xs text-green-600">March 2025</p>
+            <div className="callout-success p-3">
+              <p className="text-label-md font-medium">Highest Daily Sales</p>
+              <p className="text-title-md font-semibold">$3,559/day</p>
+              <p className="text-label-sm opacity-80">March 2025</p>
             </div>
-            <div className="bg-red-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-red-700">Lowest Daily Sales</p>
-              <p className="text-lg font-bold text-red-900">$2,498/day</p>
-              <p className="text-xs text-red-600">September 2025</p>
+            <div className="callout-error p-3">
+              <p className="text-label-md font-medium">Lowest Daily Sales</p>
+              <p className="text-title-md font-semibold">$2,498/day</p>
+              <p className="text-label-sm opacity-80">September 2025</p>
             </div>
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-blue-700">Current Period</p>
-              <p className="text-lg font-bold text-blue-900">$2,585/day</p>
-              <p className="text-xs text-blue-600">June 2026</p>
+            <div className="callout-info p-3">
+              <p className="text-label-md font-medium">Current Period</p>
+              <p className="text-title-md font-semibold">$2,585/day</p>
+              <p className="text-label-sm opacity-80">June 2026</p>
             </div>
-            <div className="bg-purple-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-purple-700">18-Period Average</p>
-              <p className="text-lg font-bold text-purple-900">$2,900/day</p>
-              <p className="text-xs text-purple-600">Jan 2025 - June 2026</p>
+            <div className="callout-warning p-3">
+              <p className="text-label-md font-medium">18-Period Average</p>
+              <p className="text-title-md font-semibold">$2,900/day</p>
+              <p className="text-label-sm opacity-80">Jan 2025 - June 2026</p>
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -1344,17 +1353,17 @@ export default function SalesDashboard() {
           </CardHeader>
           <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-            <div className="p-4 bg-blue-50 rounded-lg">
-              <h3 className="font-semibold text-blue-900 mb-2">Sales Performance</h3>
-              <p className="text-sm text-blue-700">1H2026 Net Sales totaled $515,199, averaging $85,866/mo. 2Q2026 grew to $260,133 (+2.0% QoQ over 1Q26) despite a June contraction to $77,543 (193 orders/day) following a peak in May of $93,461 (216 orders/day).</p>
+            <div className="callout-info p-4">
+              <h3 className="text-title-md font-semibold mb-2">Sales Performance</h3>
+              <p className="text-body-md">1H2026 Net Sales totaled $515,199, averaging $85,866/mo. 2Q2026 grew to $260,133 (+2.0% QoQ over 1Q26) despite a June contraction to $77,543 (193 orders/day) following a peak in May of $93,461 (216 orders/day).</p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg">
-              <h3 className="font-semibold text-green-900 mb-2">Category Leaders</h3>
-              <p className="text-sm text-green-700">For June 2026, NA Beverages led at 53.6% of sales, with Food at 9.9%. Wavy Merchandise grew to 1.8% ($1,374), representing a +94.1% MoM surge. Total beverages comprised 56.1% of June sales.</p>
+            <div className="callout-success p-4">
+              <h3 className="text-title-md font-semibold mb-2">Category Leaders</h3>
+              <p className="text-body-md">For June 2026, NA Beverages led at 53.6% of sales, with Food at 9.9%. Wavy Merchandise grew to 1.8% ($1,374), representing a +94.1% MoM surge. Total beverages comprised 56.1% of June sales.</p>
             </div>
-            <div className="p-4 bg-purple-50 rounded-lg">
-              <h3 className="font-semibold text-purple-900 mb-2">Customer Traffic & AOV</h3>
-              <p className="text-sm text-purple-700">Traffic averaged 205 orders/day in 1H26, peaking in May (216/day) before easing to 193/day in June. June AOV fell to $13.41, primarily driven by a drop in alcohol beverage ticket sizes.</p>
+            <div className="callout-warning p-4">
+              <h3 className="text-title-md font-semibold mb-2">Customer Traffic & AOV</h3>
+              <p className="text-body-md">Traffic averaged 205 orders/day in 1H26, peaking in May (216/day) before easing to 193/day in June. June AOV fell to $13.41, primarily driven by a drop in alcohol beverage ticket sizes.</p>
             </div>
           </div>
           </CardContent>
@@ -1369,10 +1378,10 @@ export default function SalesDashboard() {
                 <p className="text-sm text-muted-foreground mt-1">Wavy Burgers menu items currently reported under &quot;No Sales Category Assigned&quot;</p>
               </div>
               <div className="flex gap-2">
-                <a href="/uncategorized_toast_items.xlsx" download className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-600 text-white rounded text-sm hover:bg-green-700 transition-colors">
+                <a href="/uncategorized_toast_items.xlsx" download className="inline-flex items-center gap-1.5 rounded-sm bg-primary px-3 py-1.5 text-label-md font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
                   <Download size={14} /> Download XLSX
                 </a>
-                <a href="/uncategorized_toast_items.csv" download className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition-colors">
+                <a href="/uncategorized_toast_items.csv" download className="inline-flex items-center gap-1.5 rounded-sm border border-outline bg-background px-3 py-1.5 text-label-md font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
                   <Download size={14} /> Download CSV
                 </a>
               </div>
@@ -1433,9 +1442,9 @@ export default function SalesDashboard() {
                         .map((item, idx) => (
                           <tr key={idx} className="hover:bg-muted/50 transition-colors">
                             <td className="px-4 py-2 text-sm font-semibold">{item.name}</td>
-                            <td className="px-4 py-2 text-xs"><span className="px-2 py-0.5 rounded bg-yellow-100 text-yellow-900 font-semibold">{item.concept}</span></td>
+                            <td className="px-4 py-2 text-xs"><span className="rounded-full bg-warning-container px-2 py-0.5 text-label-sm font-medium text-foreground">{item.concept}</span></td>
                             <td className="px-4 py-2 text-sm text-right font-medium">{item.price}</td>
-                            <td className="px-4 py-2 text-xs"><span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 font-semibold">{item.target}</span></td>
+                            <td className="px-4 py-2 text-xs"><span className="rounded-full bg-accent px-2 py-0.5 text-label-sm font-medium text-accent-foreground">{item.target}</span></td>
                           </tr>
                         ))}
                     </tbody>
@@ -1462,7 +1471,7 @@ export default function SalesDashboard() {
                     </div>
                   ))}
                 </div>
-                <div className="p-3 rounded bg-yellow-50 border border-yellow-100 text-yellow-800 text-xs mt-4">
+                <div className="callout-warning p-3 text-body-sm mt-4">
                   <strong>Why this matters:</strong> Leaving these items unassigned makes it impossible to analyze COGS (Cost of Goods Sold) and prime costs per sub-concept. Mappings will isolate Wavy Burgers food sales from Friends of Friends pastry sales.
                 </div>
               </div>
@@ -1477,53 +1486,53 @@ export default function SalesDashboard() {
           </CardHeader>
           <CardContent>
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-border">
+              <thead className="bg-muted">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Net Sales</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Tips</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Tax Amount</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Deferred Gift Cards</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total Amount</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Average Order</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Tips/Net Sales</th>
+                  <th className="px-6 py-3 text-left text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Month</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Net Sales</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Tips</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Tax Amount</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Deferred Gift Cards</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Total Amount</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Average Order</th>
+                  <th className="px-6 py-3 text-right text-label-sm font-medium text-muted-foreground uppercase tracking-wider">Tips/Net Sales</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-card divide-y divide-border">
                 {monthlyData.map((row, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{row.month}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.netSales)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.tips)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.taxAmount)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.deferredGiftCards)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.totalAmount)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{formatCurrency(row.avgOrder)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">{((row.tips / row.netSales) * 100).toFixed(1)}%</td>
+                  <tr key={index} className={index % 2 === 0 ? 'bg-card' : 'bg-muted/40'}>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md font-medium text-foreground">{row.month}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{formatCurrency(row.netSales)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{formatCurrency(row.tips)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{formatCurrency(row.taxAmount)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{formatCurrency(row.deferredGiftCards)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{formatCurrency(row.totalAmount)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{formatCurrency(row.avgOrder)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">{((row.tips / row.netSales) * 100).toFixed(1)}%</td>
                   </tr>
                 ))}
-                <tr className="bg-gray-100 border-t-2 border-gray-300 font-semibold">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Average</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                <tr className="bg-muted/60 border-t-2 border-border font-semibold">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md font-bold text-foreground">Average</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {formatCurrency(monthlyData.reduce((sum, m) => sum + m.netSales, 0) / monthlyData.length)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {formatCurrency(monthlyData.reduce((sum, m) => sum + m.tips, 0) / monthlyData.length)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {formatCurrency(monthlyData.reduce((sum, m) => sum + m.taxAmount, 0) / monthlyData.length)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {formatCurrency(monthlyData.reduce((sum, m) => sum + m.deferredGiftCards, 0) / monthlyData.length)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {formatCurrency(monthlyData.reduce((sum, m) => sum + m.totalAmount, 0) / monthlyData.length)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {formatCurrency(monthlyData.reduce((sum, m) => sum + m.avgOrder, 0) / monthlyData.length)}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                  <td className="px-6 py-4 whitespace-nowrap text-body-md text-foreground text-right">
                     {(monthlyData.reduce((sum, m) => sum + (m.tips / m.netSales), 0) / monthlyData.length * 100).toFixed(1)}%
                   </td>
                 </tr>
