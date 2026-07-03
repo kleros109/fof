@@ -55,6 +55,75 @@ const STATIC_BREAKDOWNS: Record<string, { categoryData: any[], daypartData: any[
       { name: 'Late Night', sales: 60.00, orders: 6 }
     ]
   },
+  'April 2026': {
+    categoryData: [
+      { name: 'NA Beverage', value: 45525.57, percentage: 51.1 },
+      { name: 'No Category', value: 28265.44, percentage: 31.7 },
+      { name: 'Food', value: 10021.39, percentage: 11.2 },
+      { name: 'Merchandise', value: 2986.45, percentage: 3.4 },
+      { name: 'Wine', value: 967.00, percentage: 1.1 },
+      { name: 'Bottled Beer', value: 823.80, percentage: 0.9 },
+      { name: 'Draft Beer', value: 539.33, percentage: 0.6 }
+    ],
+    daypartData: [
+      { name: 'Breakfast', sales: 32075.73, orders: 2195 },
+      { name: 'Lunch', sales: 43347.54, orders: 3163 },
+      { name: 'Dinner', sales: 6494.13, orders: 483 },
+      { name: 'No Service', sales: 7211.58, orders: 477 }
+    ]
+  },
+  'March 2026': {
+    categoryData: [
+      { name: 'NA Beverage', value: 44904.05, percentage: 50.0 },
+      { name: 'No Category', value: 31081.25, percentage: 34.6 },
+      { name: 'Food', value: 10600.65, percentage: 11.8 },
+      { name: 'Merchandise', value: 1078.43, percentage: 1.2 },
+      { name: 'Bottled Beer', value: 958.00, percentage: 1.1 },
+      { name: 'Draft Beer', value: 656.80, percentage: 0.7 },
+      { name: 'Wine', value: 566.00, percentage: 0.6 }
+    ],
+    daypartData: [
+      { name: 'Breakfast', sales: 32422.99, orders: 2174 },
+      { name: 'Lunch', sales: 44955.67, orders: 3325 },
+      { name: 'Dinner', sales: 7023.75, orders: 529 },
+      { name: 'No Service', sales: 5442.77, orders: 426 }
+    ]
+  },
+  'February 2026': {
+    categoryData: [
+      { name: 'NA Beverage', value: 35986.61, percentage: 50.6 },
+      { name: 'No Category', value: 23591.01, percentage: 33.2 },
+      { name: 'Food', value: 8436.17, percentage: 11.9 },
+      { name: 'Wine', value: 853.50, percentage: 1.2 },
+      { name: 'Merchandise', value: 841.20, percentage: 1.2 },
+      { name: 'Bottled Beer', value: 724.50, percentage: 1.0 },
+      { name: 'Draft Beer', value: 641.50, percentage: 0.9 }
+    ],
+    daypartData: [
+      { name: 'Breakfast', sales: 26286.41, orders: 1833 },
+      { name: 'Lunch', sales: 35069.42, orders: 2668 },
+      { name: 'Dinner', sales: 5993.46, orders: 424 },
+      { name: 'No Service', sales: 3725.20, orders: 296 }
+    ]
+  },
+  'January 2026': {
+    categoryData: [
+      { name: 'NA Beverage', value: 43276.04, percentage: 49.9 },
+      { name: 'No Category', value: 27974.14, percentage: 32.2 },
+      { name: 'Food', value: 11055.74, percentage: 12.7 },
+      { name: 'Wine', value: 1273.12, percentage: 1.5 },
+      { name: 'Draft Beer', value: 1235.50, percentage: 1.4 },
+      { name: 'Bottled Beer', value: 971.50, percentage: 1.1 },
+      { name: 'Merchandise', value: 957.62, percentage: 1.1 }
+    ],
+    daypartData: [
+      { name: 'Breakfast', sales: 29236.64, orders: 1939 },
+      { name: 'Lunch', sales: 44597.59, orders: 3349 },
+      { name: 'Dinner', sales: 8854.60, orders: 669 },
+      { name: 'No Service', sales: 4030.83, orders: 308 },
+      { name: 'Late Night', sales: 24.00, orders: 2 }
+    ]
+  },
   'August 2025': {
     categoryData: [
       { name: 'NA Beverage', value: 44399.23, percentage: 54.7 },
@@ -190,12 +259,15 @@ export default function SalesDashboard() {
     daypartData: []
   };
 
-  const availableBreakdownMonths = Array.from(new Set([
-    'June 2026',
-    'May 2026',
-    'August 2025',
-    ...Object.keys(uploadedDetails)
-  ]));
+  // Dynamically compute percentage of sales for dayparts
+  const daypartTotal = currentBreakdown.daypartData.reduce((sum, d) => sum + d.sales, 0);
+  const daypartDataWithPercent = currentBreakdown.daypartData.map(d => ({
+    ...d,
+    percentage: daypartTotal ? Math.round((d.sales / daypartTotal) * 1000) / 10 : 0
+  }));
+
+  const availableBreakdownMonths = localMonthlyData.map(m => m.month);
+  const hasBreakdownData = currentBreakdown.categoryData.length > 0;
 
   return (
     <div className="min-h-screen bg-background p-3 sm:p-6">
@@ -371,59 +443,75 @@ export default function SalesDashboard() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
-          {/* Sales by Category */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Sales by Category ({breakdownMonth})</CardTitle>
-            </CardHeader>
-            <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
-              <PieChart>
-                <Pie
-                  data={currentBreakdown.categoryData}
-                  cx="40%"
-                  cy="50%"
-                  labelLine={true}
-                  label={({ name, percentage }: { name: string; percentage: number }) => `${name} ${percentage}%`}
-                  outerRadius={90}
-                  fill={CHART_COLORS[0]}
-                  dataKey="value"
-                >
-                  {currentBreakdown.categoryData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
-              </PieChart>
-            </ResponsiveContainer>
-            </CardContent>
-          </Card>
+        {hasBreakdownData ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
+            {/* Sales by Category */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Sales by Category ({breakdownMonth})</CardTitle>
+              </CardHeader>
+              <CardContent>
+              <ResponsiveContainer width="100%" height={350}>
+                <PieChart>
+                  <Pie
+                    data={currentBreakdown.categoryData}
+                    cx="40%"
+                    cy="50%"
+                    labelLine={true}
+                    label={({ name, percentage }: { name: string; percentage: number }) => `${name} ${percentage}%`}
+                    outerRadius={90}
+                    fill={CHART_COLORS[0]}
+                    dataKey="value"
+                  >
+                    {currentBreakdown.categoryData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
+                </PieChart>
+              </ResponsiveContainer>
+              </CardContent>
+            </Card>
 
-          {/* Daypart Analysis */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Sales by Daypart ({breakdownMonth})</CardTitle>
-            </CardHeader>
-            <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
-              <BarChart data={currentBreakdown.daypartData} margin={{ top: 20, right: 30, left: 100, bottom: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis
-                  tickFormatter={formatCurrencyNoDecimals}
-                  tick={{ fontSize: 14 }}
-                  interval={0}
-                  axisLine={true}
-                  tickLine={true}
-                />
-                <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
-                <Bar dataKey="sales" fill={CHART_COLORS[0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            {/* Daypart Analysis */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Sales by Daypart ({breakdownMonth})</CardTitle>
+              </CardHeader>
+              <CardContent>
+              <ResponsiveContainer width="100%" height={350}>
+                <PieChart>
+                  <Pie
+                    data={daypartDataWithPercent}
+                    cx="40%"
+                    cy="50%"
+                    labelLine={true}
+                    label={({ name, percentage }: { name: string; percentage: number }) => `${name} ${percentage}%`}
+                    outerRadius={90}
+                    fill={CHART_COLORS[0]}
+                    dataKey="sales"
+                  >
+                    {daypartDataWithPercent.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value) => formatCurrencyNoDecimals(value as number)} />
+                </PieChart>
+              </ResponsiveContainer>
+              </CardContent>
+            </Card>
+          </div>
+        ) : (
+          <Card className="mb-6 sm:mb-8">
+            <CardContent className="py-12 flex flex-col items-center justify-center text-center">
+              <p className="text-body-lg font-medium text-muted-foreground mb-2">No breakdown data available for {breakdownMonth}</p>
+              <p className="text-body-sm text-muted-foreground max-w-md">
+                Detailed category and daypart breakdown data is only available for August 2025, and all 2026 months.
+                You can upload a Toast POS PDF summary for this month on the <a href="/upload" className="text-primary hover:underline font-semibold">Upload Page</a> to merge its details into the dashboard.
+              </p>
             </CardContent>
           </Card>
-        </div>
+        )}
 
         {/* Beverage Sales Percentage */}
         <Card className="mb-6 sm:mb-8">
