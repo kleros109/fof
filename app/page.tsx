@@ -1113,7 +1113,7 @@ export default function SalesDashboard() {
           </CardHeader>
           <CardContent>
           <ResponsiveContainer width="100%" height={350}>
-            <BarChart data={beverageData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
+            <LineChart data={beverageData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis
                 dataKey="month"
@@ -1128,13 +1128,14 @@ export default function SalesDashboard() {
                 interval={0}
                 axisLine={true}
                 tickLine={true}
+                domain={['auto', 'auto']}
               />
               <Tooltip
                 formatter={(value) => `${value}%`}
                 labelFormatter={(label) => `Month: ${label}`}
               />
-              <Bar dataKey="percentage" fill={CHART_COLORS[2]} />
-            </BarChart>
+              <Line type="monotone" dataKey="percentage" stroke={CHART_COLORS[2]} strokeWidth={3} activeDot={{ r: 8 }} />
+            </LineChart>
           </ResponsiveContainer>
           <div className="mt-4 text-sm text-muted-foreground">
             <p>Shows the percentage of total sales from beverages (NA Beverages + Wine + Draft Beer + Bottled Beer)</p>
